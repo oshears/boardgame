@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace {
+namespace BoardGame {
 
     public class CommandProcessor : MonoBehaviour {
     
