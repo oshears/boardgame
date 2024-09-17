@@ -1,0 +1,25 @@
+{
+    "name": "com.osgames.boardgame",
+    "version": "0.0.1",
+    "displayName": "Board Game",
+    "description": "A set of scripts to facilitate the creation of a board game.",
+    "unity": "2022.3",
+    "unityRelease": "45f1",
+    "documentationUrl": "https://github.com/oshears/boardgame",
+    "changelogUrl": "https://github.com/oshears/boardgame",
+    "licensesUrl": "https://github.com/oshears/boardgame",
+    "dependencies": {
+        "com.unity.textmeshpro": "3.0.9",
+        "com.unity.inputsystem": "1.7.0"
+    },
+    "keywords": [
+        "Last UI",
+        "User Interface",
+        "GUI"
+    ],
+    "author": {
+        "name": "Osaze Shears",
+        "email": "yoze15@gmail.com",
+        "url": "https://github.com/oshears/"
+    }
+}
