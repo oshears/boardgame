@@ -10,6 +10,8 @@ namespace BoardGame {
 
         override public void Execute(){
             Debug.Log("Executed Action Menu Move Command!");
+
+            ActionMenu.RequestAction(RoomAction);
         }
 
     }

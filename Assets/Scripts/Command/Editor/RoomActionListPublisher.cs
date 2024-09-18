@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace BoardGame{
 
-    [CustomEditor(typeof(CommandListPublisher))]
+    [CustomEditor(typeof(RoomActionListPublisher))]
     [CanEditMultipleObjects]
-    public class CommandListPublisherEditor : Editor
+    public class RoomActionListPublisherEditor : Editor
     {
         // SerializedProperty damageProp;
         // SerializedProperty armorProp;
@@ -37,7 +37,7 @@ namespace BoardGame{
             // // Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
             serializedObject.Update();
 
-            CommandListPublisher publisher = (CommandListPublisher) target;
+            RoomActionListPublisher publisher = (RoomActionListPublisher) target;
 
             // // Show the custom GUI controls.
             // // EditorGUILayout.IntSlider (damageProp, 0, 100, new GUIContent ("Damage"));

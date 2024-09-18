@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace BoardGame {
 
-    public class CommandListSubscriber : Subscriber<List<Command>>
+    public class RoomActionPublisher : Publisher<RoomAction>
     {
         
 

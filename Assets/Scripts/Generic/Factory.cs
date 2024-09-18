@@ -7,10 +7,10 @@ namespace BoardGame {
 
     // [[RequireComponent(typeof(Subscriber))]]
     // [[RequireComponent(typeof(Publisher))]]
-    public abstract class Factory<T> : MonoBehaviour
+    public abstract class Factory<T, U> : MonoBehaviour
     {
 
-        public abstract void Make(T t);
+        public abstract U Make(T t);
 
     }
 }

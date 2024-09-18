@@ -8,17 +8,28 @@ namespace BoardGame {
         ActionMenuController m_ActionMenuController;
         public ActionMenuController ActionMenu {get {return m_ActionMenuController;}}
 
+        RoomAction m_RoomAction;
+        public RoomAction RoomAction{
+            get {return m_RoomAction;}
+        }
+
         public ActionMenuCmd(ActionMenuController actionMenu){
             SetActionMenuController(actionMenu);
+        }
+
+        public ActionMenuCmd(ActionMenuController actionMenu, RoomAction action){
+            SetActionMenuController(actionMenu);
+            m_RoomAction = action;
         }
 
         public void SetActionMenuController(ActionMenuController actionMenu){
             m_ActionMenuController = actionMenu;
         }
 
-        // public virtual void Execute(){
-        //     Debug.Log("Executed Generic Action Menu Command!");
-        // }
+        override public void Execute(){
+            Debug.Log("Executed Generic Action Menu Command!");
+            ActionMenu.RequestAction(m_RoomAction);
+        }
 
         // public virtual void Undo(){
 

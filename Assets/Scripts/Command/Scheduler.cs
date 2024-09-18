@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 namespace BoardGame {
 
+    [RequireComponent(typeof(CommandPublisher))]
     public class Scheduler : MonoBehaviour, IScheduler {
 
         Queue<Command> m_CommandQueue;
@@ -15,6 +16,7 @@ namespace BoardGame {
 
         private void Awake() {
             m_CommandQueue = new Queue<Command>();
+            m_CommandPublisher = GetComponent<CommandPublisher>();
         }
 
         void OnEnable() {

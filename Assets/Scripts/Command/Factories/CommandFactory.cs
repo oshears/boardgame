@@ -13,7 +13,9 @@ namespace BoardGame {
     //     // }
     // }
 
-    public class CommandFactory : Factory<Command>
+    
+
+    public class CommandFactory : Factory<RoomAction, Command>
     {
         
         // public virtual CommandFactory GetCommand()
@@ -21,9 +23,10 @@ namespace BoardGame {
 
         // }
 
-        override public void Make(Command cmd){
+        override public Command Make(RoomAction action){
             // make command
             // add to visual view?
+            return new Command();
         }
     }
 }
