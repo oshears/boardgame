@@ -12,6 +12,7 @@ namespace BoardGame {
         public virtual void Publish(T t)
         {
             // ThingHappened.Invoke(t);
+            // this will send errors if no one is subscribed to the event
             ThingHappened(t);
         }
 

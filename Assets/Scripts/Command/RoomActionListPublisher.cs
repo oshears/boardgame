@@ -9,8 +9,8 @@ namespace BoardGame {
     public class RoomActionListPublisher : Publisher<List<RoomAction>> 
     {
 
-        [SerializeField] List<RoomAction> cmdList = new List<RoomAction>();
-        [SerializeField] bool testBool;
+        // [SerializeField] List<RoomAction> cmdList = new List<RoomAction>();
+        // [SerializeField] bool testBool;
 
 
         public void TestPublish(){
@@ -18,7 +18,7 @@ namespace BoardGame {
             // for(int i = 0; i < 5; i++){
             //     cmdList.Add(new RoomAction(null));
             // }
-            Publish(cmdList);    
+            // Publish(cmdList);    
         }
         
     }

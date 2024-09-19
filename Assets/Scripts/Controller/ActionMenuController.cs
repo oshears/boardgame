@@ -15,31 +15,23 @@ namespace BoardGame {
     public class ActionMenuController : Controller<List<RoomAction>>
     {
 
-        [SerializeField] CommandFactory m_CommandFactory;
-        ButtonFactory m_ButtonFactory;
+        // [SerializeField] CommandFactory m_CommandFactory;
+
         Scheduler m_Scheduler;
         // CommandListSubscriber m_Subscriber;
-
         // [SerializeField] Command View Controller
-
-        List<GameObject> m_Buttons;
-
         RoomActionPublisher m_RoomActionPublisher;
 
-        // ToDo: do this later, it's just for polish
-        // [Tooltip("Number of buttons that will appear in a row")]
-        // [SerializeField] int ButtonSpacing = 4;
+        ButtonFactory m_ButtonFactory;
+        List<GameObject> m_Buttons;
+
 
         override protected void Awake(){
             base.Awake();
-            m_ButtonFactory = GetComponent<ButtonFactory>();
             m_Scheduler = GetComponent<Scheduler>();
             m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
+            m_ButtonFactory = GetComponent<ButtonFactory>();
             m_Buttons = new List<GameObject>();
-        }
-
-        override protected void OnDestroy(){
-            base.OnDestroy();
         }
 
         override public void OnPublisherAction(List<RoomAction> roomActions){
