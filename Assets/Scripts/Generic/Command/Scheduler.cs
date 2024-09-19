@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame {
 
@@ -13,6 +14,8 @@ namespace OSGames.BoardGame {
         public UnityEvent<Command> e_CommandAdded;
 
         public CommandPublisher m_CommandPublisher;
+
+        private static Stack<ICommand> undoStack = new Stack<ICommand>();
 
         private void Awake() {
             m_CommandQueue = new Queue<Command>();
@@ -40,6 +43,7 @@ namespace OSGames.BoardGame {
 
         public void ExecuteCommand(Command cmd){
             cmd.Execute();
+            undoStack.Push(cmd);
             m_CommandPublisher.Publish(cmd);
         }
 
@@ -49,6 +53,15 @@ namespace OSGames.BoardGame {
 
         public void OnCommandAdded(Command cmd){
             AddCommand(cmd);
+        }
+
+        public static void UndoCommand()
+        {
+            if (undoStack.Count > 0)
+            {
+                ICommand activeCommand = undoStack.Pop();
+                activeCommand.Undo();
+            }
         }
 
     }

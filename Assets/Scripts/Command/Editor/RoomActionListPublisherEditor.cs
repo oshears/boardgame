@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Org.BouncyCastle.Math.EC.Multiplier;
 using UnityEditor;
 using UnityEngine;
+using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame{
 

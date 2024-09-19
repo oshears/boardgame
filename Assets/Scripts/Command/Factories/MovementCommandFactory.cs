@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame {
     

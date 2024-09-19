@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame {
 
