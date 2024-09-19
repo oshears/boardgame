@@ -28,7 +28,7 @@ namespace OSGames.BoardGame {
         }
 
         override public void Execute(){
-            Debug.Log("Executed Generic Room Command!");
+            Debug.Log("Executed Generic Player Command!");
             // ActionMenu.RequestAction(m_RoomAction);
         }
 

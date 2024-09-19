@@ -6,4 +6,5 @@ public enum ActionType{
     SetTarget,
     CycleLeft,
     CycleRight,
+    ToggleMenu,
 }

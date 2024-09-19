@@ -6,12 +6,12 @@ using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame {
 
-    [RequireComponent(typeof(CommandPublisher))]
+    // [RequireComponent(typeof(CommandPublisher))]
     public class Scheduler : MonoBehaviour, IScheduler {
 
         Queue<Command> m_CommandQueue;
 
-        public UnityEvent<Command> e_CommandAdded;
+        // public UnityEvent<Command> e_CommandAdded;
 
         public CommandPublisher m_CommandPublisher;
 
@@ -19,15 +19,15 @@ namespace OSGames.BoardGame {
 
         private void Awake() {
             m_CommandQueue = new Queue<Command>();
-            m_CommandPublisher = GetComponent<CommandPublisher>();
+            // m_CommandPublisher = GetComponent<CommandPublisher>();
         }
 
         void OnEnable() {
-            e_CommandAdded.AddListener(OnCommandAdded);
+            // e_CommandAdded.AddListener(OnCommandAdded);
         }
 
         private void OnDisable() {
-            e_CommandAdded.RemoveListener(OnCommandAdded);    
+            // e_CommandAdded.RemoveListener(OnCommandAdded);    
         }
 
         void Start(){
@@ -44,7 +44,7 @@ namespace OSGames.BoardGame {
         public void ExecuteCommand(Command cmd){
             cmd.Execute();
             undoStack.Push(cmd);
-            m_CommandPublisher.Publish(cmd);
+            // m_CommandPublisher.Publish(cmd);
         }
 
         public void AddCommand(Command cmd){

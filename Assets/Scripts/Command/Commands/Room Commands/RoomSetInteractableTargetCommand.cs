@@ -30,7 +30,7 @@ namespace OSGames.BoardGame {
 
             
 
-            m_RoomController.RoomActionPublisher.Publish(setTargetAction);
+            // m_RoomController.RoomActionPublisher.Publish(setTargetAction);
 
             // TODO: consider sending an additional command to change the camera perspective
 

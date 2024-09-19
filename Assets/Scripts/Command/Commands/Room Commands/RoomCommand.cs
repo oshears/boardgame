@@ -30,6 +30,7 @@ namespace OSGames.BoardGame {
         override public void Execute(){
             Debug.Log("Executed Generic Room Command!");
             // ActionMenu.RequestAction(m_RoomAction);
+            // m_RoomController.RoomActionPublisher.Publish(setTargetAction);
         }
 
         // public virtual void Undo(){

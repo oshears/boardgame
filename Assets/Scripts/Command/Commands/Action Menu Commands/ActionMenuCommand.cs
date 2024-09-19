@@ -4,21 +4,21 @@ using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame {
 
-    public class ActionMenuCmd : Command {
+    public class ActionMenuCommand : Command {
 
-        ActionMenuController m_ActionMenuController;
-        public ActionMenuController ActionMenu {get {return m_ActionMenuController;}}
+        protected ActionMenuController m_ActionMenuController;
+        public ActionMenuController ActionMenuController {get {return m_ActionMenuController;}}
 
         RoomAction m_RoomAction;
         public RoomAction RoomAction{
             get {return m_RoomAction;}
         }
 
-        public ActionMenuCmd(ActionMenuController actionMenu){
+        public ActionMenuCommand(ActionMenuController actionMenu){
             SetActionMenuController(actionMenu);
         }
 
-        public ActionMenuCmd(ActionMenuController actionMenu, RoomAction action){
+        public ActionMenuCommand(ActionMenuController actionMenu, RoomAction action){
             SetActionMenuController(actionMenu);
             m_RoomAction = action;
         }
@@ -29,7 +29,7 @@ namespace OSGames.BoardGame {
 
         override public void Execute(){
             Debug.Log("Executed Generic Action Menu Command!");
-            ActionMenu.RequestAction(m_RoomAction);
+            m_ActionMenuController.RequestAction(m_RoomAction);
         }
 
         // public virtual void Undo(){

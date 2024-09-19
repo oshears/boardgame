@@ -4,5 +4,6 @@ namespace OSGames.BoardGame.Input {
     CycleLeft,
     CycleRight,
     ViewMode,
+    ToggleMenu,
     }
 }

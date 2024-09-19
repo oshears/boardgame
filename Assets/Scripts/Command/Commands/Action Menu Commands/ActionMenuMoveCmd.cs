@@ -1,8 +1,9 @@
 using UnityEngine;
+using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame {
 
-    public class ActionMenuMoveCmd : ActionMenuCmd {
+    public class ActionMenuMoveCmd : ActionMenuCommand {
         public ActionMenuMoveCmd(ActionMenuController actionMenu) : base(actionMenu)
         {
 
@@ -11,7 +12,7 @@ namespace OSGames.BoardGame {
         override public void Execute(){
             Debug.Log("Executed Action Menu Move Command!");
 
-            ActionMenu.RequestAction(RoomAction);
+            m_ActionMenuController.RequestAction(RoomAction);
         }
 
     }

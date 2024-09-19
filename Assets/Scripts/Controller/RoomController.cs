@@ -51,27 +51,28 @@ namespace OSGames.BoardGame {
             // NOTE: the inspector order matters. Might want to change this in the future
             RoomActionSubscriber[] subs = GetComponents<RoomActionSubscriber>();
             m_PlayerHUDRoomActionSubscriber = subs[0];
-            m_PlayerHUDRoomActionSubscriber.PublisherAction += OnPlayerHUDAction;
+            m_PlayerHUDRoomActionSubscriber.PublisherAction += OnPlayerAction;
             
             m_PlayerInputRoomActionSubscriber = subs[1];
-            m_PlayerInputRoomActionSubscriber.PublisherAction += OnPlayerHUDAction;
+            m_PlayerInputRoomActionSubscriber.PublisherAction += OnPlayerAction;
 
             m_RoomModel = GetComponent<RoomModel>();
         }
 
         void OnDestroy(){
-            m_PlayerHUDRoomActionSubscriber.PublisherAction -= OnPlayerHUDAction;
-            m_PlayerInputRoomActionSubscriber.PublisherAction -= OnPlayerHUDAction;
+            m_PlayerHUDRoomActionSubscriber.PublisherAction -= OnPlayerAction;
+            m_PlayerInputRoomActionSubscriber.PublisherAction -= OnPlayerAction;
         }
 
 
         // this happens when the publisher sends the selected room action
-        public void OnPlayerHUDAction(RoomAction roomAction) {
+        public void OnPlayerAction(RoomAction roomAction) {
             Debug.Log($"Room is responding to the user's chosen action: {roomAction}");
 
             RoomCommandProduct product = new RoomCommandProduct(this, roomAction);
             Command cmd = m_CommandFactory.Make(product);
             m_Scheduler.AddCommand(cmd);
+            m_RoomActionPublisher.Publish(roomAction);
 
             // debug, for test
             // probably want to do player movement commands in the player controller?
@@ -82,10 +83,6 @@ namespace OSGames.BoardGame {
             // player controller
             // noise system
             
-            // m_RoomActionPublisher.Publish(roomAction);
-        }
-        public void OnPlayerInputAction(RoomAction roomAction){
-
         }
 
         public void TestPublish(){

@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame {
 
     [RequireComponent(typeof(RoomActionListSubscriber))]
     // [RequireComponent(typeof(CommandFactory))]
     [RequireComponent(typeof(ButtonFactory))]
+    [RequireComponent(typeof(ActionMenuCommandFactory))]
     [RequireComponent(typeof(Scheduler))]
     [RequireComponent(typeof(RoomActionPublisher))]
+    [RequireComponent(typeof(RoomActionSubscriber))]
+    [RequireComponent(typeof(ActionMenuModel))]
     public class ActionMenuController : Controller
     {
 
@@ -20,28 +24,37 @@ namespace OSGames.BoardGame {
         // CommandListSubscriber m_Subscriber;
         // [SerializeField] Command View Controller
         RoomActionListSubscriber m_RoomActionListSubscriber;
+        RoomActionSubscriber m_RoomActionSubscriber;
         RoomActionPublisher m_RoomActionPublisher;
 
         ButtonFactory m_ButtonFactory;
+        ActionMenuCommandFactory m_CommandFactory;
         List<GameObject> m_Buttons;
 
+        ActionMenuModel m_ActionMenu;
+        public ActionMenuModel ActionMenu {get { return m_ActionMenu;}}
 
         void Awake(){
             m_Scheduler = GetComponent<Scheduler>();
             m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
             m_ButtonFactory = GetComponent<ButtonFactory>();
             m_Buttons = new List<GameObject>();
+            m_ActionMenu = GetComponent<ActionMenuModel>();
+            m_CommandFactory = GetComponent<ActionMenuCommandFactory>();
 
             m_RoomActionListSubscriber = GetComponent<RoomActionListSubscriber>();
-            m_RoomActionListSubscriber.PublisherAction += OnPublisherAction;
+            m_RoomActionListSubscriber.PublisherAction += OnRoomActionListProvided;
+
+            m_RoomActionSubscriber = GetComponent<RoomActionSubscriber>();
+            m_RoomActionSubscriber.PublisherAction += OnRoomAction;
         }
 
         void OnDestroy()
         {
-            m_RoomActionListSubscriber.PublisherAction -= OnPublisherAction;
+            m_RoomActionListSubscriber.PublisherAction -= OnRoomActionListProvided;
         }
 
-        public void OnPublisherAction(List<RoomAction> roomActions){
+        public void OnRoomActionListProvided(List<RoomAction> roomActions){
             // Debug.Log($"got int: {i}");
 
             // create and initialize buttons
@@ -60,6 +73,14 @@ namespace OSGames.BoardGame {
                 // buttons will simply add the command associated with them to the scheduler
             }
 
+        }
+
+        void OnRoomAction(RoomAction roomAction){
+            Debug.Log($"Action menu is responding to the user's chosen action: {roomAction}");
+
+            ActionMenuCommandProduct product = new ActionMenuCommandProduct(this, roomAction);
+            Command cmd = m_CommandFactory.Make(product);
+            m_Scheduler.AddCommand(cmd);
         }
 
         

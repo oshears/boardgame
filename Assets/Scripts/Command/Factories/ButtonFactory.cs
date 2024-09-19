@@ -45,7 +45,7 @@ namespace OSGames.BoardGame {
             
             ButtonResponder btnResponder = tmp.AddComponent<ButtonResponder>();
             btnResponder.Scheduler = product.Scheduler;
-            btnResponder.Command = new ActionMenuCmd(product.ActionMenu, product.RoomAction);
+            btnResponder.Command = new ActionMenuCommand(product.ActionMenu, product.RoomAction);
 
             TextMeshProUGUI[] textMeshes = tmp.GetComponentsInChildren<TextMeshProUGUI>();
             textMeshes[0].text = product.RoomAction.Title;

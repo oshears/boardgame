@@ -64,10 +64,10 @@ namespace OSGames.BoardGame.Input {
 
         public void OnToggleView(InputAction.CallbackContext context)
         {
-            Debug.Log("Selection");
             // m_CameraController.ToggleView();
             if (context.performed){
-
+                Command cmd = new InputCommand(this, m_InputActionDict[InputType.ToggleMenu]);
+                m_Scheduler.AddCommand(cmd);
             }
         }
 

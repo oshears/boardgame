@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OSGames.BoardGame {
 
-    public class ActionMenuUseCmd : ActionMenuCmd {
+    public class ActionMenuUseCmd : ActionMenuCommand {
         public ActionMenuUseCmd(ActionMenuController actionMenu) : base(actionMenu)
         {
             

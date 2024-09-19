@@ -17,7 +17,7 @@ namespace OSGames.BoardGame {
             moveAction.SetDestination(destination);
 
             // now broadcast this action
-            m_RoomController.RoomActionPublisher.Publish(moveAction);
+            // m_RoomController.RoomActionPublisher.Publish(moveAction);
         }
 
         
