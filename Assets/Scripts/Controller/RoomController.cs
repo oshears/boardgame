@@ -16,12 +16,13 @@ namespace BoardGame {
     [RequireComponent(typeof(RoomActionPublisher))] // send commands to the player and the room
     [RequireComponent(typeof(Scheduler))]
     [RequireComponent(typeof(RoomCommandFactory))]
-    public class RoomController : Controller<RoomAction>
+    public class RoomController : Controller
     {
         [SerializeField] List<RoomAction> m_ActionList = new List<RoomAction>();
 
         // [SerializeField] RoomController[] m_NeighboringRooms;
 
+        RoomActionSubscriber m_RoomActionSubscriber;
         RoomActionListPublisher m_RoomActionListPublisher;
         RoomActionPublisher m_RoomActionPublisher;
         Scheduler m_Scheduler;
@@ -33,17 +34,23 @@ namespace BoardGame {
         [SerializeField] Transform m_Destination;
         [SerializeField] NavMeshAgent m_Agent;
 
-        override protected void Awake(){
-            base.Awake();
+        void Awake(){
             m_RoomActionListPublisher = GetComponent<RoomActionListPublisher>();
             m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
             m_Scheduler = GetComponent<Scheduler>();
             m_CommandFactory = GetComponent<RoomCommandFactory>();
+
+            m_RoomActionSubscriber = GetComponent<RoomActionSubscriber>();
+            m_RoomActionSubscriber.PublisherAction += OnPublisherAction;
+        }
+
+        void OnDestroy(){
+            m_RoomActionSubscriber.PublisherAction -= OnPublisherAction;
         }
 
 
         // this happens when the publisher sends the selected room action
-        override public void OnPublisherAction(RoomAction roomAction) {
+        public void OnPublisherAction(RoomAction roomAction) {
             Debug.Log($"Room is responding to the user's chosen action: {roomAction}");
 
             RoomCommandProduct product = new RoomCommandProduct(this, roomAction);

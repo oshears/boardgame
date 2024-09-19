@@ -11,7 +11,7 @@ namespace BoardGame {
     [RequireComponent(typeof(ButtonFactory))]
     [RequireComponent(typeof(Scheduler))]
     [RequireComponent(typeof(RoomActionPublisher))]
-    public class ActionMenuController : Controller<List<RoomAction>>
+    public class ActionMenuController : Controller
     {
 
         // [SerializeField] CommandFactory m_CommandFactory;
@@ -19,21 +19,29 @@ namespace BoardGame {
         Scheduler m_Scheduler;
         // CommandListSubscriber m_Subscriber;
         // [SerializeField] Command View Controller
+        RoomActionListSubscriber m_RoomActionListSubscriber;
         RoomActionPublisher m_RoomActionPublisher;
 
         ButtonFactory m_ButtonFactory;
         List<GameObject> m_Buttons;
 
 
-        override protected void Awake(){
-            base.Awake();
+        void Awake(){
             m_Scheduler = GetComponent<Scheduler>();
             m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
             m_ButtonFactory = GetComponent<ButtonFactory>();
             m_Buttons = new List<GameObject>();
+
+            m_RoomActionListSubscriber = GetComponent<RoomActionListSubscriber>();
+            m_RoomActionListSubscriber.PublisherAction += OnPublisherAction;
         }
 
-        override public void OnPublisherAction(List<RoomAction> roomActions){
+        void OnDestroy()
+        {
+            m_RoomActionListSubscriber.PublisherAction -= OnPublisherAction;
+        }
+
+        public void OnPublisherAction(List<RoomAction> roomActions){
             // Debug.Log($"got int: {i}");
 
             // create and initialize buttons
