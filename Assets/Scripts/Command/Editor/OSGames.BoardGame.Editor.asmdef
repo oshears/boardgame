@@ -1,0 +1,19 @@
+{
+    "name": "OSGames.BoardGame.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:65ab830eaf099f446b91e9dd69a8eb54",
+        "GUID:0e631418c1c9260438b220f6314e298b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

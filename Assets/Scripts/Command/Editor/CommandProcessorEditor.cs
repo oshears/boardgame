@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace BoardGame{
 
+    #if UNITY_EDITOR
     [CustomEditor(typeof(Scheduler))]
     [CanEditMultipleObjects]
     public class CommandSchedulerEditor : Editor
@@ -64,4 +65,5 @@ namespace BoardGame{
         //     EditorGUILayout.Space ();
         // }
     }
+    #endif
 }

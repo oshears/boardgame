@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace BoardGame{
 
+    #if UNITY_EDITOR
     [CustomEditor(typeof(RoomActionListPublisher))]
     [CanEditMultipleObjects]
     public class RoomActionListPublisherEditor : Editor
@@ -76,4 +77,5 @@ namespace BoardGame{
             serializedObject.ApplyModifiedProperties ();
         }
     }
+    #endif
 }

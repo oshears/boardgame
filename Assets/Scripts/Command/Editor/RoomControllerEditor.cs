@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace BoardGame{
 
+    #if UNITY_EDITOR
     [CustomEditor(typeof(RoomController))]
     [CanEditMultipleObjects]
     public class RoomControllerEditor : Editor
@@ -25,4 +26,5 @@ namespace BoardGame{
             serializedObject.ApplyModifiedProperties ();
         }
     }
+    #endif
 }
