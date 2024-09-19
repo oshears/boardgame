@@ -20,7 +20,7 @@ namespace OSGames.BoardGame {
         }
 
         public override ActionType GetActionType(){
-            return ActionType.Move;
+            return ActionType.SetTarget;
         }
 
     }

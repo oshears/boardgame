@@ -28,7 +28,8 @@ namespace OSGames.BoardGame {
 
         // [SerializeField] RoomController[] m_NeighboringRooms;
 
-        RoomActionSubscriber m_RoomActionSubscriber;
+        RoomActionSubscriber m_PlayerHUDRoomActionSubscriber;
+        RoomActionSubscriber m_PlayerInputRoomActionSubscriber;
         RoomActionListPublisher m_RoomActionListPublisher;
         RoomActionPublisher m_RoomActionPublisher;
         public RoomActionPublisher RoomActionPublisher { get {return m_RoomActionPublisher;} }
@@ -47,19 +48,25 @@ namespace OSGames.BoardGame {
             m_Scheduler = GetComponent<Scheduler>();
             m_CommandFactory = GetComponent<RoomCommandFactory>();
 
-            m_RoomActionSubscriber = GetComponent<RoomActionSubscriber>();
-            m_RoomActionSubscriber.PublisherAction += OnPublisherAction;
+            // NOTE: the inspector order matters. Might want to change this in the future
+            RoomActionSubscriber[] subs = GetComponents<RoomActionSubscriber>();
+            m_PlayerHUDRoomActionSubscriber = subs[0];
+            m_PlayerHUDRoomActionSubscriber.PublisherAction += OnPlayerHUDAction;
+            
+            m_PlayerInputRoomActionSubscriber = subs[1];
+            m_PlayerInputRoomActionSubscriber.PublisherAction += OnPlayerHUDAction;
 
             m_RoomModel = GetComponent<RoomModel>();
         }
 
         void OnDestroy(){
-            m_RoomActionSubscriber.PublisherAction -= OnPublisherAction;
+            m_PlayerHUDRoomActionSubscriber.PublisherAction -= OnPlayerHUDAction;
+            m_PlayerInputRoomActionSubscriber.PublisherAction -= OnPlayerHUDAction;
         }
 
 
         // this happens when the publisher sends the selected room action
-        public void OnPublisherAction(RoomAction roomAction) {
+        public void OnPlayerHUDAction(RoomAction roomAction) {
             Debug.Log($"Room is responding to the user's chosen action: {roomAction}");
 
             RoomCommandProduct product = new RoomCommandProduct(this, roomAction);
@@ -76,6 +83,9 @@ namespace OSGames.BoardGame {
             // noise system
             
             // m_RoomActionPublisher.Publish(roomAction);
+        }
+        public void OnPlayerInputAction(RoomAction roomAction){
+
         }
 
         public void TestPublish(){

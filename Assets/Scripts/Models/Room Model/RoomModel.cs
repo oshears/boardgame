@@ -16,11 +16,15 @@ namespace OSGames.BoardGame {
         [SerializeField] PlayerModel m_PlayersInRoom;
 
         [SerializeField] InteractableModel m_TargetedInteractable;
-        
-
         public InteractableModel TargetedInteractable {
             get { return m_TargetedInteractable;}
             set { m_TargetedInteractable = value;}
+        }
+
+        [SerializeField] InteractableModel m_InitialInteractable;
+        public InteractableModel InitialInteractable {
+            get { return m_InitialInteractable;}
+            set { m_InitialInteractable = value;}
         }
 
         RoomConfiguration m_RoomSO;

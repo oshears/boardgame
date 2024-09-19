@@ -26,6 +26,12 @@ namespace OSGames.BoardGame {
             else if (product.RoomAction.ActionType == ActionType.SetTarget){
                 return new RoomSetTargetCommand(product.RoomController, product.RoomAction);
             }
+            else if (product.RoomAction.ActionType == ActionType.CycleLeft){
+                return new RoomCycleInteractableLeftCommand(product.RoomController, product.RoomAction);
+            }
+            else if (product.RoomAction.ActionType == ActionType.CycleRight){
+                return new RoomCycleInteractableRightCommand(product.RoomController, product.RoomAction);
+            }
             else{
                 return new RoomCommand(product.RoomController, product.RoomAction);
             }
