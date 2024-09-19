@@ -32,6 +32,10 @@ namespace OSGames.BoardGame {
             m_Animator = GetComponent<Animator>();
         }
 
+        public virtual void ToggleCamera(){
+            
+        }
+
     }
 
 }

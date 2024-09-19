@@ -20,6 +20,9 @@ namespace OSGames.BoardGame {
                 Transform target = ((SetTargetAction) product.RoomAction).NewTarget;
                 return new PlayerSetTargetCommand(product.PlayerController, target);
             }
+            else if (product.RoomAction.ActionType == ActionType.ToggleMenu){
+                return new PlayerToggleCameraCommand(product.PlayerController);
+            }
             else{
                 return new PlayerCommand(product.PlayerController, product.RoomAction);
             }
