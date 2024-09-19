@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
 
     // [CreateAssetMenu(fileName = "Room Action", menuName = "Board Game/Room Action", order = 0)]
     public class RoomAction : ScriptableObject {
@@ -13,6 +13,7 @@ namespace BoardGame {
         [SerializeField] public int Cost;
 
         private ActionType m_ActionType;
+        private ActionGroup m_ActionGroup;
         
         public ActionType ActionType {
             get {return GetActionType();}
@@ -20,6 +21,14 @@ namespace BoardGame {
 
         public virtual ActionType GetActionType(){
             return m_ActionType;
+        } 
+
+        public ActionGroup ActionGroup {
+            get {return GetActionGroup();}
+        }
+
+        public virtual ActionGroup GetActionGroup(){
+            return m_ActionGroup;
         } 
         
     }

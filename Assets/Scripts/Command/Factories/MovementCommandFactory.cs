@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
     
     // [CreateAssetMenu(fileName = "Command Factory", menuName = "Board Game/Command Factory", order = 0)]
     public class MovementCommandFactory : CommandFactory

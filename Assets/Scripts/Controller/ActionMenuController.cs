@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
 
     [RequireComponent(typeof(RoomActionListSubscriber))]
     // [RequireComponent(typeof(CommandFactory))]

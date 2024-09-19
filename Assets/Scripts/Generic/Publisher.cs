@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
 
     public abstract class Publisher<T> : MonoBehaviour, IPublisher<T> 
     {

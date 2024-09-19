@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
 
     public class ActionMenuCmd : Command {
 

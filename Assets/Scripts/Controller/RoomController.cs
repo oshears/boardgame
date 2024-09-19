@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
 
     // [RequireComponent(typeof(RoomActionListSubscriber))]
     // [RequireComponent(typeof(CommandFactory))]
@@ -16,23 +16,29 @@ namespace BoardGame {
     [RequireComponent(typeof(RoomActionPublisher))] // send commands to the player and the room
     [RequireComponent(typeof(Scheduler))]
     [RequireComponent(typeof(RoomCommandFactory))]
+    [RequireComponent(typeof(RoomCommandFactory))]
+    [RequireComponent(typeof(RoomModel))]
     public class RoomController : Controller
     {
         [SerializeField] List<RoomAction> m_ActionList = new List<RoomAction>();
+
+        // [SerializeField] List<PlayerController> m_PlayersInRoom;
+        // [SerializeField] PlayerController m_CurrentPlayer;
 
         // [SerializeField] RoomController[] m_NeighboringRooms;
 
         RoomActionSubscriber m_RoomActionSubscriber;
         RoomActionListPublisher m_RoomActionListPublisher;
         RoomActionPublisher m_RoomActionPublisher;
+        public RoomActionPublisher RoomActionPublisher { get {return m_RoomActionPublisher;} }
         Scheduler m_Scheduler;
 
         RoomCommandFactory m_CommandFactory;
 
+        RoomModel m_RoomModel;
+        public RoomModel RoomModel { get { return m_RoomModel;}}
 
-        // temporary fields for testing
-        [SerializeField] Transform m_Destination;
-        [SerializeField] NavMeshAgent m_Agent;
+
 
         void Awake(){
             m_RoomActionListPublisher = GetComponent<RoomActionListPublisher>();
@@ -42,6 +48,8 @@ namespace BoardGame {
 
             m_RoomActionSubscriber = GetComponent<RoomActionSubscriber>();
             m_RoomActionSubscriber.PublisherAction += OnPublisherAction;
+
+            m_RoomModel = GetComponent<RoomModel>();
         }
 
         void OnDestroy(){
@@ -59,14 +67,14 @@ namespace BoardGame {
 
             // debug, for test
             // probably want to do player movement commands in the player controller?
-            m_Scheduler.AddCommand(new RoomMoveCommand(this, m_Agent, m_Destination));
+            // m_Scheduler.AddCommand(new RoomMoveCommand(this, m_RoomModel.GetNeighboringPlayerStandTransform(0)));
             
             // forward the actions to:
             // room objects
             // player controller
             // noise system
             
-            m_RoomActionPublisher.Publish(roomAction);
+            // m_RoomActionPublisher.Publish(roomAction);
         }
 
         public void TestPublish(){

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
     [CreateAssetMenu(fileName = "Room Move Action", menuName = "Board Game/Room Move Action", order = 0)]
     public class MovementAction : RoomAction {
 
@@ -8,9 +8,18 @@ namespace BoardGame {
 
         // define constructor/factory for a move command for the room's scheduler
 
+        private Transform m_Destination;
+
+        public Transform Destination {get { return m_Destination; }}
+
         public override ActionType GetActionType(){
             return ActionType.Move;
         }
+
+        public void SetDestination(Transform destination){
+            m_Destination = destination;
+        }
+
     }
 
 }

@@ -1,6 +1,6 @@
 
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
 
 
     public interface IPublisher<T> {

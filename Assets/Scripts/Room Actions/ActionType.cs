@@ -3,4 +3,5 @@ public enum ActionType{
     Use,
     Search,
     Trade,
+    SetTarget
 }

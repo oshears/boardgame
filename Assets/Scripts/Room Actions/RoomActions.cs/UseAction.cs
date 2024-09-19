@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
 
     [CreateAssetMenu(fileName = "Room Use Action", menuName = "Board Game/Room Use Action", order = 0)]
     public class UseAction : RoomAction {

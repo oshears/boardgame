@@ -1,7 +1,7 @@
 
 using System.Collections.Generic;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
     public class CommandInvoker
     {
         private static Stack<ICommand> undoStack = new Stack<ICommand>();

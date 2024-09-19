@@ -1,11 +1,11 @@
 using UnityEngine;
 
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
 
     public class PlayerCommand : Command {
 
-        PlayerController m_PlayerController;
+        protected PlayerController m_PlayerController;
         public PlayerController PlayerController {get {return m_PlayerController;}}
 
         RoomAction m_RoomAction;

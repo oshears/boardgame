@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
     public class Command : ICommand {
 
         // [Tooltip("Execution delay before running the command.")]

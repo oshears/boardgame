@@ -5,7 +5,7 @@ using Org.BouncyCastle.Math.EC.Multiplier;
 using UnityEditor;
 using UnityEngine;
 
-namespace BoardGame{
+namespace OSGames.BoardGame{
 
     #if UNITY_EDITOR
     [CustomEditor(typeof(RoomController))]

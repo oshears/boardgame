@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BoardGame {
+namespace OSGames.BoardGame {
 
     public class ActionMenuMoveCmd : ActionMenuCmd {
         public ActionMenuMoveCmd(ActionMenuController actionMenu) : base(actionMenu)
