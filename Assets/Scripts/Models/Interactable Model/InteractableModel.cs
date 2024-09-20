@@ -28,6 +28,7 @@ namespace OSGames.BoardGame.Interactables {
         [SerializeField] UnityEvent e_ClearHighlight;
 
         [SerializeField] Transform m_PlayerStandingPoint;
+        public Transform PlayerStandingPoint {get {return m_PlayerStandingPoint;}}
 
 
         public virtual void SetHighlight(){

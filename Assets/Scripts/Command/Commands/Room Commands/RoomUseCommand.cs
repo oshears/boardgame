@@ -10,6 +10,11 @@ namespace OSGames.BoardGame {
 
         override public void Execute(){
             Debug.Log($"Player used the interactable: {m_RoomController.RoomModel.TargetedInteractable}");
+
+            MoveAndUseAction moveAction = ScriptableObject.CreateInstance<MoveAndUseAction>();
+            moveAction.SetDestination(m_RoomController.RoomModel.TargetedInteractable.PlayerStandingPoint);
+            m_RoomController.RoomActionPublisher.Publish(moveAction);
+
         }
 
         

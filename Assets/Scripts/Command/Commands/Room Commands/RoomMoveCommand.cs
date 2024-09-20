@@ -11,7 +11,7 @@ namespace OSGames.BoardGame {
         override public void Execute(){
             
             
-            MovementAction moveAction = new MovementAction();
+            MovementAction moveAction = ScriptableObject.CreateInstance<MovementAction>();
             moveAction.SetDestination(m_RoomController.RoomModel.GetNeighboringPlayerStandTransform(0));
             m_RoomController.RoomActionPublisher.Publish(moveAction);
 

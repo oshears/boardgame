@@ -7,4 +7,5 @@ public enum ActionType{
     CycleLeft,
     CycleRight,
     ToggleMenu,
+    MoveAndUse,
 }

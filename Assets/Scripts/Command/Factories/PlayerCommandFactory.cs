@@ -12,6 +12,10 @@ namespace OSGames.BoardGame {
                 Transform destination = ((MovementAction) product.RoomAction).Destination;
                 return new PlayerMoveCommand(product.PlayerController, destination);
             }
+            else if (product.RoomAction.ActionType == ActionType.MoveAndUse){
+                Transform destination = ((MoveAndUseAction) product.RoomAction).Destination;
+                return new PlayerMoveAndUseCommand(product.PlayerController, destination);
+            }
             else if (
                 product.RoomAction.ActionType == ActionType.SetTarget
                 || product.RoomAction.ActionType == ActionType.CycleRight

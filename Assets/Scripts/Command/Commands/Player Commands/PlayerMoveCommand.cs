@@ -11,6 +11,7 @@ namespace OSGames.BoardGame {
 
         override public void Execute(){
             m_PlayerController.PlayerModel.Agent.SetDestination(m_Destination.position);
+            m_PlayerController.PlayerModel.Animator.SetTrigger("Move");
         }
 
         

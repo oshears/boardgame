@@ -7,6 +7,7 @@ using UnityEngine.UI;
 // using Cinemachine;
 
 using OSGames.BoardGame.Interactables;
+using System;
 
 namespace OSGames.BoardGame {
 
@@ -36,6 +37,45 @@ namespace OSGames.BoardGame {
 
         public virtual void ToggleCamera(){
             
+        }
+
+        public void ExecuteOnNavMeshArrival(Action method){
+            StartCoroutine(WaitNavMeshArrive(method));
+        }
+
+        IEnumerator WaitNavMeshArrive(Action method){
+            bool arrived = false;
+            while (!arrived){
+                yield return new WaitForSeconds(0.1f);
+                if (!m_Agent.pathPending)
+                {
+                    if (m_Agent.remainingDistance <= m_Agent.stoppingDistance)
+                    {
+                        if (!m_Agent.hasPath || m_Agent.velocity.sqrMagnitude == 0f)
+                        {
+                            arrived = true;
+                        }
+                    }
+                }
+            }
+
+            // Execute Typing Animation
+            method();
+            m_Animator.SetBool("Typing",true);
+        }
+
+        public void ResetAnimatorAfter(float time){
+            StartCoroutine(WaitThenExecute(time,ResetAnimator));
+        }
+
+        IEnumerator WaitThenExecute(float time, Action method){
+            yield return new WaitForSeconds(time);
+            method();
+        }
+
+        void ResetAnimator(){
+            m_Animator.SetBool("Typing",false);
+            m_Animator.SetBool("Rotating",false);
         }
 
     }
