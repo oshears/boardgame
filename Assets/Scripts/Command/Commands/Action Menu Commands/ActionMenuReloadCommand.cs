@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace OSGames.BoardGame {
 
-    public class ActionMenuReloadCmd : ActionMenuCommand {
-        public ActionMenuReloadCmd(ActionMenuController actionMenu) : base(actionMenu)
+    public class ActionMenuReloadCommand : ActionMenuCommand {
+        public ActionMenuReloadCommand(ActionMenuController actionMenu) : base(actionMenu)
         {
 
         }

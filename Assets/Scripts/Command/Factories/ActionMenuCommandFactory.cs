@@ -13,6 +13,9 @@ namespace OSGames.BoardGame {
                 ((ToggleMenu) product.RoomAction).ToggleSetting = product.ActionMenuController.ActionMenu.MenuActive;
                 return new ActionMenuToggleCommand(product.ActionMenuController, ((ToggleMenu) product.RoomAction).ToggleSetting);
             }
+            else if (product.RoomAction.ActionType == ActionType.Move){
+                return new ActionMenuMoveCommand(product.ActionMenuController, product.RoomAction); 
+            }
             else{
                 return new ActionMenuCommand(product.ActionMenuController, product.RoomAction);
             }

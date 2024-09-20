@@ -9,8 +9,8 @@ namespace OSGames.BoardGame {
         public override PlayerCommand Make(PlayerCommandProduct product){
 
             if (product.RoomAction.ActionType == ActionType.Move){
-                Transform destination = ((MovementAction) product.RoomAction).Destination;
-                return new PlayerMoveCommand(product.PlayerController, destination);
+                MovementAction moveAction = (MovementAction) product.RoomAction;
+                return new PlayerMoveCommand(product.PlayerController, moveAction.Destination, moveAction.DestinationRoomPublisher);
             }
             else if (product.RoomAction.ActionType == ActionType.MoveAndUse){
                 Transform destination = ((MoveAndUseAction) product.RoomAction).Destination;

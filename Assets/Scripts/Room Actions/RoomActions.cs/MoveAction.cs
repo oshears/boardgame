@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace OSGames.BoardGame {
@@ -11,6 +12,9 @@ namespace OSGames.BoardGame {
         private Transform m_Destination;
 
         public Transform Destination {get { return m_Destination; }}
+
+        public Publisher<RoomAction> DestinationRoomPublisher;
+        public Publisher<List<RoomAction>> DestinationRoomActionListPublisher;
 
         public override ActionType GetActionType(){
             return ActionType.Move;

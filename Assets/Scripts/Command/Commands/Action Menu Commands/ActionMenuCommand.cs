@@ -9,7 +9,7 @@ namespace OSGames.BoardGame {
         protected ActionMenuController m_ActionMenuController;
         public ActionMenuController ActionMenuController {get {return m_ActionMenuController;}}
 
-        RoomAction m_RoomAction;
+        protected RoomAction m_RoomAction;
         public RoomAction RoomAction{
             get {return m_RoomAction;}
         }

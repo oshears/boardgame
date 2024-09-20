@@ -11,6 +11,10 @@ namespace OSGames.BoardGame {
         [SerializeField] private Publisher<T> m_PublisherToObserve;
         public Publisher<T> PublisherToObserve {
             get {return m_PublisherToObserve;}
+            set {
+                Unsubscribe();
+                SubscribeTo(value);
+            }
         }
 
         public Action<T> PublisherAction;
@@ -33,6 +37,23 @@ namespace OSGames.BoardGame {
 
         protected virtual void OnDestroy()
         {
+            if (m_PublisherToObserve != null)
+            {
+                m_PublisherToObserve.ThingHappened -= OnThingHappened;
+            }
+        }
+
+        public void SubscribeTo(Publisher<T> publisherToObserve){
+            Unsubscribe();
+
+            m_PublisherToObserve = publisherToObserve; 
+
+            if (m_PublisherToObserve != null)
+            {
+                m_PublisherToObserve.ThingHappened += OnThingHappened;
+            }
+        }
+        public void Unsubscribe(){
             if (m_PublisherToObserve != null)
             {
                 m_PublisherToObserve.ThingHappened -= OnThingHappened;

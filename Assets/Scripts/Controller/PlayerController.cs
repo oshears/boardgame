@@ -17,7 +17,7 @@ namespace OSGames.BoardGame {
     {
 
         // subscriber to actions received from game menu / room
-        RoomActionSubscriber m_RoomActionSubscriber;
+        public RoomActionSubscriber m_RoomActionSubscriber;
 
         // sender of actions to the room
         // RoomActionPublisher m_RoomActionPublisher;

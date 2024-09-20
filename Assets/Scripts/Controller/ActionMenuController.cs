@@ -24,7 +24,9 @@ namespace OSGames.BoardGame {
         // CommandListSubscriber m_Subscriber;
         // [SerializeField] Command View Controller
         RoomActionListSubscriber m_RoomActionListSubscriber;
+        public RoomActionListSubscriber RoomActionListSubscriber { get { return m_RoomActionListSubscriber;}}
         RoomActionSubscriber m_RoomActionSubscriber;
+        public RoomActionSubscriber RoomActionSubscriber { get { return m_RoomActionSubscriber;}}
         RoomActionPublisher m_RoomActionPublisher;
 
         ButtonFactory m_ButtonFactory;
