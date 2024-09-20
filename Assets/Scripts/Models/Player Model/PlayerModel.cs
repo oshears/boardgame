@@ -6,6 +6,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 // using Cinemachine;
 
+using OSGames.BoardGame.Interactables;
+
 namespace OSGames.BoardGame {
 
     [RequireComponent(typeof(NavMeshAgent))]

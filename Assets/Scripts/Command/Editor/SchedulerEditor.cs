@@ -9,7 +9,7 @@ namespace OSGames.BoardGame{
     #if UNITY_EDITOR
     [CustomEditor(typeof(Scheduler))]
     [CanEditMultipleObjects]
-    public class CommandSchedulerEditor : Editor
+    public class SchedulerEditor : Editor
     {
         // SerializedProperty damageProp;
         // SerializedProperty armorProp;
@@ -45,11 +45,11 @@ namespace OSGames.BoardGame{
 
             // EditorGUILayout.PropertyField (gunProp, new GUIContent ("Gun Object"));
 
-            if (GUILayout.Button("Add and execute command")){
-                // Command cmd = CreateInstance<Command>();
-                // proc.e_CommandAdded.Invoke(cmd);
-                // proc.ExecuteCommand(cmd);
-            }
+            // if (GUILayout.Button("Add and execute command")){
+            //     // Command cmd = CreateInstance<Command>();
+            //     // proc.e_CommandAdded.Invoke(cmd);
+            //     // proc.ExecuteCommand(cmd);
+            // }
 
 
             // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.

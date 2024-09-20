@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
+
+using OSGames.BoardGame.Interactables;
 // using D
 
 namespace OSGames.BoardGame {
@@ -30,7 +32,7 @@ namespace OSGames.BoardGame {
                 m_PlayerController.PlayerModel.Animator.SetInteger("Rotating Direction",-1);
             }
             m_PlayerController.PlayerModel.Animator.SetBool("Rotating",true);
-            Tweener tweener = m_PlayerController.transform.DOLookAt(m_Target.position,0.5f).OnComplete(() => {
+            Tweener tweener = m_PlayerController.transform.DOLookAt(m_Target.position,0.5f,AxisConstraint.Y).OnComplete(() => {
                 m_PlayerController.PlayerModel.Animator.SetBool("Rotating",false);
             });
 

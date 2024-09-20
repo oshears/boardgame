@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using OSGames.BoardGame.Generic;
+using OSGames.BoardGame.Interactables;
 
 namespace OSGames.BoardGame {
 
@@ -22,6 +23,15 @@ namespace OSGames.BoardGame {
 
             if (product.RoomAction.ActionType == ActionType.Move){
                 return new RoomMoveCommand(product.RoomController, product.RoomAction);
+            }
+            else if (product.RoomAction.ActionType == ActionType.Use && product.RoomController.RoomModel.TargetedInteractable){
+                if (product.RoomController.RoomModel.TargetedInteractable.GetInteractableType() == InteractableType.Doorway){
+                    // return new RoomMoveCommand(product.RoomController, product.RoomAction);
+                    return new RoomMoveCommand(product.RoomController, product.RoomAction);
+                }
+                else {
+                    return new RoomUseCommand(product.RoomController, product.RoomAction);
+                }
             }
             else if (product.RoomAction.ActionType == ActionType.SetTarget){
                 return new RoomSetTargetCommand(product.RoomController, product.RoomAction);

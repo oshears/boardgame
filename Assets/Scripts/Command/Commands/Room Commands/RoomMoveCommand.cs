@@ -9,12 +9,17 @@ namespace OSGames.BoardGame {
         }
 
         override public void Execute(){
+            
+            
+            MovementAction moveAction = new MovementAction();
+            moveAction.SetDestination(m_RoomController.RoomModel.GetNeighboringPlayerStandTransform(0));
+            m_RoomController.RoomActionPublisher.Publish(moveAction);
 
-            MovementAction moveAction = (MovementAction) RoomAction;
+            // MovementAction moveAction = (MovementAction) RoomAction;
 
             // broadcast a player action to move
-            Transform destination = m_RoomController.RoomModel.GetNeighboringPlayerStandTransform(0);
-            moveAction.SetDestination(destination);
+            // Transform destination = m_RoomController.RoomModel.GetNeighboringPlayerStandTransform(0);
+            // moveAction.SetDestination(destination);
 
             // now broadcast this action
             // m_RoomController.RoomActionPublisher.Publish(moveAction);

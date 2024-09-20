@@ -29,7 +29,7 @@ namespace OSGames.BoardGame {
 
         override public void Execute(){
             Debug.Log("Executed Generic Action Menu Command!");
-            m_ActionMenuController.RequestAction(m_RoomAction);
+            // m_ActionMenuController.RequestAction(m_RoomAction);
         }
 
         // public virtual void Undo(){

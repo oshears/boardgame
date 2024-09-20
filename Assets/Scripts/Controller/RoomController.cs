@@ -71,7 +71,7 @@ namespace OSGames.BoardGame {
 
             RoomCommandProduct product = new RoomCommandProduct(this, roomAction);
             Command cmd = m_CommandFactory.Make(product);
-            m_Scheduler.AddCommand(cmd);
+            m_Scheduler.ExecuteCommand(cmd);
             m_RoomActionPublisher.Publish(roomAction);
 
             // debug, for test

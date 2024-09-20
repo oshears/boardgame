@@ -5,7 +5,9 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace OSGames.BoardGame {
+using OSGames.BoardGame;
+
+namespace OSGames.BoardGame.Interactables {
 
 
     [RequireComponent(typeof(InteractableModel))]

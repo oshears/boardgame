@@ -5,6 +5,8 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+using OSGames.BoardGame.Interactables;
+
 namespace OSGames.BoardGame {
 
     public class RoomModel : Model {
@@ -16,6 +18,7 @@ namespace OSGames.BoardGame {
         [SerializeField] PlayerModel m_PlayersInRoom;
 
         [SerializeField] InteractableModel m_TargetedInteractable;
+        [SerializeField] List<InteractableModel> m_Interactables;
         public InteractableModel TargetedInteractable {
             get { return m_TargetedInteractable;}
             set { m_TargetedInteractable = value;}
@@ -28,6 +31,13 @@ namespace OSGames.BoardGame {
         }
 
         RoomConfiguration m_RoomSO;
+
+        protected void Awake(){
+            for(int i = 0; i < m_Interactables.Count; i++){
+                m_Interactables[i].NextInteractable = m_Interactables[(i + 1) % m_Interactables.Count];
+                m_Interactables[i].PrevInteractable = m_Interactables[i > 0 ? i - 1 : m_Interactables.Count - 1];
+            }
+        }
 
         public Vector3 GetPlayerStandLocation(){
             return m_PlayerStandLocation.position;
