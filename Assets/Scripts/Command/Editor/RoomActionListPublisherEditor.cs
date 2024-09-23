@@ -64,14 +64,14 @@ namespace OSGames.BoardGame{
 
             // // GUILayout
 
-            if (GUILayout.Button("Publish Sample Commands")){
-                // Command cmd = CreateInstance<Command>();
-                // proc.e_CommandAdded.Invoke(cmd);
-                // proc.ExecuteCommand(cmd);
+            // if (GUILayout.Button("Publish Sample Commands")){
+            //     // Command cmd = CreateInstance<Command>();
+            //     // proc.e_CommandAdded.Invoke(cmd);
+            //     // proc.ExecuteCommand(cmd);
                 
-                // publisher.Publish(cmdListProp);
-                publisher.TestPublish();
-            }
+            //     // publisher.Publish(cmdListProp);
+            //     publisher.TestPublish();
+            // }
 
 
             // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.

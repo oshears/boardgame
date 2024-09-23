@@ -19,9 +19,9 @@ namespace OSGames.BoardGame{
             serializedObject.Update();
             RoomController rc = (RoomController) target;
 
-            if (GUILayout.Button("Publish Sample Commands")){
-                rc.TestPublish();
-            }
+            // if (GUILayout.Button("Publish Sample Commands")){
+            //     rc.TestPublish();
+            // }
 
             serializedObject.ApplyModifiedProperties ();
         }
