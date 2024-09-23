@@ -28,7 +28,9 @@ namespace OSGames.BoardGame {
 
         // [SerializeField] RoomController[] m_NeighboringRooms;
 
+        [HideInInspector]
         public RoomActionSubscriber m_PlayerHUDRoomActionSubscriber;
+        [HideInInspector]
         public RoomActionSubscriber m_PlayerInputRoomActionSubscriber;
         RoomActionListPublisher m_RoomActionListPublisher;
         public RoomActionListPublisher RoomActionListPublisher { get {return m_RoomActionListPublisher;} }

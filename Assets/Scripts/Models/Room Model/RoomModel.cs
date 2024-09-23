@@ -17,7 +17,7 @@ namespace OSGames.BoardGame {
 
         [SerializeField] PlayerModel m_PlayersInRoom;
 
-        [SerializeField] InteractableModel m_TargetedInteractable;
+        InteractableModel m_TargetedInteractable;
         [SerializeField] List<InteractableModel> m_Interactables;
         public InteractableModel TargetedInteractable {
             get { return m_TargetedInteractable;}
