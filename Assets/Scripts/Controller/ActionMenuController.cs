@@ -7,14 +7,14 @@ using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame {
 
-    [RequireComponent(typeof(RoomActionListSubscriber))]
-    // [RequireComponent(typeof(CommandFactory))]
-    [RequireComponent(typeof(ButtonFactory))]
-    [RequireComponent(typeof(ActionMenuCommandFactory))]
-    [RequireComponent(typeof(Scheduler))]
-    [RequireComponent(typeof(RoomActionPublisher))]
-    [RequireComponent(typeof(RoomActionSubscriber))]
-    [RequireComponent(typeof(ActionMenuModel))]
+    // [RequireComponent(typeof(RoomActionListSubscriber))]
+    // // [RequireComponent(typeof(CommandFactory))]
+    // [RequireComponent(typeof(ButtonFactory))]
+    // [RequireComponent(typeof(ActionMenuCommandFactory))]
+    // [RequireComponent(typeof(Scheduler))]
+    // [RequireComponent(typeof(RoomActionPublisher))]
+    // [RequireComponent(typeof(RoomActionSubscriber))]
+    // [RequireComponent(typeof(ActionMenuModel))]
     public class ActionMenuController : Controller
     {
 
@@ -23,11 +23,11 @@ namespace OSGames.BoardGame {
         Scheduler m_Scheduler;
         // CommandListSubscriber m_Subscriber;
         // [SerializeField] Command View Controller
-        RoomActionListSubscriber m_RoomActionListSubscriber;
-        public RoomActionListSubscriber RoomActionListSubscriber { get { return m_RoomActionListSubscriber;}}
-        RoomActionSubscriber m_RoomActionSubscriber;
-        public RoomActionSubscriber RoomActionSubscriber { get { return m_RoomActionSubscriber;}}
-        RoomActionPublisher m_RoomActionPublisher;
+        // RoomActionListSubscriber m_RoomActionListSubscriber;
+        // public RoomActionListSubscriber RoomActionListSubscriber { get { return m_RoomActionListSubscriber;}}
+        // RoomActionSubscriber m_RoomActionSubscriber;
+        // public RoomActionSubscriber RoomActionSubscriber { get { return m_RoomActionSubscriber;}}
+        // RoomActionPublisher m_RoomActionPublisher;
 
         ButtonFactory m_ButtonFactory;
         ActionMenuCommandFactory m_CommandFactory;
@@ -37,23 +37,23 @@ namespace OSGames.BoardGame {
         public ActionMenuModel ActionMenu {get { return m_ActionMenu;}}
 
         void Awake(){
-            m_Scheduler = GetComponent<Scheduler>();
-            m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
-            m_ButtonFactory = GetComponent<ButtonFactory>();
-            m_Buttons = new List<GameObject>();
-            m_ActionMenu = GetComponent<ActionMenuModel>();
-            m_CommandFactory = GetComponent<ActionMenuCommandFactory>();
+            // m_Scheduler = GetComponent<Scheduler>();
+            // m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
+            // m_ButtonFactory = GetComponent<ButtonFactory>();
+            // m_Buttons = new List<GameObject>();
+            // m_ActionMenu = GetComponent<ActionMenuModel>();
+            // m_CommandFactory = GetComponent<ActionMenuCommandFactory>();
 
-            m_RoomActionListSubscriber = GetComponent<RoomActionListSubscriber>();
-            m_RoomActionListSubscriber.PublisherAction += OnRoomActionListProvided;
+            // m_RoomActionListSubscriber = GetComponent<RoomActionListSubscriber>();
+            // m_RoomActionListSubscriber.PublisherAction += OnRoomActionListProvided;
 
-            m_RoomActionSubscriber = GetComponent<RoomActionSubscriber>();
-            m_RoomActionSubscriber.PublisherAction += OnRoomAction;
+            // m_RoomActionSubscriber = GetComponent<RoomActionSubscriber>();
+            // m_RoomActionSubscriber.PublisherAction += OnRoomAction;
         }
 
         void OnDestroy()
         {
-            m_RoomActionListSubscriber.PublisherAction -= OnRoomActionListProvided;
+            // m_RoomActionListSubscriber.PublisherAction -= OnRoomActionListProvided;
         }
 
         public void OnRoomActionListProvided(List<RoomAction> roomActions){
@@ -92,7 +92,7 @@ namespace OSGames.BoardGame {
             // decide what to do next based on the selected action
             // ^^ this could probably be done in the actual commands, not here
             Debug.Log($"User requested to perform the following action: {roomAction}");
-            m_RoomActionPublisher.Publish(roomAction);
+            // m_RoomActionPublisher.Publish(roomAction);
         }
 
     }

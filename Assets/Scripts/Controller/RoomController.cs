@@ -12,12 +12,12 @@ namespace OSGames.BoardGame {
 // [RequireComponent(typeof(CommandFactory))]
     // [RequireComponent(typeof(ButtonFactory))]
     // [RequireComponent(typeof(Scheduler))]
-    [RequireComponent(typeof(RoomActionSubscriber))] // recieve commands from the player
-    [RequireComponent(typeof(RoomActionListPublisher))] // send available commands to the player HUD
-    [RequireComponent(typeof(RoomActionPublisher))] // send commands to the player and the room
-    [RequireComponent(typeof(Scheduler))]
-    [RequireComponent(typeof(RoomCommandFactory))]
-    [RequireComponent(typeof(RoomCommandFactory))]
+    // [RequireComponent(typeof(RoomActionSubscriber))] // recieve commands from the player
+    // [RequireComponent(typeof(RoomActionListPublisher))] // send available commands to the player HUD
+    // [RequireComponent(typeof(RoomActionPublisher))] // send commands to the player and the room
+    // [RequireComponent(typeof(Scheduler))]
+    // [RequireComponent(typeof(RoomCommandFactory))]
+    // [RequireComponent(typeof(RoomCommandFactory))]
     [RequireComponent(typeof(RoomModel))]
     public class RoomController : Controller
     {
@@ -28,15 +28,15 @@ namespace OSGames.BoardGame {
 
         // [SerializeField] RoomController[] m_NeighboringRooms;
 
-        [HideInInspector]
-        public RoomActionSubscriber m_PlayerHUDRoomActionSubscriber;
-        [HideInInspector]
-        public RoomActionSubscriber m_PlayerInputRoomActionSubscriber;
-        RoomActionListPublisher m_RoomActionListPublisher;
-        public RoomActionListPublisher RoomActionListPublisher { get {return m_RoomActionListPublisher;} }
-        RoomActionPublisher m_RoomActionPublisher;
-        public RoomActionPublisher RoomActionPublisher { get {return m_RoomActionPublisher;} }
-        Scheduler m_Scheduler;
+        // [HideInInspector]
+        // public RoomActionSubscriber m_PlayerHUDRoomActionSubscriber;
+        // [HideInInspector]
+        // public RoomActionSubscriber m_PlayerInputRoomActionSubscriber;
+        // RoomActionListPublisher m_RoomActionListPublisher;
+        // public RoomActionListPublisher RoomActionListPublisher { get {return m_RoomActionListPublisher;} }
+        // RoomActionPublisher m_RoomActionPublisher;
+        // public RoomActionPublisher RoomActionPublisher { get {return m_RoomActionPublisher;} }
+        // Scheduler m_Scheduler;
 
         RoomCommandFactory m_CommandFactory;
 
@@ -46,25 +46,25 @@ namespace OSGames.BoardGame {
 
 
         void Awake(){
-            m_RoomActionListPublisher = GetComponent<RoomActionListPublisher>();
-            m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
-            m_Scheduler = GetComponent<Scheduler>();
-            m_CommandFactory = GetComponent<RoomCommandFactory>();
+            // m_RoomActionListPublisher = GetComponent<RoomActionListPublisher>();
+            // m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
+            // m_Scheduler = GetComponent<Scheduler>();
+            // m_CommandFactory = GetComponent<RoomCommandFactory>();
 
-            // NOTE: the inspector order matters. Might want to change this in the future
-            RoomActionSubscriber[] subs = GetComponents<RoomActionSubscriber>();
-            m_PlayerHUDRoomActionSubscriber = subs[0];
-            m_PlayerHUDRoomActionSubscriber.PublisherAction += OnPlayerAction;
+            // // NOTE: the inspector order matters. Might want to change this in the future
+            // RoomActionSubscriber[] subs = GetComponents<RoomActionSubscriber>();
+            // m_PlayerHUDRoomActionSubscriber = subs[0];
+            // m_PlayerHUDRoomActionSubscriber.PublisherAction += OnPlayerAction;
             
-            m_PlayerInputRoomActionSubscriber = subs[1];
-            m_PlayerInputRoomActionSubscriber.PublisherAction += OnPlayerAction;
+            // m_PlayerInputRoomActionSubscriber = subs[1];
+            // m_PlayerInputRoomActionSubscriber.PublisherAction += OnPlayerAction;
 
             m_RoomModel = GetComponent<RoomModel>();
         }
 
         void OnDestroy(){
-            m_PlayerHUDRoomActionSubscriber.PublisherAction -= OnPlayerAction;
-            m_PlayerInputRoomActionSubscriber.PublisherAction -= OnPlayerAction;
+            // m_PlayerHUDRoomActionSubscriber.PublisherAction -= OnPlayerAction;
+            // m_PlayerInputRoomActionSubscriber.PublisherAction -= OnPlayerAction;
         }
 
 
@@ -74,8 +74,8 @@ namespace OSGames.BoardGame {
 
             RoomCommandProduct product = new RoomCommandProduct(this, roomAction);
             Command cmd = m_CommandFactory.Make(product);
-            m_Scheduler.ExecuteCommand(cmd);
-            m_RoomActionPublisher.Publish(roomAction);
+            // m_Scheduler.ExecuteCommand(cmd);
+            // m_RoomActionPublisher.Publish(roomAction);
 
             // debug, for test
             // probably want to do player movement commands in the player controller?
@@ -88,8 +88,8 @@ namespace OSGames.BoardGame {
             
         }
 
-        public void TestPublish(){
-            m_RoomActionListPublisher.Publish(m_ActionList);    
+        public void Publish(){
+            // m_RoomActionListPublisher.Publish(m_ActionList);    
         }
 
     }

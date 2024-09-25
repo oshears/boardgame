@@ -2,25 +2,18 @@ using UnityEngine;
 using OSGames.BoardGame.Generic;
 
 
-namespace OSGames.BoardGame {
+using OSGames.BoardGame;
+
+namespace OSGames.BoardGame.Player {
 
     public class PlayerCommand : Command {
 
         protected PlayerController m_PlayerController;
         public PlayerController PlayerController {get {return m_PlayerController;}}
 
-        RoomAction m_RoomAction;
-        public RoomAction RoomAction{
-            get {return m_RoomAction;}
-        }
 
         public PlayerCommand(PlayerController playerController){
             SetPlayerController(playerController);
-        }
-
-        public PlayerCommand(PlayerController playerController, RoomAction action){
-            SetPlayerController(playerController);
-            m_RoomAction = action;
         }
 
         public void SetPlayerController(PlayerController playerController){

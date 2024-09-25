@@ -11,35 +11,19 @@ using OSGames.Utilities;
 
 namespace OSGames.BoardGame.Input {
 
-    [RequireComponent(typeof(Scheduler))]
-    [RequireComponent(typeof(RoomActionPublisher))]
-    public class PlayerInputController : Controller, IActivePlayerControlsActions
+    // [RequireComponent(typeof(Scheduler))]
+    // [RequireComponent(typeof(InputPublisher))]
+    public class PlayerInputController : Controller, IActivePlayerControlsActions, IPublisher<InputType>
     {
 
         private GameControlMap controls;   
 
-        // TODO: define the action to scriptable object RoomAction mapping
-        [SerializeField] List<RoomAction> m_RoomActions;
-        [SerializeField] List<InputType> m_InputTypes;
-        // Alternatviely I can just make an action for each and serailize them, but that's not as easily scalable and looks horrendeous
+        Publisher<InputType> m_InputPublisher;
 
-        Scheduler m_Scheduler;
-        RoomActionPublisher m_RoomActionPublisher;
-        public RoomActionPublisher RoomActionPublisher { get { return m_RoomActionPublisher;}}
-
-        Dictionary<InputType,RoomAction> m_InputActionDict;
-        // [SerializeField] SerializableDictionary<InputType,RoomAction> m_InputActionDict;
-
+        public Publisher<InputType> InputPublisher { get { return m_InputPublisher;}}
 
         void Awake(){
-            m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
-            m_Scheduler = GetComponent<Scheduler>();
-
-            m_InputActionDict = new Dictionary<InputType,RoomAction>();
-            for(int i = 0; i < m_InputTypes.Count; i++){
-                m_InputActionDict.Add(m_InputTypes[i],m_RoomActions[i]);
-            }
-
+            m_InputPublisher = new Publisher<InputType>();
         }
 
         private void Start() {
@@ -66,8 +50,7 @@ namespace OSGames.BoardGame.Input {
         {
             // m_CameraController.ToggleView();
             if (context.performed){
-                Command cmd = new InputCommand(this, m_InputActionDict[InputType.ToggleMenu]);
-                m_Scheduler.AddCommand(cmd);
+                Publish(InputType.ToggleMenu);
             }
         }
 
@@ -75,25 +58,34 @@ namespace OSGames.BoardGame.Input {
         {
             // throw new NotImplementedException();
             if (context.performed){
-                Command cmd = new InputCommand(this, m_InputActionDict[InputType.Confirm]);
-                m_Scheduler.AddCommand(cmd);
+                Publish(InputType.Confirm);
             }
         }
 
         public void OnCycleLeft(InputAction.CallbackContext context)
         {
             if (context.performed){
-                Command cmd = new InputCommand(this, m_InputActionDict[InputType.CycleLeft]);
-                m_Scheduler.AddCommand(cmd);
+                Publish(InputType.CycleLeft);
             }
         }
 
         public void OnCycleRight(InputAction.CallbackContext context)
         {
             if (context.performed){
-                Command cmd = new InputCommand(this, m_InputActionDict[InputType.CycleRight]);
-                m_Scheduler.AddCommand(cmd);
+                Publish(InputType.CycleRight);
             }
+        }
+
+        public void Publish(InputType type){
+            m_InputPublisher.Publish(type);
+        }
+
+        public void AddListener(Action<InputType> func){
+            m_InputPublisher.ThingHappened += func;
+        }
+
+        public void RemoveListener(Action<InputType> func){
+            m_InputPublisher.ThingHappened -= func;
         }
     }
 }

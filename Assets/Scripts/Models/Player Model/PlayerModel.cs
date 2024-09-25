@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,26 +7,34 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 // using Cinemachine;
 
+using OSGames.BoardGame.Generic;
 using OSGames.BoardGame.Interactables;
-using System;
 
 namespace OSGames.BoardGame {
 
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Animator))]
-    public class PlayerModel : Model {
+    public class PlayerModel : Model, IPlayer, IInteractable {
 
         NavMeshAgent m_Agent;
         public NavMeshAgent Agent {get { return m_Agent;} }
         Animator m_Animator;
         public Animator Animator { get { return m_Animator; }}
 
+        
+        [SerializeField]
+        RoomModel m_CurrentRoom;
+        public RoomModel CurrentRoom {
+            get { return m_CurrentRoom; }
+            set { m_CurrentRoom = value; }
+        }
+
         [Tooltip("The interactable currently being viewed by the player")]
-        [SerializeField] InteractableController m_CurrentTarget;
+        [SerializeField] InteractableModel m_CurrentTarget;
 
         public UnityEvent e_RotatePlayer;
 
-        public InteractableController TargetInteractable {
+        public InteractableModel TargetInteractable {
             get { return m_CurrentTarget;} 
             set {m_CurrentTarget = value;}    
         }
@@ -76,6 +85,14 @@ namespace OSGames.BoardGame {
         void ResetAnimator(){
             m_Animator.SetBool("Typing",false);
             m_Animator.SetBool("Rotating",false);
+        }
+
+        public void Use(){
+
+        }
+
+        public void FinishUse(){
+
         }
 
     }

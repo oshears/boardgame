@@ -10,8 +10,9 @@ namespace OSGames.BoardGame {
             if (product.RoomAction.ActionType == ActionType.ToggleMenu){
 
                 // bool active = ((ToggleMenu) product.RoomAction).ToggleSetting;
-                ((ToggleMenu) product.RoomAction).ToggleSetting = product.ActionMenuController.ActionMenu.MenuActive;
-                return new ActionMenuToggleCommand(product.ActionMenuController, ((ToggleMenu) product.RoomAction).ToggleSetting);
+                // ((ToggleMenu) product.RoomAction).ToggleSetting = product.ActionMenuController.ActionMenu.MenuActive;
+                // return new ActionMenuToggleCommand(product.ActionMenuController, ((ToggleMenu) product.RoomAction).ToggleSetting);
+                return new ActionMenuToggleCommand(product.ActionMenuController);
             }
             else if (product.RoomAction.ActionType == ActionType.Move){
                 return new ActionMenuMoveCommand(product.ActionMenuController, product.RoomAction); 

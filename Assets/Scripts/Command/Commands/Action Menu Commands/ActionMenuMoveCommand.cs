@@ -12,8 +12,8 @@ namespace OSGames.BoardGame {
         override public void Execute(){
             Debug.Log("Executed Action Menu Move Command!");
 
-            m_ActionMenuController.RoomActionListSubscriber.PublisherToObserve = ((MovementAction) m_RoomAction).DestinationRoomActionListPublisher;
-            m_ActionMenuController.RoomActionSubscriber.PublisherToObserve = ((MovementAction) m_RoomAction).DestinationRoomPublisher;
+            // m_ActionMenuController.RoomActionListSubscriber.PublisherToObserve = ((MovementAction) m_RoomAction).DestinationRoomActionListPublisher;
+            // m_ActionMenuController.RoomActionSubscriber.PublisherToObserve = ((MovementAction) m_RoomAction).DestinationRoomPublisher;
             // m_ActionMenuController.RequestAction(RoomAction);
         }
 

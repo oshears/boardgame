@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 using OSGames.BoardGame.Interactables;
+using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame {
 
@@ -15,7 +16,7 @@ namespace OSGames.BoardGame {
 
         [SerializeField] Transform m_PlayerStandLocation;
 
-        [SerializeField] PlayerModel m_PlayersInRoom;
+        [SerializeField] List<PlayerModel> m_PlayersInRoom;
 
         InteractableModel m_TargetedInteractable;
         [SerializeField] List<InteractableModel> m_Interactables;
@@ -55,8 +56,14 @@ namespace OSGames.BoardGame {
             return m_NeighboringRooms[index].GetPlayerStandTransform();
         }
 
+        public void RegisterPlayer(PlayerModel player){
+            // m_Interactables.Add(player);
+            m_PlayersInRoom.Add(player);
+        }
 
-        
+        public void RemovePlayer(PlayerModel player){
+            m_PlayersInRoom.Remove(player);
+        }
     }
 
 }

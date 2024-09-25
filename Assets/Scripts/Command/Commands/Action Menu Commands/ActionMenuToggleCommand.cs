@@ -7,9 +7,9 @@ namespace OSGames.BoardGame {
         
         bool m_Active;
         
-        public ActionMenuToggleCommand(ActionMenuController actionMenu, bool active) : base(actionMenu)
+        public ActionMenuToggleCommand(ActionMenuController actionMenu) : base(actionMenu)
         {
-            m_Active = active;
+            // m_Active = active;
         }
 
         override public void Execute(){

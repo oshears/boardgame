@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace OSGames.BoardGame {
 
-    public abstract class Publisher<T> : MonoBehaviour, IPublisher<T> 
+    public class Publisher<T>
     {
         public event Action<T> ThingHappened;
         public virtual void Publish(T t)
@@ -16,5 +16,11 @@ namespace OSGames.BoardGame {
             ThingHappened(t);
         }
 
+        public Action<T> GetAction(){
+            return ThingHappened;
+        } 
+
     }
+
+    
 }

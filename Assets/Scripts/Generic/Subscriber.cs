@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using OSGames.BoardGame.Generic;
+
 namespace OSGames.BoardGame {
 
-    public abstract class Subscriber<T> : MonoBehaviour
+    public class Subscriber<T>
     {
-        [SerializeField] private Publisher<T> m_PublisherToObserve;
-        public Publisher<T> PublisherToObserve {
-            get {return m_PublisherToObserve;}
+        [SerializeField] private IPublisher<T> m_PublisherToObserve;
+        public IPublisher<T> PublisherToObserve {
+            get { return m_PublisherToObserve; }
             set {
                 Unsubscribe();
                 SubscribeTo(value);
@@ -27,36 +29,36 @@ namespace OSGames.BoardGame {
             PublisherAction?.Invoke(t);
         }
 
-        protected virtual void Awake()
-        {
-            if (m_PublisherToObserve != null)
-            {
-                m_PublisherToObserve.ThingHappened += OnThingHappened;
-            }
-        }
+        // protected virtual void Awake()
+        // {
+        //     if (m_PublisherToObserve != null)
+        //     {
+        //         m_PublisherToObserve.GetAction() += OnThingHappened;
+        //     }
+        // }
 
-        protected virtual void OnDestroy()
-        {
-            if (m_PublisherToObserve != null)
-            {
-                m_PublisherToObserve.ThingHappened -= OnThingHappened;
-            }
-        }
+        // protected virtual void OnDestroy()
+        // {
+        //     if (m_PublisherToObserve != null)
+        //     {
+        //         m_PublisherToObserve.GetAction() -= OnThingHappened;
+        //     }
+        // }
 
-        public void SubscribeTo(Publisher<T> publisherToObserve){
+        public void SubscribeTo(IPublisher<T> publisherToObserve){
             Unsubscribe();
 
             m_PublisherToObserve = publisherToObserve; 
 
             if (m_PublisherToObserve != null)
             {
-                m_PublisherToObserve.ThingHappened += OnThingHappened;
+                m_PublisherToObserve.AddListener(OnThingHappened);
             }
         }
         public void Unsubscribe(){
             if (m_PublisherToObserve != null)
             {
-                m_PublisherToObserve.ThingHappened -= OnThingHappened;
+                m_PublisherToObserve.RemoveListener(OnThingHappened);
             }
         }
     }

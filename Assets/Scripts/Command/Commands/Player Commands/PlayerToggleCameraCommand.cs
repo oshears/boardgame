@@ -3,7 +3,10 @@ using UnityEngine.AI;
 using DG.Tweening;
 // using D
 
-namespace OSGames.BoardGame {
+using OSGames.BoardGame;
+
+namespace OSGames.BoardGame.Player {
+    
     public class PlayerToggleCameraCommand : PlayerCommand {
 
 

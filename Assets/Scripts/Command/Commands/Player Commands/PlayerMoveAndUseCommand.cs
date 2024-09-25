@@ -1,33 +1,31 @@
 
 using UnityEngine;
 using UnityEngine.AI;
+using OSGames.BoardGame.Interactables;
 
-namespace OSGames.BoardGame {
+using OSGames.BoardGame;
+
+namespace OSGames.BoardGame.Player {
     public class PlayerMoveAndUseCommand : PlayerCommand {
 
-        Transform m_Destination;
+        public PlayerMoveAndUseCommand(PlayerController playerController) : base(playerController){
 
-        NavMeshAgent m_Agent;
-        Animator m_Animator;
-
-        public PlayerMoveAndUseCommand(PlayerController playerController, Transform destination) : base(playerController){
-            m_Destination = destination;
         }
 
         override public void Execute(){
-            m_Agent = m_PlayerController.PlayerModel.Agent;
-            m_Agent.SetDestination(m_Destination.position);
 
-            m_Agent = m_PlayerController.PlayerModel.Agent;
-            m_Animator = m_PlayerController.PlayerModel.Animator;
+            InteractableModel interactable = PlayerController.PlayerModel.TargetInteractable;
+
+            m_PlayerController.PlayerModel.Agent.SetDestination(interactable.PlayerStandingPoint.position);
 
             m_PlayerController.PlayerModel.ExecuteOnNavMeshArrival(OnNavMeshArrival);
         }
 
         void OnNavMeshArrival(){
             // Execute Typing Animation
-            m_Animator.SetBool("Typing",true);
-            m_PlayerController.PlayerModel.ResetAnimatorAfter(5f);
+            PlayerController.PlayerModel.TargetInteractable.Use();
+            m_PlayerController.PlayerModel.Animator.SetBool("Typing",true);
+            m_PlayerController.PlayerModel.ResetAnimatorAfter(2.5f);
         }
 
         
