@@ -22,30 +22,30 @@ namespace OSGames.BoardGame {
     {
         public override RoomCommand Make(RoomCommandProduct product){
 
-            if (product.RoomAction.ActionType == ActionType.Move){
-                return new RoomMoveCommand(product.RoomController, product.RoomAction);
-            }
-            else if (product.RoomAction.ActionType == ActionType.Use && product.RoomController.RoomModel.TargetedInteractable){
-                if (product.RoomController.RoomModel.TargetedInteractable.GetInteractableType() == InteractableType.Doorway){
-                    // return new RoomMoveCommand(product.RoomController, product.RoomAction);
-                    return new RoomMoveCommand(product.RoomController, product.RoomAction);
-                }
-                else {
-                    return new RoomUseCommand(product.RoomController, product.RoomAction);
-                }
-            }
-            else if (product.RoomAction.ActionType == ActionType.SetTarget){
-                return new RoomSetTargetCommand(product.RoomController, product.RoomAction);
-            }
-            else if (product.RoomAction.ActionType == ActionType.CycleLeft){
-                return new RoomCycleInteractableLeftCommand(product.RoomController, product.RoomAction);
-            }
-            else if (product.RoomAction.ActionType == ActionType.CycleRight){
-                return new RoomCycleInteractableRightCommand(product.RoomController, product.RoomAction);
-            }
-            else{
-                return new RoomCommand(product.RoomController, product.RoomAction);
-            }
+            // if (product.RoomAction.ActionType == ActionType.Move){
+            //     return new RoomMoveCommand(product.RoomController, product.RoomAction);
+            // }
+            // else if (product.RoomAction.ActionType == ActionType.Use && product.RoomController.RoomModel.TargetedInteractable){
+            //     if (product.RoomController.RoomModel.TargetedInteractable.GetInteractableType() == InteractableType.Doorway){
+            //         // return new RoomMoveCommand(product.RoomController, product.RoomAction);
+            //         return new RoomMoveCommand(product.RoomController, product.RoomAction);
+            //     }
+            //     else {
+            //         return new RoomUseCommand(product.RoomController, product.RoomAction);
+            //     }
+            // }
+            // else if (product.RoomAction.ActionType == ActionType.SetTarget){
+            //     return new RoomSetTargetCommand(product.RoomController, product.RoomAction);
+            // }
+            // else if (product.RoomAction.ActionType == ActionType.CycleLeft){
+            //     return new RoomCycleInteractableLeftCommand(product.RoomController, product.RoomAction);
+            // }
+            // else if (product.RoomAction.ActionType == ActionType.CycleRight){
+            //     return new RoomCycleInteractableRightCommand(product.RoomController, product.RoomAction);
+            // }
+            // else{
+            return new RoomCommand(product.RoomController, product.RoomAction);
+            // }
         }
 
     }

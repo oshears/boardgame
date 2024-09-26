@@ -22,11 +22,11 @@ namespace OSGames.BoardGame.Player {
             // rotate player to look at the interactable
             // m_PlayerController.transform.LookAt(m_Target);
             // m_m_PlayerController.transform.position
-            InteractableModel interactable = m_PlayerController.PlayerModel.TargetInteractable;
-            if (interactable){
+            ICycleableInteractable interactable = m_PlayerController.PlayerModel.TargetInteractable;
+            if (interactable != null){
                 // for now this is ok, but this should probably be moved later (local to the interactable)
                 interactable.ClearHighlight();
-                interactable = m_TowardsRight ? interactable.NextInteractable : interactable.PrevInteractable;
+                interactable = m_TowardsRight ? interactable.GetNext() : interactable.GetPrev();
                 
                 // m_PlayerController.PlayerModel.RoomModel.TargetedInteractable = interactable;
                 interactable.SetHighlight();
@@ -38,7 +38,7 @@ namespace OSGames.BoardGame.Player {
 
             m_PlayerController.PlayerModel.TargetInteractable = interactable;
 
-            Transform  target = interactable.PlayerLookPoint.transform;
+            Transform  target = interactable.GetLookPosition().transform;
             
             //find the vector pointing from our position to the target
             Vector3 direction = (target.position - m_PlayerController.transform.position).normalized;

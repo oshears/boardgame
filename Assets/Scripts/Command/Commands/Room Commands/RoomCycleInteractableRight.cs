@@ -19,20 +19,20 @@ namespace OSGames.BoardGame {
             // m_RoomActionPublisher.Publish(roomAction);
             SetTargetAction setTargetAction = (SetTargetAction) RoomAction;
             
-            if (m_RoomController.RoomModel.TargetedInteractable){
-                setTargetAction.OldTarget = m_RoomController.RoomModel.TargetedInteractable.transform;
-                setTargetAction.NewTarget = m_RoomController.RoomModel.TargetedInteractable.NextInteractable.transform;
+            // if (m_RoomController.RoomModel.TargetedInteractable){
+            //     // setTargetAction.OldTarget = m_RoomController.RoomModel.TargetedInteractable.transform;
+            //     // setTargetAction.NewTarget = m_RoomController.RoomModel.TargetedInteractable.NextInteractable.transform;
 
-                // for now this is ok, but this should probably be moved later (local to the interactable)
-                m_RoomController.RoomModel.TargetedInteractable.ClearHighlight();
-                m_RoomController.RoomModel.TargetedInteractable = m_RoomController.RoomModel.TargetedInteractable.NextInteractable;
-                m_RoomController.RoomModel.TargetedInteractable.SetHighlight();
-            }
-            else{
-                setTargetAction.NewTarget = m_RoomController.RoomModel.InitialInteractable.transform;
-                m_RoomController.RoomModel.TargetedInteractable = m_RoomController.RoomModel.InitialInteractable;
-                m_RoomController.RoomModel.TargetedInteractable.SetHighlight();
-            }
+            //     // for now this is ok, but this should probably be moved later (local to the interactable)
+            //     m_RoomController.RoomModel.TargetedInteractable.ClearHighlight();
+            //     m_RoomController.RoomModel.TargetedInteractable = m_RoomController.RoomModel.TargetedInteractable.GetNext();
+            //     m_RoomController.RoomModel.TargetedInteractable.SetHighlight();
+            // }
+            // else{
+            //     setTargetAction.NewTarget = m_RoomController.RoomModel.InitialInteractable.GetLookPosition();
+            //     m_RoomController.RoomModel.TargetedInteractable = m_RoomController.RoomModel.InitialInteractable;
+            //     m_RoomController.RoomModel.TargetedInteractable.SetHighlight();
+            // }
 
             // m_RoomController.RoomActionPublisher.Publish(setTargetAction);
 

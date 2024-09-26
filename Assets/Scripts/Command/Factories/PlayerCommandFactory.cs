@@ -37,7 +37,7 @@ namespace OSGames.BoardGame {
 
         public override PlayerCommand Make(PlayerCommandProduct product){
             if (product.Type == InputType.Confirm){
-                if (product.PlayerController.PlayerModel.TargetInteractable.TryGetComponent(out IMovementIndicator indicator)){
+                if (product.PlayerController.PlayerModel.TargetInteractable.GetTransform().TryGetComponent(out IMovementIndicator indicator)){
                     return new PlayerMoveCommand(product.PlayerController, indicator);
                 }
                 else{

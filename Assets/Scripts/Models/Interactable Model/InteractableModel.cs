@@ -15,13 +15,13 @@ namespace OSGames.BoardGame.Interactables {
 
         [SerializeField] InteractableConfig m_InteractableConfig;
 
-        InteractableModel m_NextInteractable;
-        public InteractableModel NextInteractable { 
+        ICycleableInteractable m_NextInteractable;
+        public ICycleableInteractable NextInteractable { 
             get {return m_NextInteractable;}
             set {m_NextInteractable = value;}
         } 
-        InteractableModel m_PrevInteractable;
-        public InteractableModel PrevInteractable { 
+        ICycleableInteractable m_PrevInteractable;
+        public ICycleableInteractable PrevInteractable { 
             get {return m_PrevInteractable;}
             set {m_PrevInteractable = value;}
         } 
@@ -58,14 +58,6 @@ namespace OSGames.BoardGame.Interactables {
             return m_InteractableConfig.InteractableType;
         }
 
-        public IInteractable GetNext(){
-            return m_NextInteractable;
-        }
-
-        public IInteractable GetPrev(){
-            return m_PrevInteractable;
-        }
-
         public virtual void Use(){
             e_Use.Invoke();
         }
@@ -74,5 +66,38 @@ namespace OSGames.BoardGame.Interactables {
             e_FinishUse.Invoke();
         }
 
+        public Transform GetTransform(){
+            return transform;
+        }
+
+        public ICycleableInteractable GetNext()
+        {
+            return m_NextInteractable;
+        }
+
+        public ICycleableInteractable GetPrev()
+        {
+            return m_PrevInteractable;
+        }
+
+        public Transform GetLookPosition()
+        {
+            return PlayerLookPoint;
+        }
+
+        public Transform GetStandPosition()
+        {
+            return PlayerStandingPoint;
+        }
+
+        public void SetNext(ICycleableInteractable next)
+        {
+            m_NextInteractable = next;
+        }
+
+        public void SetPrev(ICycleableInteractable prev)
+        {
+            m_PrevInteractable = prev;
+        }
     }
 }

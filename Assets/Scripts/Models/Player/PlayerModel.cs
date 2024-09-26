@@ -32,11 +32,11 @@ namespace OSGames.BoardGame.Player {
         }
 
         [Tooltip("The interactable currently being viewed by the player")]
-        [SerializeField] InteractableModel m_CurrentTarget;
+        [SerializeField] ICycleableInteractable m_CurrentTarget;
 
         public UnityEvent e_RotatePlayer;
 
-        public InteractableModel TargetInteractable {
+        public ICycleableInteractable TargetInteractable {
             get { return m_CurrentTarget;} 
             set {m_CurrentTarget = value;}    
         }
@@ -70,9 +70,9 @@ namespace OSGames.BoardGame.Player {
                 }
             }
 
-            // Execute Typing Animation
             method();
-            m_Animator.SetBool("Typing",true);
+            // Execute Typing Animation
+            // m_Animator.SetBool("Typing",true);
         }
 
         public void ResetAnimatorAfter(float time){
@@ -95,6 +95,26 @@ namespace OSGames.BoardGame.Player {
 
         public void FinishUse(){
 
+        }
+
+        public void SetHighlight(){
+
+        }
+
+        public void ClearHighlight(){
+            
+        }
+
+        public Transform GetLookPosition(){
+            return transform;
+        }
+
+        public Transform GetStandPosition(){
+            return transform;
+        }
+
+        public Transform GetTransform(){
+            return transform;
         }
 
     }

@@ -19,25 +19,25 @@ namespace OSGames.BoardGame {
 
         [SerializeField] List<PlayerModel> m_PlayersInRoom;
 
-        InteractableModel m_TargetedInteractable;
+        ICycleableInteractable m_TargetedInteractable;
         [SerializeField] List<InteractableModel> m_Interactables;
-        public InteractableModel TargetedInteractable {
+        public ICycleableInteractable TargetedInteractable {
             get { return m_TargetedInteractable;}
             set { m_TargetedInteractable = value;}
         }
 
         [SerializeField] InteractableModel m_InitialInteractable;
-        public InteractableModel InitialInteractable {
+        public ICycleableInteractable InitialInteractable {
             get { return m_InitialInteractable;}
-            set { m_InitialInteractable = value;}
+            // set { m_InitialInteractable = value;}
         }
 
         RoomConfiguration m_RoomSO;
 
         protected void Awake(){
             for(int i = 0; i < m_Interactables.Count; i++){
-                m_Interactables[i].NextInteractable = m_Interactables[(i + 1) % m_Interactables.Count];
-                m_Interactables[i].PrevInteractable = m_Interactables[i > 0 ? i - 1 : m_Interactables.Count - 1];
+                m_Interactables[i].SetNext(m_Interactables[(i + 1) % m_Interactables.Count]);
+                m_Interactables[i].SetPrev(m_Interactables[i > 0 ? i - 1 : m_Interactables.Count - 1]);
             }
         }
 

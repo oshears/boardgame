@@ -35,6 +35,8 @@ namespace OSGames.BoardGame.Player {
             m_PlayerController.PlayerMenu.MenuActive = false;
             m_PlayerController.PlayerModel.SetMenuCamera(false);
             m_PlayerController.PlayerMenu.MenuActive = false;
+
+            m_MovementIndicator.ClearHighlight();
         }
 
         void EnableControls(){

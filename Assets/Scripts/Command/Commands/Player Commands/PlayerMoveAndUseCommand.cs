@@ -14,11 +14,13 @@ namespace OSGames.BoardGame.Player {
 
         override public void Execute(){
 
-            InteractableModel interactable = PlayerController.PlayerModel.TargetInteractable;
+            ICycleableInteractable interactable = PlayerController.PlayerModel.TargetInteractable;
 
-            m_PlayerController.PlayerModel.Agent.SetDestination(interactable.PlayerStandingPoint.position);
+            m_PlayerController.PlayerModel.Agent.SetDestination(interactable.GetStandPosition().position);
 
             m_PlayerController.PlayerModel.ExecuteOnNavMeshArrival(OnNavMeshArrival);
+
+            interactable.ClearHighlight();
         }
 
         void OnNavMeshArrival(){
