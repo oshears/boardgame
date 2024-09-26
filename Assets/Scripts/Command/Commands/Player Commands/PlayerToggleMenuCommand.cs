@@ -18,6 +18,7 @@ namespace OSGames.BoardGame.Player {
         override public void Execute(){
             bool menuActive = m_PlayerController.PlayerMenu.ToggleMenu();
             m_PlayerController.PlayerModel.SetMenuCamera(menuActive);
+            m_PlayerController.m_State = menuActive ? PlayerController.State.Menu : PlayerController.State.ActiveControls;
         }
     }
 }

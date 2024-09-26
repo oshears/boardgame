@@ -46,6 +46,7 @@ namespace OSGames.BoardGame.Player {
         public enum State {
             ActiveControls,
             InactiveControls,
+            Menu,
 
         }
         public State m_State;
@@ -82,7 +83,8 @@ namespace OSGames.BoardGame.Player {
 
 
         void OnInput(InputType type){
-            if (m_State == State.ActiveControls){
+            bool validMenuCommand = type == InputType.ToggleMenu && m_State == State.Menu;
+            if (m_State == State.ActiveControls || validMenuCommand){
                 PlayerCommandProduct product = new PlayerCommandProduct(this, type);
                 Command cmd = m_CommandFactory.Make(product);
                 ExecuteCommand(cmd);
