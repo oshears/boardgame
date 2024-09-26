@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 using OSGames.BoardGame;
+using OSGames.Utilities.AI;
+using System.Collections;
 
 namespace OSGames.BoardGame.Player {
     public class PlayerMoveCommand : PlayerCommand {
@@ -29,8 +31,8 @@ namespace OSGames.BoardGame.Player {
 
             // m_PlayerController.PublisherToObserve = m_Publisher;
             m_PlayerController.m_State = PlayerController.State.InactiveControls;
-
-            m_PlayerController.PlayerModel.ExecuteOnNavMeshArrival(EnableControls);
+            
+            m_PlayerController.PlayerModel.StartCoroutine(AICoroutines.WaitNavMeshArrive(m_PlayerController.PlayerModel.Agent, EnableControls));
 
             m_PlayerController.PlayerMenu.MenuActive = false;
             m_PlayerController.PlayerModel.SetMenuCamera(false);

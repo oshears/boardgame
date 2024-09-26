@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using OSGames.BoardGame.Interactables;
 
 using OSGames.BoardGame;
+using OSGames.Utilities.AI;
 
 namespace OSGames.BoardGame.Player {
     public class PlayerMoveAndUseCommand : PlayerCommand {
@@ -18,7 +19,7 @@ namespace OSGames.BoardGame.Player {
 
             m_PlayerController.PlayerModel.Agent.SetDestination(interactable.GetStandPosition().position);
 
-            m_PlayerController.PlayerModel.ExecuteOnNavMeshArrival(OnNavMeshArrival);
+            m_PlayerController.PlayerModel.StartCoroutine(AICoroutines.WaitNavMeshArrive(m_PlayerController.PlayerModel.Agent, OnNavMeshArrival));
 
             interactable.ClearHighlight();
         }
