@@ -15,10 +15,18 @@ namespace OSGames.BoardGame.Player {
 
         override public void Execute(){
             if (m_PlayerController.PlayerMenu.MenuActive && m_PlayerController.PlayerMenu.GetAtBaseMenu()){
-                bool menuActive = m_PlayerController.PlayerMenu.ToggleMenu();
-                m_PlayerController.PlayerModel.SetMenuCamera(menuActive);
-                m_PlayerController.m_State = menuActive ? PlayerController.State.Menu : PlayerController.State.ActiveControls;
+                ClearMenu();
+                ResetPlayer();
             }
+        }
+
+        public void ClearMenu(){
+            m_PlayerController.PlayerMenu.SetMenu(false);
+        }
+
+        public void ResetPlayer(){
+            m_PlayerController.PlayerModel.SetMenuCamera(false);
+            m_PlayerController.m_State = PlayerController.State.ActiveControls;
         }
 
         
