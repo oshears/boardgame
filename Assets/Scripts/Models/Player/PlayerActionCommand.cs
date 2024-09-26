@@ -17,12 +17,19 @@ namespace OSGames.BoardGame.Player {
         {
             // base.Execute();
             Debug.Log($"Executed Player Action: {this}");
+            
+            // Place Holder!
             HideMenu();
+            EnablePlayer();
         }
 
         protected void HideMenu(){
             m_PlayerController.PlayerMenu.SetMenu(false);
             m_PlayerController.PlayerModel.SetMenuCamera(false);
+        }
+
+        protected void EnablePlayer(){
+            m_PlayerController.m_State = PlayerController.State.ActiveControls;
         }
 
     }
