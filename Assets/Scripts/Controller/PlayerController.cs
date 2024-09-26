@@ -83,8 +83,11 @@ namespace OSGames.BoardGame.Player {
 
 
         void OnInput(InputType type){
-            bool validMenuCommand = type == InputType.ToggleMenu && m_State == State.Menu;
-            if (m_State == State.ActiveControls || validMenuCommand){
+            bool validMenuCommand = (type == InputType.ToggleMenu || type == InputType.Back) && m_State == State.Menu;
+            bool validStandardCommand = type != InputType.Confirm && m_State == State.ActiveControls;
+            bool validConfirmCommand = type == InputType.Confirm && m_State == State.ActiveControls && m_PlayerModel.GetHasTarget();
+            if (validMenuCommand || validStandardCommand || validConfirmCommand)
+            {
                 PlayerCommandProduct product = new PlayerCommandProduct(this, type);
                 Command cmd = m_CommandFactory.Make(product);
                 ExecuteCommand(cmd);

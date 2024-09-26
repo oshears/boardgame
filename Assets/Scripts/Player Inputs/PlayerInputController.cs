@@ -87,5 +87,12 @@ namespace OSGames.BoardGame.Input {
         public void RemoveListener(Action<InputType> func){
             m_InputPublisher.ThingHappened -= func;
         }
+
+        public void OnBack(InputAction.CallbackContext context)
+        {
+            if (context.performed){
+                Publish(InputType.Back);
+            }
+        }
     }
 }

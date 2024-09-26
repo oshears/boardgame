@@ -92,6 +92,10 @@ namespace OSGames.BoardGame.Player {
             return transform;
         }
 
+        public bool GetHasTarget(){
+            return m_CurrentTarget != null;
+        }
+
     }
 
 }

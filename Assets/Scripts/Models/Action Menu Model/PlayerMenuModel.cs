@@ -31,5 +31,9 @@ namespace OSGames.BoardGame.Player {
             m_MenuActive = active;
         }
 
+        public virtual bool GetAtBaseMenu(){
+            return true;
+        }
+
     }
 }

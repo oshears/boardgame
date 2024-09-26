@@ -51,6 +51,9 @@ namespace OSGames.BoardGame {
             else if (product.Type == InputType.ToggleMenu){
                 return new PlayerToggleMenuCommand(product.PlayerController);
             }
+            else if (product.Type == InputType.Back){
+                return new PlayerBackCommand(product.PlayerController);
+            }
             else{
                 return new PlayerCommand(product.PlayerController);
             }

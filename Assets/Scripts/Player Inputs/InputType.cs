@@ -5,5 +5,6 @@ namespace OSGames.BoardGame.Input {
     CycleRight,
     ViewMode,
     ToggleMenu,
+    Back,
     }
 }
