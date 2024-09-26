@@ -14,11 +14,11 @@ namespace OSGames.BoardGame.Player {
     [RequireComponent(typeof(PlayerModel))]
     [RequireComponent(typeof(PlayerCommandFactory))]
     [RequireComponent(typeof(PlayerActionFactory))]
-    public class PlayerController : Controller, ISubscriber<InputType>, IFactory<PlayerActionProduct,PlayerAction>, IScheduler
+    public class PlayerController : Controller, ISubscriber<InputType>, IFactory<PlayerActionProduct,PlayerActionCommand>, IScheduler
     {
 
         // subscriber to actions received from game menu / room
-        public Subscriber<RoomAction> m_RoomActionSubscriber;
+        // public Subscriber<RoomAction> m_RoomActionSubscriber;
 
         // sender of actions to the room
         // RoomActionPublisher m_RoomActionPublisher;
@@ -51,7 +51,7 @@ namespace OSGames.BoardGame.Player {
         public State m_State;
 
         protected virtual void Awake(){
-            m_RoomActionSubscriber = new Subscriber<RoomAction>();
+            // m_RoomActionSubscriber = new Subscriber<RoomAction>();
             // m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
             // m_Scheduler = GetComponent<Scheduler>();
             m_Scheduler = new Scheduler();
@@ -97,7 +97,7 @@ namespace OSGames.BoardGame.Player {
             publisher.RemoveListener(OnInput);
         }
 
-        public virtual PlayerAction Make(PlayerActionProduct product)
+        public virtual PlayerActionCommand Make(PlayerActionProduct product)
         {
             return m_MenuActionFactory.Make(product);
         }

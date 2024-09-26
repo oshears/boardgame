@@ -8,13 +8,8 @@ namespace OSGames.BoardGame.Input {
 
         protected PlayerInputController m_PlayerInputController;
 
-        RoomAction m_RoomAction;
-
         protected InputType m_InputType;
 
-        public RoomAction RoomAction{
-            get {return m_RoomAction;}
-        }
 
         public InputCommand(PlayerInputController playerInputController){
             m_PlayerInputController = playerInputController;
@@ -25,10 +20,6 @@ namespace OSGames.BoardGame.Input {
             m_InputType = inputType;
         }
 
-        public InputCommand(PlayerInputController playerInputController, RoomAction action){
-            m_PlayerInputController = playerInputController;
-            m_RoomAction = action;
-        }
 
         override public void Execute(){
             Debug.Log("Executed Generic Input Command!");

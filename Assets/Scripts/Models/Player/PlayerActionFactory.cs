@@ -3,17 +3,18 @@ using UnityEngine.UI;
 using TMPro;
 using OSGames.BoardGame;
 using OSGames.BoardGame.Generic;
+using OSGames.BoardGame.Actions;
 
 namespace OSGames.BoardGame.Player {
 
-    public class PlayerActionFactory : Factory<PlayerActionProduct, PlayerAction> {
+    public class PlayerActionFactory : Factory<PlayerActionProduct, PlayerActionCommand> {
 
         public PlayerActionFactory() {
 
         }
 
-        public override PlayerAction Make(PlayerActionProduct product){
-            return new PlayerAction(product.PlayerController);
+        public override PlayerActionCommand Make(PlayerActionProduct product){
+            return new PlayerActionCommand(product.PlayerController);
         }
 
     }
@@ -21,8 +22,11 @@ namespace OSGames.BoardGame.Player {
     public class PlayerActionProduct {
         public PlayerController PlayerController;
 
-        public PlayerActionProduct(PlayerController playerController){
+        public PlayerAction Action;
+
+        public PlayerActionProduct(PlayerController playerController, PlayerAction action){
             PlayerController = playerController;
+            Action = action;
         }
 
     }

@@ -21,7 +21,7 @@ namespace OSGames.BoardGame {
     [RequireComponent(typeof(RoomModel))]
     public class RoomController : Controller
     {
-        [SerializeField] List<RoomAction> m_ActionList = new List<RoomAction>();
+        // [SerializeField] List<RoomAction> m_ActionList = new List<RoomAction>();
 
         // [SerializeField] List<PlayerController> m_PlayersInRoom;
         // [SerializeField] PlayerController m_CurrentPlayer;
@@ -38,7 +38,7 @@ namespace OSGames.BoardGame {
         // public RoomActionPublisher RoomActionPublisher { get {return m_RoomActionPublisher;} }
         // Scheduler m_Scheduler;
 
-        RoomCommandFactory m_CommandFactory;
+        // RoomCommandFactory m_CommandFactory;
 
         RoomModel m_RoomModel;
         public RoomModel RoomModel { get { return m_RoomModel;}}
@@ -69,24 +69,24 @@ namespace OSGames.BoardGame {
 
 
         // this happens when the publisher sends the selected room action
-        public void OnPlayerAction(RoomAction roomAction) {
-            Debug.Log($"Room is responding to the user's chosen action: {roomAction}");
+        // public void OnPlayerAction(RoomAction roomAction) {
+        //     Debug.Log($"Room is responding to the user's chosen action: {roomAction}");
 
-            RoomCommandProduct product = new RoomCommandProduct(this, roomAction);
-            Command cmd = m_CommandFactory.Make(product);
-            // m_Scheduler.ExecuteCommand(cmd);
-            // m_RoomActionPublisher.Publish(roomAction);
+        //     RoomCommandProduct product = new RoomCommandProduct(this, roomAction);
+        //     Command cmd = m_CommandFactory.Make(product);
+        //     // m_Scheduler.ExecuteCommand(cmd);
+        //     // m_RoomActionPublisher.Publish(roomAction);
 
-            // debug, for test
-            // probably want to do player movement commands in the player controller?
-            // m_Scheduler.AddCommand(new RoomMoveCommand(this, m_RoomModel.GetNeighboringPlayerStandTransform(0)));
+        //     // debug, for test
+        //     // probably want to do player movement commands in the player controller?
+        //     // m_Scheduler.AddCommand(new RoomMoveCommand(this, m_RoomModel.GetNeighboringPlayerStandTransform(0)));
             
-            // forward the actions to:
-            // room objects
-            // player controller
-            // noise system
+        //     // forward the actions to:
+        //     // room objects
+        //     // player controller
+        //     // noise system
             
-        }
+        // }
 
         public void Publish(){
             // m_RoomActionListPublisher.Publish(m_ActionList);    
