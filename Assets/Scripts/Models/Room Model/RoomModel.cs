@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 using OSGames.BoardGame.Interactables;
 using OSGames.BoardGame.Generic;
+using OSGames.BoardGame.Player;
 
 namespace OSGames.BoardGame {
 

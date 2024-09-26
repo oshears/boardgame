@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 using OSGames.BoardGame;
+using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame.Interactables {
 

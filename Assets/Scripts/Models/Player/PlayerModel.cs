@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using OSGames.BoardGame.Generic;
 using OSGames.BoardGame.Interactables;
 
-namespace OSGames.BoardGame {
+namespace OSGames.BoardGame.Player {
 
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Animator))]
@@ -21,9 +21,11 @@ namespace OSGames.BoardGame {
         Animator m_Animator;
         public Animator Animator { get { return m_Animator; }}
 
+        // public PlayerMenuModel m_PlayerMenu;
+
         
         [SerializeField]
-        RoomModel m_CurrentRoom;
+        protected RoomModel m_CurrentRoom;
         public RoomModel CurrentRoom {
             get { return m_CurrentRoom; }
             set { m_CurrentRoom = value; }
@@ -44,7 +46,7 @@ namespace OSGames.BoardGame {
             m_Animator = GetComponent<Animator>();
         }
 
-        public virtual void ToggleCamera(){
+        public virtual void SetMenuCamera(bool menuCamera){
             
         }
 

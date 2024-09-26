@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace OSGames.BoardGame {
+namespace OSGames.BoardGame.Generic {
 
     // [[RequireComponent(typeof(Subscriber))]]
     // [[RequireComponent(typeof(Publisher))]]

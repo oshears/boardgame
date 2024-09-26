@@ -32,10 +32,9 @@ namespace OSGames.BoardGame.Player {
 
             m_PlayerController.PlayerModel.ExecuteOnNavMeshArrival(EnableControls);
 
-            if (m_PlayerController.PlayerMenu.MenuActive){
-                m_PlayerController.PlayerModel.ToggleCamera();
-                m_PlayerController.PlayerMenu.MenuActive = false;
-            }
+            m_PlayerController.PlayerMenu.MenuActive = false;
+            m_PlayerController.PlayerModel.SetMenuCamera(false);
+            m_PlayerController.PlayerMenu.MenuActive = false;
         }
 
         void EnableControls(){

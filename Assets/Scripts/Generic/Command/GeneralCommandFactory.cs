@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace OSGames.BoardGame {
+namespace OSGames.BoardGame.Generic {
     public class GeneralCommandFactory : MonoBehaviour
     {
         // [SerializeField] private List<Command>

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using OSGames.BoardGame.Generic;
+
 namespace OSGames.BoardGame {
     [CreateAssetMenu(fileName = "Room Move Action", menuName = "Board Game/Room Move Action", order = 0)]
     public class MovementAction : RoomAction {

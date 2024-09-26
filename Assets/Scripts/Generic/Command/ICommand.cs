@@ -1,4 +1,4 @@
-namespace OSGames.BoardGame {
+namespace OSGames.BoardGame.Generic {
 
 
     public interface ICommand {

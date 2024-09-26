@@ -49,7 +49,7 @@ namespace OSGames.BoardGame {
                 return new PlayerSetTargetCommand(product.PlayerController, product.Type == InputType.CycleRight);
             }
             else if (product.Type == InputType.ToggleMenu){
-                return new PlayerToggleCameraCommand(product.PlayerController);
+                return new PlayerToggleMenuCommand(product.PlayerController);
             }
             else{
                 return new PlayerCommand(product.PlayerController);

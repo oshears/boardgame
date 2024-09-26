@@ -29,7 +29,7 @@ namespace OSGames.BoardGame {
         // public RoomActionSubscriber RoomActionSubscriber { get { return m_RoomActionSubscriber;}}
         // RoomActionPublisher m_RoomActionPublisher;
 
-        ButtonFactory m_ButtonFactory;
+        // ButtonFactory m_ButtonFactory;
         ActionMenuCommandFactory m_CommandFactory;
         List<GameObject> m_Buttons;
 
@@ -68,9 +68,9 @@ namespace OSGames.BoardGame {
                 // 2. set the callbacks (on button click, add command to scheduler)
                 // 3. add to grid view
                 // ActionMenuCmd cmd = new ActionMenuCmd(this, roomAction.ActionType);
-                ButtonFactroyProduct product = new ButtonFactroyProduct(this, roomAction, m_Scheduler);
-                GameObject btn = m_ButtonFactory.Make(product);
-                m_Buttons.Add(btn);
+                // ButtonFactroyProduct product = new ButtonFactroyProduct(this, roomAction, m_Scheduler);
+                // GameObject btn = m_ButtonFactory.Make(product);
+                // m_Buttons.Add(btn);
 
                 // buttons will simply add the command associated with them to the scheduler
             }

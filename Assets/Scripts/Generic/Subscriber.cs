@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 using OSGames.BoardGame.Generic;
 
-namespace OSGames.BoardGame {
+namespace OSGames.BoardGame.Generic {
 
     public class Subscriber<T>
     {

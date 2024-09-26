@@ -8,13 +8,13 @@ using UnityEngine.UI;
 
 using OSGames.BoardGame.Generic;
 using OSGames.BoardGame.Input;
-using OSGames.BoardGame.Player;
-using UnityEditorInternal;
 
-namespace OSGames.BoardGame {
+namespace OSGames.BoardGame.Player {
 
     [RequireComponent(typeof(PlayerModel))]
-    public class PlayerController : Controller, ISubscriber<InputType>
+    [RequireComponent(typeof(PlayerCommandFactory))]
+    [RequireComponent(typeof(PlayerActionFactory))]
+    public class PlayerController : Controller, ISubscriber<InputType>, IFactory<PlayerActionProduct,PlayerAction>, IScheduler
     {
 
         // subscriber to actions received from game menu / room
@@ -27,15 +27,16 @@ namespace OSGames.BoardGame {
         Scheduler m_Scheduler;
 
         // Factory to generate player commands for the scheduler
-        PlayerCommandFactory m_CommandFactory;
+        protected PlayerCommandFactory m_CommandFactory;
+        protected PlayerActionFactory m_MenuActionFactory;
 
         PlayerModel m_PlayerModel;
         public PlayerModel PlayerModel { get { return m_PlayerModel;}}
 
-        ActionMenuModel m_PlayerMenu;
-        public ActionMenuModel PlayerMenu { get { return m_PlayerMenu; } }
+        PlayerMenuModel m_PlayerMenu;
+        public PlayerMenuModel PlayerMenu { get { return m_PlayerMenu; } }
 
-
+        
         // Publisher<InputType> m_InputPublisher;
         Subscriber<InputType> m_InputSubscriber;
 
@@ -49,12 +50,15 @@ namespace OSGames.BoardGame {
         }
         public State m_State;
 
-        void Awake(){
+        protected virtual void Awake(){
             m_RoomActionSubscriber = new Subscriber<RoomAction>();
             // m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
             // m_Scheduler = GetComponent<Scheduler>();
             m_Scheduler = new Scheduler();
             m_CommandFactory = GetComponent<PlayerCommandFactory>();
+            m_MenuActionFactory = GetComponent<PlayerActionFactory>();
+            // m_CommandFactory = new PlayerCommandFactory();
+            // m_MenuCommandFactory = new MenuCommandFactory();
             // m_CommandFactory = new PlayerCommandFactory();
 
             // m_RoomActionSubscriber.PublisherAction += OnRoomAction;
@@ -65,7 +69,7 @@ namespace OSGames.BoardGame {
 
             m_InputPublisher = GetComponent<IPublisher<InputType>>();
 
-            m_PlayerMenu = GetComponentInChildren<ActionMenuModel>();
+            m_PlayerMenu = GetComponentInChildren<PlayerMenuModel>();
         }
 
         void Start(){
@@ -81,9 +85,8 @@ namespace OSGames.BoardGame {
             if (m_State == State.ActiveControls){
                 PlayerCommandProduct product = new PlayerCommandProduct(this, type);
                 Command cmd = m_CommandFactory.Make(product);
-                m_Scheduler.ExecuteCommand(cmd);
+                ExecuteCommand(cmd);
             }
-            
         }
 
         public void SubscribeTo(IPublisher<InputType> publisher){
@@ -94,5 +97,19 @@ namespace OSGames.BoardGame {
             publisher.RemoveListener(OnInput);
         }
 
+        public virtual PlayerAction Make(PlayerActionProduct product)
+        {
+            return m_MenuActionFactory.Make(product);
+        }
+
+        public void ExecuteCommand(ICommand cmd)
+        {
+            m_Scheduler.ExecuteCommand(cmd);
+        }
+
+        public ICommand UndoCommand()
+        {
+            return m_Scheduler.UndoCommand();
+        }
     }
 }

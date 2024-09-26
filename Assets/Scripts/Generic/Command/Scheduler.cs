@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using OSGames.BoardGame.Generic;
 
-namespace OSGames.BoardGame {
+namespace OSGames.BoardGame.Generic {
 
     // [RequireComponent(typeof(CommandPublisher))]
     public class Scheduler : IScheduler {
@@ -45,10 +45,16 @@ namespace OSGames.BoardGame {
         //     }   
         // }
 
-        public void ExecuteCommand(Command cmd){
+        public void ExecuteCommand(ICommand cmd){
             cmd.Execute();
             undoStack.Push(cmd);
             // m_CommandPublisher.Publish(cmd);
+        }
+
+        public ICommand UndoCommand(){
+            ICommand activeCommand = undoStack.Pop();
+            activeCommand.Undo();
+            return activeCommand;
         }
 
         public void AddCommand(Command cmd){
@@ -59,14 +65,14 @@ namespace OSGames.BoardGame {
             AddCommand(cmd);
         }
 
-        public static void UndoCommand()
-        {
-            if (undoStack.Count > 0)
-            {
-                ICommand activeCommand = undoStack.Pop();
-                activeCommand.Undo();
-            }
-        }
+        // public static void UndoCommand()
+        // {
+        //     if (undoStack.Count > 0)
+        //     {
+        //         ICommand activeCommand = undoStack.Pop();
+        //         activeCommand.Undo();
+        //     }
+        // }
 
     }
 

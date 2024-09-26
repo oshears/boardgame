@@ -8,18 +8,27 @@ using UnityEngine.UI;
 
 using OSGames.BoardGame.Generic;
 
-namespace OSGames.BoardGame {
+namespace OSGames.BoardGame.Player {
 
     
-    public class ActionMenuModel : Model {
-        [SerializeField] CanvasGroup m_CanvasGroup;
+    public class PlayerMenuModel : Model {
+        [SerializeField] protected CanvasGroup m_CanvasGroup;
         public CanvasGroup CanvasGroup {get {return m_CanvasGroup;} }
 
         [SerializeField] bool m_MenuActive;
 
-        public bool MenuActive{
+        public bool MenuActive {
             get {return m_MenuActive;}
             set {m_MenuActive = value;}
+        }
+
+        public virtual bool ToggleMenu(){
+            SetMenu(!m_MenuActive);
+            return m_MenuActive;
+        }
+
+        public virtual void SetMenu(bool active){
+            m_MenuActive = active;
         }
 
     }
