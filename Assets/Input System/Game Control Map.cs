@@ -71,6 +71,15 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Execute"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd159309-4088-4792-af85-f24eeaa457ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -183,6 +192,28 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
                     ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""318d8c33-3b8d-4bd4-b423-a42c4a967635"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Execute"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cac62537-2a60-44e6-a2cd-f8a5bfbc3dbb"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Execute"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -202,6 +233,7 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
         m_ActivePlayerControls_CycleLeft = m_ActivePlayerControls.FindAction("Cycle Left", throwIfNotFound: true);
         m_ActivePlayerControls_CycleRight = m_ActivePlayerControls.FindAction("Cycle Right", throwIfNotFound: true);
         m_ActivePlayerControls_Back = m_ActivePlayerControls.FindAction("Back", throwIfNotFound: true);
+        m_ActivePlayerControls_Execute = m_ActivePlayerControls.FindAction("Execute", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -268,6 +300,7 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_ActivePlayerControls_CycleLeft;
     private readonly InputAction m_ActivePlayerControls_CycleRight;
     private readonly InputAction m_ActivePlayerControls_Back;
+    private readonly InputAction m_ActivePlayerControls_Execute;
     public struct ActivePlayerControlsActions
     {
         private @GameControlMap m_Wrapper;
@@ -277,6 +310,7 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
         public InputAction @CycleLeft => m_Wrapper.m_ActivePlayerControls_CycleLeft;
         public InputAction @CycleRight => m_Wrapper.m_ActivePlayerControls_CycleRight;
         public InputAction @Back => m_Wrapper.m_ActivePlayerControls_Back;
+        public InputAction @Execute => m_Wrapper.m_ActivePlayerControls_Execute;
         public InputActionMap Get() { return m_Wrapper.m_ActivePlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -301,6 +335,9 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
             @Back.started += instance.OnBack;
             @Back.performed += instance.OnBack;
             @Back.canceled += instance.OnBack;
+            @Execute.started += instance.OnExecute;
+            @Execute.performed += instance.OnExecute;
+            @Execute.canceled += instance.OnExecute;
         }
 
         private void UnregisterCallbacks(IActivePlayerControlsActions instance)
@@ -320,6 +357,9 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
             @Back.started -= instance.OnBack;
             @Back.performed -= instance.OnBack;
             @Back.canceled -= instance.OnBack;
+            @Execute.started -= instance.OnExecute;
+            @Execute.performed -= instance.OnExecute;
+            @Execute.canceled -= instance.OnExecute;
         }
 
         public void RemoveCallbacks(IActivePlayerControlsActions instance)
@@ -353,5 +393,6 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
         void OnCycleLeft(InputAction.CallbackContext context);
         void OnCycleRight(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
+        void OnExecute(InputAction.CallbackContext context);
     }
 }

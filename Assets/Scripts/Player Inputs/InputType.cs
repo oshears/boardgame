@@ -6,5 +6,6 @@ namespace OSGames.BoardGame.Input {
     ViewMode,
     ToggleMenu,
     Back,
+    Execute,
     }
 }

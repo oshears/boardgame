@@ -45,6 +45,18 @@ namespace OSGames.BoardGame.Input {
             controls.ActivePlayerControls.Disable();
         }
 
+        public void Publish(InputType type){
+            m_InputPublisher.Publish(type);
+        }
+
+        public void AddListener(Action<InputType> func){
+            m_InputPublisher.ThingHappened += func;
+        }
+
+        public void RemoveListener(Action<InputType> func){
+            m_InputPublisher.ThingHappened -= func;
+        }
+
 
         public void OnToggleView(InputAction.CallbackContext context)
         {
@@ -76,22 +88,17 @@ namespace OSGames.BoardGame.Input {
             }
         }
 
-        public void Publish(InputType type){
-            m_InputPublisher.Publish(type);
-        }
-
-        public void AddListener(Action<InputType> func){
-            m_InputPublisher.ThingHappened += func;
-        }
-
-        public void RemoveListener(Action<InputType> func){
-            m_InputPublisher.ThingHappened -= func;
-        }
-
         public void OnBack(InputAction.CallbackContext context)
         {
             if (context.performed){
                 Publish(InputType.Back);
+            }
+        }
+
+        public void OnExecute(InputAction.CallbackContext context)
+        {
+            if (context.performed){
+                Publish(InputType.Execute);
             }
         }
     }
