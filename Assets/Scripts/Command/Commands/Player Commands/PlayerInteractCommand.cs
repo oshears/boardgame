@@ -7,7 +7,6 @@ using OSGames.Utilities.AI;
 using System.Collections;
 
 using OSGames.BoardGame.Generic;
-using OSGames.BoardGame.Actions;
 using OSGames.BoardGame.Interactables;
 
 namespace OSGames.BoardGame.Player {
@@ -15,14 +14,16 @@ namespace OSGames.BoardGame.Player {
 
         // Transform m_Destination;
 
-        IActionInteractable m_Interactable;
+        ICycleableInteractable m_Interactable;
 
-        public PlayerInteractCommand(PlayerController playerController, IActionInteractable interactable) : base(playerController){
+        public PlayerInteractCommand(PlayerController playerController, ICycleableInteractable interactable) : base(playerController){
             m_Interactable = interactable;
         }
 
         override public void Execute(){
-            PlayerAction action = m_Interactable.GetPlayerAction();
+            // if (m_Interactable.TryGetComponent<IBasicActionHolder>(out IBasicActionHolder basicActionHolder)){
+            //     Debug.Log(basicActionHolder);
+            // }
         }
 
     }
