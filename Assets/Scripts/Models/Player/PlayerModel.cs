@@ -41,7 +41,7 @@ namespace OSGames.BoardGame.Player {
             set {m_CurrentTarget = value;}    
         }
 
-        protected void Awake(){
+        protected virtual void Awake(){
             m_Agent = GetComponent<NavMeshAgent>();
             m_Animator = GetComponent<Animator>();
         }

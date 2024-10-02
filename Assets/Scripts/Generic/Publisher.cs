@@ -20,6 +20,14 @@ namespace OSGames.BoardGame.Generic {
             return ThingHappened;
         } 
 
+        public void AddListener(Action<T> func){
+            ThingHappened += func;
+        }
+
+        public void RemoveListener(Action<T> func){
+            ThingHappened -= func;
+        }
+
     }
 
     

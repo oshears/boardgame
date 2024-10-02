@@ -29,22 +29,6 @@ namespace OSGames.BoardGame.Generic {
             PublisherAction?.Invoke(t);
         }
 
-        // protected virtual void Awake()
-        // {
-        //     if (m_PublisherToObserve != null)
-        //     {
-        //         m_PublisherToObserve.GetAction() += OnThingHappened;
-        //     }
-        // }
-
-        // protected virtual void OnDestroy()
-        // {
-        //     if (m_PublisherToObserve != null)
-        //     {
-        //         m_PublisherToObserve.GetAction() -= OnThingHappened;
-        //     }
-        // }
-
         public void SubscribeTo(IPublisher<T> publisherToObserve){
             Unsubscribe();
 

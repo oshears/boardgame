@@ -50,11 +50,11 @@ namespace OSGames.BoardGame.Input {
         }
 
         public void AddListener(Action<InputType> func){
-            m_InputPublisher.ThingHappened += func;
+            m_InputPublisher.AddListener(func);
         }
 
         public void RemoveListener(Action<InputType> func){
-            m_InputPublisher.ThingHappened -= func;
+            m_InputPublisher.RemoveListener(func);
         }
 
 

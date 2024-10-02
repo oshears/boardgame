@@ -17,12 +17,6 @@ namespace OSGames.BoardGame.Player {
     public class PlayerController : Controller, ISubscriber<InputType>, IFactory<PlayerActionProduct,PlayerActionCommand>, IScheduler
     {
 
-        // subscriber to actions received from game menu / room
-        // public Subscriber<RoomAction> m_RoomActionSubscriber;
-
-        // sender of actions to the room
-        // RoomActionPublisher m_RoomActionPublisher;
-
         // Scheduler to execute player actions
         Scheduler m_Scheduler;
 
@@ -36,10 +30,6 @@ namespace OSGames.BoardGame.Player {
         PlayerMenuModel m_PlayerMenu;
         public PlayerMenuModel PlayerMenu { get { return m_PlayerMenu; } }
 
-        
-        // Publisher<InputType> m_InputPublisher;
-        Subscriber<InputType> m_InputSubscriber;
-
         IPublisher<InputType> m_InputPublisher;
 
 
@@ -52,21 +42,11 @@ namespace OSGames.BoardGame.Player {
         public State m_State;
 
         protected virtual void Awake(){
-            // m_RoomActionSubscriber = new Subscriber<RoomAction>();
-            // m_RoomActionPublisher = GetComponent<RoomActionPublisher>();
-            // m_Scheduler = GetComponent<Scheduler>();
             m_Scheduler = new Scheduler();
             m_CommandFactory = GetComponent<PlayerCommandFactory>();
             m_MenuActionFactory = GetComponent<PlayerActionFactory>();
-            // m_CommandFactory = new PlayerCommandFactory();
-            // m_MenuCommandFactory = new MenuCommandFactory();
-            // m_CommandFactory = new PlayerCommandFactory();
-
-            // m_RoomActionSubscriber.PublisherAction += OnRoomAction;
 
             m_PlayerModel = GetComponent<PlayerModel>();
-
-            m_InputSubscriber = new Subscriber<InputType>();
 
             m_InputPublisher = GetComponent<IPublisher<InputType>>();
 

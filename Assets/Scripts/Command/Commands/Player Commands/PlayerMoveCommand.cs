@@ -34,9 +34,8 @@ namespace OSGames.BoardGame.Player {
             
             m_PlayerController.PlayerModel.StartCoroutine(AICoroutines.WaitNavMeshArrive(m_PlayerController.PlayerModel.Agent, EnableControls));
 
-            m_PlayerController.PlayerMenu.MenuActive = false;
             m_PlayerController.PlayerModel.SetMenuCamera(false);
-            m_PlayerController.PlayerMenu.MenuActive = false;
+            m_PlayerController.PlayerMenu.SetMenu(false);
 
             m_MovementIndicator.ClearHighlight();
         }
