@@ -1,7 +1,7 @@
 using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame.Interactables {
-    public interface ICycleableInteractable : IInteractable {
+    public interface ICycleableInteractable : IActionInteractable {
 
         public ICycleableInteractable GetNext();
 

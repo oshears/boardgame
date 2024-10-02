@@ -7,11 +7,12 @@ using UnityEngine.UI;
 
 using OSGames.BoardGame;
 using OSGames.BoardGame.Generic;
+using OSGames.BoardGame.Actions;
 
 
 namespace OSGames.BoardGame.Interactables {
 
-    public class InteractableModel : Model, ICycleableInteractable {
+    public class InteractableModel : Model, ICycleableInteractable, IActionHolder {
 
         [SerializeField] InteractableConfig m_InteractableConfig;
 
@@ -98,6 +99,15 @@ namespace OSGames.BoardGame.Interactables {
         public void SetPrev(ICycleableInteractable prev)
         {
             m_PrevInteractable = prev;
+        }
+
+        public PlayerAction GetPlayerAction(){
+            return m_InteractableConfig.playerAction;
+        }
+
+        public void SetPlayerAction(PlayerAction action)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

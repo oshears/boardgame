@@ -1,3 +1,4 @@
+using OSGames.BoardGame.Actions;
 using UnityEngine;
 
 namespace OSGames.BoardGame.Interactables {
@@ -7,6 +8,9 @@ namespace OSGames.BoardGame.Interactables {
 
         public InteractableType InteractableType;
         public GameObject InteractablePrefab;
+
+        [SerializeField] PlayerAction m_PlayerAction;
+        public PlayerAction playerAction {get {return m_PlayerAction;}}
 
     }
 
