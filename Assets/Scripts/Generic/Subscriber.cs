@@ -19,7 +19,7 @@ namespace OSGames.BoardGame.Generic {
             }
         }
 
-        public Action<T> PublisherAction;
+        public event Action<T> PublisherAction;
 
         protected virtual void OnThingHappened(T t)
         {
@@ -30,7 +30,6 @@ namespace OSGames.BoardGame.Generic {
         }
 
         public void SubscribeTo(IPublisher<T> publisherToObserve){
-            Unsubscribe();
 
             m_PublisherToObserve = publisherToObserve; 
 
