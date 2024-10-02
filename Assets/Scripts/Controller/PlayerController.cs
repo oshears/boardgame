@@ -82,7 +82,7 @@ namespace OSGames.BoardGame.Player {
         }
 
 
-        void OnInput(InputType type){
+        protected virtual void OnInput(InputType type){
             bool validMenuCommand = (type == InputType.ToggleMenu || type == InputType.Back) && m_State == State.Menu;
             bool validStandardCommand = type != InputType.Confirm && m_State == State.ActiveControls;
             bool validConfirmCommand = type == InputType.Confirm && m_State == State.ActiveControls && m_PlayerModel.GetHasTarget();
@@ -94,11 +94,11 @@ namespace OSGames.BoardGame.Player {
             }
         }
 
-        public void SubscribeTo(IPublisher<InputType> publisher){
+        public virtual void SubscribeTo(IPublisher<InputType> publisher){
             publisher.AddListener(OnInput);
         }
 
-        public void UnsubscribeFrom(IPublisher<InputType> publisher){
+        public virtual void UnsubscribeFrom(IPublisher<InputType> publisher){
             publisher.RemoveListener(OnInput);
         }
 

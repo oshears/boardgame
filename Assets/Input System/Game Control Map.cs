@@ -195,6 +195,17 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""40f8c1d6-404d-4e68-9f73-ce4d2ae465c7"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""318d8c33-3b8d-4bd4-b423-a42c4a967635"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
