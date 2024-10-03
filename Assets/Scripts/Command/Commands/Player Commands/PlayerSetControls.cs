@@ -15,10 +15,10 @@ namespace OSGames.BoardGame.Player {
 
         override public void Execute() {
             if (m_ControlsActive) {
-                m_PlayerController.m_State = PlayerController.State.ActiveControls;
+                m_PlayerController.state = PlayerController.State.ActiveControls;
             }
             else{
-                m_PlayerController.m_State = PlayerController.State.InactiveControls;
+                m_PlayerController.state = PlayerController.State.InactiveControls;
             }
         }
 

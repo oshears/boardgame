@@ -7,13 +7,62 @@ using UnityEngine.UI;
 
 using OSGames.BoardGame;
 using OSGames.BoardGame.Generic;
+using System;
 
 namespace OSGames.BoardGame.Interactables {
 
 
     [RequireComponent(typeof(InteractableModel))]
-    public class InteractableController : Controller
+    public class InteractableController : Controller, IPublisher<InteractableEvent>, IScheduler
     {
 
+        Publisher<InteractableEvent> m_Publisher;
+
+        InteractableModel m_InteractableModel;
+
+        protected void Awake(){
+            m_Publisher = new Publisher<InteractableEvent>();
+            m_InteractableModel = GetComponent<InteractableModel>();
+            m_InteractableModel.e_FinishUse.AddListener(OnFinishUse);
+        }
+
+        protected void OnEnable(){
+            m_InteractableModel.e_FinishUse.AddListener(OnFinishUse);
+        }
+
+        protected void OnDisable(){
+            m_InteractableModel.e_FinishUse.RemoveListener(OnFinishUse);
+        }
+
+        public void Publish(InteractableEvent message)
+        {
+            m_Publisher.Publish(message);
+        }
+
+        public void AddListener(Action<InteractableEvent> func)
+        {
+            m_Publisher.AddListener(func);
+        }
+
+        public void RemoveListener(Action<InteractableEvent> func)
+        {
+            m_Publisher.RemoveListener(func);
+        }
+
+        public void ExecuteCommand(ICommand cmd)
+        {
+            cmd.Execute();
+        }
+
+        public ICommand UndoCommand()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected void OnFinishUse(){
+            Debug.Log("Finish use of interactable!");
+            InteractableEvent interactableEvent = new InteractableEvent(gameObject, InteractableEventType.InteractFinish);
+            m_Publisher.Publish(interactableEvent);
+        }
     }
 }

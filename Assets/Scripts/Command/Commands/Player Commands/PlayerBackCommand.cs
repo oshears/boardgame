@@ -26,7 +26,7 @@ namespace OSGames.BoardGame.Player {
 
         public void ResetPlayer(){
             m_PlayerController.PlayerModel.SetMenuCamera(false);
-            m_PlayerController.m_State = PlayerController.State.ActiveControls;
+            m_PlayerController.state = PlayerController.State.ActiveControls;
         }
 
         

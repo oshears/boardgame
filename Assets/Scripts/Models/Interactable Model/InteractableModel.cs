@@ -30,8 +30,8 @@ namespace OSGames.BoardGame.Interactables {
         [SerializeField] UnityEvent e_SetHighlight;
         [SerializeField] UnityEvent e_ClearHighlight;
 
-        [SerializeField] UnityEvent e_Use;
-        [SerializeField] UnityEvent e_FinishUse;
+        [SerializeField] public UnityEvent e_Use;
+        [SerializeField] public UnityEvent e_FinishUse;
 
         [Tooltip("Optional: location the player will stand when interacting")]
         [SerializeField] Transform m_PlayerStandingPoint;

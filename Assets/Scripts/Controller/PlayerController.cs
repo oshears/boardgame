@@ -8,13 +8,14 @@ using UnityEngine.UI;
 
 using OSGames.BoardGame.Generic;
 using OSGames.BoardGame.Input;
+using OSGames.BoardGame.Interactables;
 
 namespace OSGames.BoardGame.Player {
 
     [RequireComponent(typeof(PlayerModel))]
     [RequireComponent(typeof(PlayerCommandFactory))]
     [RequireComponent(typeof(PlayerActionFactory))]
-    public class PlayerController : Controller, ISubscriber<InputType>, IFactory<PlayerActionProduct,PlayerActionCommand>, IScheduler
+    public class PlayerController : Controller, ISubscriber<InputType>, ISubscriber<InteractableEvent>, IFactory<PlayerActionProduct,PlayerActionCommand>, IScheduler
     {
 
         // Scheduler to execute player actions
@@ -31,6 +32,7 @@ namespace OSGames.BoardGame.Player {
         public PlayerMenuModel PlayerMenu { get { return m_PlayerMenu; } }
 
         IPublisher<InputType> m_InputPublisher;
+        Subscriber<InteractableEvent> m_InteractableEventSubscriber;
 
 
         public enum State {
@@ -39,7 +41,11 @@ namespace OSGames.BoardGame.Player {
             Menu,
 
         }
-        public State m_State;
+        State m_State;
+        public State state {
+            get { return m_State; }
+            set { m_State = value; }
+        } 
 
         protected virtual void Awake(){
             m_Scheduler = new Scheduler();
@@ -51,6 +57,9 @@ namespace OSGames.BoardGame.Player {
             m_InputPublisher = GetComponent<IPublisher<InputType>>();
 
             m_PlayerMenu = GetComponentInChildren<PlayerMenuModel>();
+
+            m_InteractableEventSubscriber = new Subscriber<InteractableEvent>();
+            m_InteractableEventSubscriber.PublisherAction += OnInteractableEvent;
         }
 
         void Start(){
@@ -95,6 +104,24 @@ namespace OSGames.BoardGame.Player {
         public ICommand UndoCommand()
         {
             return m_Scheduler.UndoCommand();
+        }
+
+        public void SubscribeTo(IPublisher<InteractableEvent> publisher)
+        {
+            m_InteractableEventSubscriber.SubscribeTo(publisher);
+        }
+
+        public void UnsubscribeFrom(IPublisher<InteractableEvent> publisher)
+        {
+            m_InteractableEventSubscriber.Unsubscribe();
+        }
+
+        protected virtual void OnInteractableEvent(InteractableEvent interactableEvent){
+            Debug.Log("Recieved event from interactable.");
+            if (interactableEvent.type == InteractableEventType.InteractFinish){
+                Command cmd = new PlayerFinishInteractionCommand(this);
+                ExecuteCommand(cmd);
+            }
         }
     }
 }

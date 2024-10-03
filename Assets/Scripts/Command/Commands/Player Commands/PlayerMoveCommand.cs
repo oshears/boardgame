@@ -30,7 +30,7 @@ namespace OSGames.BoardGame.Player {
             m_PlayerController.PlayerModel.TargetInteractable = null;
 
             // m_PlayerController.PublisherToObserve = m_Publisher;
-            m_PlayerController.m_State = PlayerController.State.InactiveControls;
+            m_PlayerController.state = PlayerController.State.InactiveControls;
             
             m_PlayerController.PlayerModel.StartCoroutine(AICoroutines.WaitNavMeshArrive(m_PlayerController.PlayerModel.Agent, EnableControls));
 
@@ -41,7 +41,7 @@ namespace OSGames.BoardGame.Player {
         }
 
         void EnableControls(){
-            m_PlayerController.m_State = PlayerController.State.ActiveControls;
+            m_PlayerController.state = PlayerController.State.ActiveControls;
         }
 
         

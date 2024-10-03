@@ -29,7 +29,7 @@ namespace OSGames.BoardGame.Player {
         }
 
         protected void EnablePlayer(){
-            m_PlayerController.m_State = PlayerController.State.ActiveControls;
+            m_PlayerController.state = PlayerController.State.ActiveControls;
         }
 
     }

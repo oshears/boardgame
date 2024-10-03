@@ -19,7 +19,7 @@ namespace OSGames.BoardGame.Player {
 
         public bool MenuActive {
             get {return m_MenuActive;}
-            set {m_MenuActive = value;}
+            set {SetMenu(value);}
         }
 
         public virtual bool ToggleMenu(){
