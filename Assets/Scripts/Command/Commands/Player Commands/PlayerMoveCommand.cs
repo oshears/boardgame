@@ -40,7 +40,7 @@ namespace OSGames.BoardGame.Player {
             m_MovementIndicator.ClearHighlight();
         }
 
-        void EnableControls(){
+        void EnableControls() {
             m_PlayerController.state = PlayerController.State.ActiveControls;
         }
 
