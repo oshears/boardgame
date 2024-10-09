@@ -38,7 +38,7 @@ namespace OSGames.BoardGame {
 
         RoomConfiguration m_RoomSO;
 
-        protected void Awake(){
+        virtual protected void Awake(){
             for(int i = 0; i < m_Interactables.Count; i++){
                 m_Interactables[i].SetNext(m_Interactables[(i + 1) % m_Interactables.Count]);
                 m_Interactables[i].SetPrev(m_Interactables[i > 0 ? i - 1 : m_Interactables.Count - 1]);

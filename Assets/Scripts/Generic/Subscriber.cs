@@ -19,6 +19,9 @@ namespace OSGames.BoardGame.Generic {
             }
         }
 
+        /// <summary>
+        /// C# Action indicating the publisher sent some event data
+        /// </summary>
         public event Action<T> PublisherAction;
 
         protected virtual void OnThingHappened(T t)
@@ -38,6 +41,10 @@ namespace OSGames.BoardGame.Generic {
                 m_PublisherToObserve.AddListener(OnThingHappened);
             }
         }
+
+        /// <summary>
+        /// If there was something the subcriber subscribed to, then remove its listener 
+        /// </summary>
         public void Unsubscribe(){
             if (m_PublisherToObserve != null)
             {

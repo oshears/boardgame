@@ -24,13 +24,6 @@ namespace OSGames.BoardGame.Player {
         // public PlayerMenuModel m_PlayerMenu;
 
         
-        [SerializeField]
-        protected RoomModel m_CurrentRoom;
-        public RoomModel CurrentRoom {
-            get { return m_CurrentRoom; }
-            set { m_CurrentRoom = value; }
-        }
-
         [Tooltip("The interactable currently being viewed by the player")]
         [SerializeField] ICycleableInteractable m_CurrentTarget;
 
@@ -96,21 +89,8 @@ namespace OSGames.BoardGame.Player {
             return m_CurrentTarget != null;
         }
 
-        public virtual void Damage(Damage damage){
-            Debug.Log($"Player was hit with: {damage}");
-        }
-
-    }
-
-    public class HealthController {
-        public HealthController(){
-
-        }
-    }
-
-    public class Damage {
         
-        
+
     }
 
 }

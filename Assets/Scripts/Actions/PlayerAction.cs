@@ -9,6 +9,8 @@ namespace OSGames.BoardGame.Actions {
 
         
         [SerializeField] public string Title;
+        // [Multiline]
+        [TextAreaAttribute]
         [SerializeField] public string Description;
         [SerializeField] public int Cost;
         [SerializeField] public Sprite Sprite;

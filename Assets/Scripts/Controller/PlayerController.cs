@@ -47,6 +47,13 @@ namespace OSGames.BoardGame.Player {
             set { m_State = value; }
         } 
 
+        [SerializeField]
+        protected RoomModel m_CurrentRoom;
+        public RoomModel CurrentRoom {
+            get { return m_CurrentRoom; }
+            set { m_CurrentRoom = value; }
+        }
+
         protected virtual void Awake(){
             m_Scheduler = new Scheduler();
             m_CommandFactory = GetComponent<PlayerCommandFactory>();
@@ -122,6 +129,10 @@ namespace OSGames.BoardGame.Player {
                 Command cmd = new PlayerFinishInteractionCommand(this);
                 ExecuteCommand(cmd);
             }
+        }
+
+        public virtual void Damage(Damage damage){
+            Debug.Log($"Player was hit with: {damage}");
         }
     }
 }

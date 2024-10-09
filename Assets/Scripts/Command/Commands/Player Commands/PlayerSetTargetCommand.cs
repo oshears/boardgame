@@ -32,7 +32,7 @@ namespace OSGames.BoardGame.Player {
                 interactable.SetHighlight();
             }
             else{
-                interactable = m_PlayerController.PlayerModel.CurrentRoom.InitialInteractable;
+                interactable = m_PlayerController.CurrentRoom.InitialInteractable;
                 interactable.SetHighlight();
             }
 

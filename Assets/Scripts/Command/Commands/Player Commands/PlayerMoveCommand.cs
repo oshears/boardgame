@@ -24,9 +24,9 @@ namespace OSGames.BoardGame.Player {
             // IMovementIndicator indicator = m_PlayerController.PlayerModel.TargetInteractable.GetComponent<IMovementIndicator>();
             m_PlayerController.PlayerModel.Agent.SetDestination(m_MovementIndicator.GetDestination().position);
             m_PlayerController.PlayerModel.Animator.SetTrigger("Move");
-            m_PlayerController.PlayerModel.CurrentRoom.RemovePlayer(m_PlayerController.PlayerModel);
-            m_PlayerController.PlayerModel.CurrentRoom = m_MovementIndicator.GetDestinationRoom();
-            m_PlayerController.PlayerModel.CurrentRoom.RegisterPlayer(m_PlayerController.PlayerModel);
+            m_PlayerController.CurrentRoom.RemovePlayer(m_PlayerController.PlayerModel);
+            m_PlayerController.CurrentRoom = m_MovementIndicator.GetDestinationRoom();
+            m_PlayerController.CurrentRoom.RegisterPlayer(m_PlayerController.PlayerModel);
             m_PlayerController.PlayerModel.TargetInteractable = null;
 
             // m_PlayerController.PublisherToObserve = m_Publisher;
