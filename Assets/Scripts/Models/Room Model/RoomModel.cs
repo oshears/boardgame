@@ -17,7 +17,11 @@ namespace OSGames.BoardGame {
 
         [SerializeField] Transform m_PlayerStandLocation;
 
-        [SerializeField] List<PlayerModel> m_PlayersInRoom;
+        List<PlayerModel> m_PlayersInRoom;
+        public List<PlayerModel> playersInRoom {
+            get {return m_PlayersInRoom;}
+            set {m_PlayersInRoom = value;}
+        }
 
         ICycleableInteractable m_TargetedInteractable;
         [SerializeField] List<InteractableModel> m_Interactables;
@@ -39,6 +43,9 @@ namespace OSGames.BoardGame {
                 m_Interactables[i].SetNext(m_Interactables[(i + 1) % m_Interactables.Count]);
                 m_Interactables[i].SetPrev(m_Interactables[i > 0 ? i - 1 : m_Interactables.Count - 1]);
             }
+            if (m_PlayersInRoom == null){
+                m_PlayersInRoom = new List<PlayerModel>();
+            } 
         }
 
         public Vector3 GetPlayerStandLocation(){

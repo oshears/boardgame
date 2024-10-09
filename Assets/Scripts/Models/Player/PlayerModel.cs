@@ -96,6 +96,21 @@ namespace OSGames.BoardGame.Player {
             return m_CurrentTarget != null;
         }
 
+        public virtual void Damage(Damage damage){
+            Debug.Log($"Player was hit with: {damage}");
+        }
+
+    }
+
+    public class HealthController {
+        public HealthController(){
+
+        }
+    }
+
+    public class Damage {
+        
+        
     }
 
 }
