@@ -14,6 +14,7 @@ namespace OSGames.BoardGame.Player {
 
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Animator))]
+    [Icon("Packages/com.osgames.boardgame/Assets/Icons/osgames_logo.png")]
     public class PlayerModel : Model, IPlayer, IInteractable {
 
         NavMeshAgent m_Agent;

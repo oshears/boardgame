@@ -15,6 +15,7 @@ namespace OSGames.BoardGame.Player {
     [RequireComponent(typeof(PlayerModel))]
     [RequireComponent(typeof(PlayerCommandFactory))]
     [RequireComponent(typeof(PlayerActionFactory))]
+    [Icon("Packages/com.osgames.boardgame/Assets/Icons/osgames_logo.png")]
     public class PlayerController : Controller, ISubscriber<InputType>, ISubscriber<InteractableEvent>, IFactory<PlayerActionProduct,PlayerActionCommand>, IScheduler
     {
 
