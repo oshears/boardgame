@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 
 namespace OSGames.BoardGame.Generic {
+    
+    [Icon("Packages/com.osgames.boardgame/Assets/Icons/osgames_logo.png")]
     public class Command : ICommand {
 
         // [Tooltip("Execution delay before running the command.")]
