@@ -81,7 +81,7 @@ namespace OSGames.BoardGame.Player {
             m_PlayerEventPublisher = GetComponent<PublisherBehaviour<PlayerEvent>>();
         }
 
-        void Start(){
+        protected virtual void Start(){
             // player input event subscriber
             SubscribeTo(m_InputPublisher);
             

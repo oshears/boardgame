@@ -38,8 +38,6 @@ namespace OSGames.BoardGame.Generic {
         protected virtual void OnThingHappened(T t)
         {
             // any logic that responds to event goes here
-            Debug.Log($"Subscriber responds given: {t}");
-
             PublisherAction?.Invoke(t);
         }
 

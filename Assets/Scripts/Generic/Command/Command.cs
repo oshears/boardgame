@@ -24,7 +24,7 @@ namespace OSGames.BoardGame.Generic {
                 e_ExecutionDone();
             }
             else{
-                Debug.LogError("done execution invoked with no active listeners.");
+                Debug.LogError($"done execution invoked with no active listeners called with {this}");
             }
         }
     }
