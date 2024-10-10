@@ -12,15 +12,30 @@ using OSGames.BoardGame.Interactables;
 
 namespace OSGames.BoardGame {
 
-    public abstract class MobDirector<T> : MonoBehaviour {
+    
+    [RequireComponent(typeof(SubscriberBehaviour<PhaseEvent>))]
+    // [RequireComponent(typeof(PublisherBehaviour<MobDirectorEvent<T>>))]
+    [Icon("Packages/com.osgames.boardgame/Assets/Icons/osgames_logo.png")]
+    public abstract class MobDirector<T> : Controller {
 
-        // [SerializeField] List<T> m_MobControllers;
+        SubscriberBehaviour<PhaseEvent> m_PhaseEventSubscriber;
 
-        // public virtual void ExecuteMobActions(){
-        //     foreach (T mobController in m_MobControllers){
-        //         // execute command on generic scheduler?
-        //     }
-        // }
+        PublisherBehaviour<MobDirectorEvent<T>> m_Publisher;
+        public PublisherBehaviour<MobDirectorEvent<T>> publisher {
+            get { return m_Publisher; }
+        }
+
+        protected virtual void Awake(){
+            m_PhaseEventSubscriber = GetComponent<SubscriberBehaviour<PhaseEvent>>();
+            m_PhaseEventSubscriber.PublisherAction += OnPhaseEvent;
+
+            m_Publisher = GetComponent<PublisherBehaviour<MobDirectorEvent<T>>>();
+
+        }
+
+        protected virtual void OnPhaseEvent(PhaseEvent phaseEvent){
+            
+        }
 
     }
 

@@ -15,6 +15,8 @@ namespace OSGames.BoardGame.Player {
     [RequireComponent(typeof(PlayerModel))]
     [RequireComponent(typeof(PlayerCommandFactory))]
     [RequireComponent(typeof(PlayerActionFactory))]
+    [RequireComponent(typeof(PhaseEventSubscriber))]
+    [RequireComponent(typeof(PlayerEventPublisher))]
     [Icon("Packages/com.osgames.boardgame/Assets/Icons/osgames_logo.png")]
     public class PlayerController : Controller, ISubscriber<InputType>, ISubscriber<InteractableEvent>, IFactory<PlayerActionProduct,PlayerActionCommand>, IScheduler
     {
@@ -35,6 +37,12 @@ namespace OSGames.BoardGame.Player {
         IPublisher<InputType> m_InputPublisher;
         Subscriber<InteractableEvent> m_InteractableEventSubscriber;
 
+        
+        SubscriberBehaviour<PhaseEvent> m_PhaseEventSubscriber;
+        PublisherBehaviour<PlayerEvent> m_PlayerEventPublisher;
+        public PublisherBehaviour<PlayerEvent> publisher {
+            get {return m_PlayerEventPublisher; }
+        }
 
         public enum State {
             ActiveControls,
@@ -68,6 +76,11 @@ namespace OSGames.BoardGame.Player {
 
             m_InteractableEventSubscriber = new Subscriber<InteractableEvent>();
             m_InteractableEventSubscriber.PublisherAction += OnInteractableEvent;
+
+            m_PhaseEventSubscriber = GetComponent<SubscriberBehaviour<PhaseEvent>>();
+            m_PhaseEventSubscriber.PublisherAction += OnPhaseEvent;
+
+            m_PlayerEventPublisher = GetComponent<PublisherBehaviour<PlayerEvent>>();
         }
 
         void Start(){
@@ -134,6 +147,10 @@ namespace OSGames.BoardGame.Player {
 
         public virtual void Damage(Damage damage){
             Debug.Log($"Player was hit with: {damage}");
+        }
+
+        protected virtual void OnPhaseEvent(PhaseEvent phaseEvent){
+            
         }
     }
 }

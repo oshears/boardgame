@@ -16,10 +16,6 @@ namespace OSGames.BoardGame.Generic {
             ThingHappened(t);
         }
 
-        public Action<T> GetAction(){
-            return ThingHappened;
-        } 
-
         public void AddListener(Action<T> func){
             ThingHappened += func;
         }

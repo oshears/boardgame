@@ -3,6 +3,7 @@ using UnityEngine;
 namespace OSGames.BoardGame.Actions {
 
     // [CreateAssetMenu(fileName = "Room Action", menuName = "Board Game/Room Action", order = 0)]
+    [Icon("Assets/Icons/osgames_scriptable_object.png")]
     public class PlayerAction : ScriptableObject {
 
         // define constraints for this action to be valid
