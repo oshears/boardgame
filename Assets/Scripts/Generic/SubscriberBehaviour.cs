@@ -10,7 +10,7 @@ namespace OSGames.BoardGame.Generic {
 
     public abstract class SubscriberBehaviour<T> : MonoBehaviour, ISubscriber<T>
     {
-        [SerializeField] private List<IPublisher<T>> m_InitialPublishersToObserve;
+        [SerializeField] private List<PublisherBehaviour<T>> m_InitialPublishersToObserve;
 
         Subscriber<T> m_Subscriber;
 
@@ -28,10 +28,11 @@ namespace OSGames.BoardGame.Generic {
             m_Subscriber = new Subscriber<T>();
 
             if (m_InitialPublishersToObserve != null){
-                m_Subscriber.SubscribeTo(m_InitialPublishersToObserve);
+                // m_Subscriber.SubscribeTo(m_InitialPublishersToObserve);
+                m_InitialPublishersToObserve.ForEach(publisher => m_Subscriber.SubscribeTo(publisher));
             }
             else{
-                 m_InitialPublishersToObserve = new List<IPublisher<T>>();
+                 m_InitialPublishersToObserve = new List<PublisherBehaviour<T>>();
             }
 
             m_Subscriber.PublisherAction += OnThingHappened;
