@@ -9,13 +9,14 @@ using UnityEngine.UI;
 using OSGames.BoardGame.Generic;
 using OSGames.BoardGame.Input;
 using OSGames.BoardGame.Interactables;
+using UnityEngine.InputSystem;
 
 namespace OSGames.BoardGame.Player {
 
     [RequireComponent(typeof(PlayerModel))]
     [RequireComponent(typeof(PlayerCommandFactory))]
     [RequireComponent(typeof(PlayerActionFactory))]
-    [RequireComponent(typeof(PhaseEventSubscriber))]
+    // [RequireComponent(typeof(PhaseEventSubscriber))]
     [RequireComponent(typeof(PlayerEventPublisher))]
     [Icon("Packages/com.osgames.boardgame/Assets/Icons/osgames_logo.png")]
     public class PlayerController : Controller, ISubscriber<InputType>, ISubscriber<InteractableEvent>, IFactory<PlayerActionProduct,PlayerActionCommand>, IScheduler
@@ -38,7 +39,7 @@ namespace OSGames.BoardGame.Player {
         Subscriber<InteractableEvent> m_InteractableEventSubscriber;
 
         
-        SubscriberBehaviour<PhaseEvent> m_PhaseEventSubscriber;
+        // SubscriberBehaviour<PhaseEvent> m_PhaseEventSubscriber;
         PublisherBehaviour<PlayerEvent> m_PlayerEventPublisher;
         public PublisherBehaviour<PlayerEvent> publisher {
             get {return m_PlayerEventPublisher; }
@@ -50,14 +51,13 @@ namespace OSGames.BoardGame.Player {
             Menu,
 
         }
-        State m_State;
+        State m_State = State.InactiveControls;
         public State state {
             get { return m_State; }
             set { m_State = value; }
         } 
 
-        [SerializeField]
-        protected RoomModel m_CurrentRoom;
+        [SerializeField] protected RoomModel m_CurrentRoom;
         public RoomModel CurrentRoom {
             get { return m_CurrentRoom; }
             set { m_CurrentRoom = value; }
@@ -76,15 +76,18 @@ namespace OSGames.BoardGame.Player {
 
             m_InteractableEventSubscriber = new Subscriber<InteractableEvent>();
 
-            m_PhaseEventSubscriber = GetComponent<SubscriberBehaviour<PhaseEvent>>();
+            // m_PhaseEventSubscriber = GetComponent<SubscriberBehaviour<PhaseEvent>>();
 
             m_PlayerEventPublisher = GetComponent<PublisherBehaviour<PlayerEvent>>();
         }
 
         void Start(){
+            // player input event subscriber
             SubscribeTo(m_InputPublisher);
+            
+            // interactable event subscriber
             m_InteractableEventSubscriber.PublisherAction += OnInteractableEvent;
-            m_PhaseEventSubscriber.PublisherAction += OnPhaseEvent;
+            // m_PhaseEventSubscriber.PublisherAction += OnPhaseEvent;
         }
 
         void OnDestroy(){
@@ -149,9 +152,9 @@ namespace OSGames.BoardGame.Player {
             Debug.Log($"Player was hit with: {damage}");
         }
 
-        protected virtual void OnPhaseEvent(PhaseEvent phaseEvent){
-            Command cmd = new ProcessPlayerPhaseEventCommand(this,phaseEvent);
-            cmd.Execute();
-        }
+        // protected virtual void OnPhaseEvent(PhaseEvent phaseEvent){
+        //     Command cmd = new ProcessPlayerPhaseEventCommand(this,phaseEvent);
+        //     cmd.Execute();
+        // }
     }
 }

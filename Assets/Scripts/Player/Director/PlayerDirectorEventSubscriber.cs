@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OSGames.BoardGame {
 
-    public class PlayerEventPublisher : PublisherBehaviour<PlayerEvent> {
+    public class PlayerDirectorEventSubscriber : SubscriberBehaviour<PlayerDirectorEvent> {
         
     }
 

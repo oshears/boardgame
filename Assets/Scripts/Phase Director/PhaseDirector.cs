@@ -15,7 +15,7 @@ namespace OSGames.BoardGame{
     [Icon("Packages/com.osgames.boardgame/Assets/Icons/osgames_logo.png")]
     [RequireComponent(typeof(PhaseEventPublisher))]
     [RequireComponent(typeof(PhaseDirectorModel))]
-    [RequireComponent(typeof(PlayerEventSubscriber))]
+    [RequireComponent(typeof(PlayerDirectorEventSubscriber))]
     // [RequireComponent(typeof(MobDirectorEventSubscriber<Controller>))]
     public class PhaseDirector : Controller {
         ///
@@ -28,7 +28,7 @@ namespace OSGames.BoardGame{
         [Min(0)]
         [SerializeField] int m_CurrentPhase;
 
-        SubscriberBehaviour<PlayerEvent> m_PlayerEventSubscriber;
+        PlayerDirectorEventSubscriber m_PlayerDirectorEventSubscriber;
         // SubscriberBehaviour<MobDirectorEvent<Controller>> m_MobDirectorEventSubscriber;
         // public SubscriberBehaviour<MobDirectorEvent<Controller>> mobDirectorSubscriber {
         //     get { return m_MobDirectorEventSubscriber; }
@@ -51,11 +51,11 @@ namespace OSGames.BoardGame{
         protected virtual void Awake(){
             m_Publisher = GetComponent<PublisherBehaviour<PhaseEvent>>();
             m_PhaseDirectorModel = GetComponent<PhaseDirectorModel>();
-            m_PlayerEventSubscriber = GetComponent<PlayerEventSubscriber>();
+            m_PlayerDirectorEventSubscriber = GetComponent<PlayerDirectorEventSubscriber>();
         }
 
         protected virtual void Start(){
-            m_PlayerEventSubscriber.PublisherAction += OnPlayerEvent;
+            m_PlayerDirectorEventSubscriber.PublisherAction += OnPlayerDirectorEvent;
             // m_MobDirectorEventSubscriber.PublisherAction += OnMobDirectorEvent;
         }   
 
@@ -71,7 +71,7 @@ namespace OSGames.BoardGame{
 
         
 
-        protected virtual void OnPlayerEvent(PlayerEvent playerEvent){
+        protected virtual void OnPlayerDirectorEvent(PlayerDirectorEvent playerDirectorEvent){
             Debug.Log("Received message from player controller");
         }
 

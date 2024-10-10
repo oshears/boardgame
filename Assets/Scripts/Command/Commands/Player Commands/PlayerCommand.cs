@@ -25,6 +25,16 @@ namespace OSGames.BoardGame.Player {
             // ActionMenu.RequestAction(m_RoomAction);
         }
 
+        protected virtual void NotifySubscribers(){
+            m_PlayerController.publisher.Publish(new PlayerEvent(m_PlayerController,PlayerEventType.ExecuteAction));
+        }
+
+        protected override void DoneExecution()
+        {
+            base.DoneExecution();
+            NotifySubscribers();
+        }
+
         // public virtual void Undo(){
 
         // }

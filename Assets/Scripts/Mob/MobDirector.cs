@@ -13,22 +13,21 @@ using OSGames.BoardGame.Interactables;
 namespace OSGames.BoardGame {
 
     
-    [RequireComponent(typeof(SubscriberBehaviour<PhaseEvent>))]
-    // [RequireComponent(typeof(PublisherBehaviour<MobDirectorEvent<T>>))]
+    [RequireComponent(typeof(PhaseEventSubscriber))]
+    // [RequireComponent(typeof(MobDirectorEventPublisher<T>))]
     [Icon("Packages/com.osgames.boardgame/Assets/Icons/osgames_logo.png")]
     public abstract class MobDirector<T> : Controller {
 
-        SubscriberBehaviour<PhaseEvent> m_PhaseEventSubscriber;
-
-        PublisherBehaviour<MobDirectorEvent<T>> m_Publisher;
-        public PublisherBehaviour<MobDirectorEvent<T>> publisher {
+        PhaseEventSubscriber m_PhaseEventSubscriber;
+        MobDirectorEventPublisher<T> m_Publisher;
+        public MobDirectorEventPublisher<T> publisher {
             get { return m_Publisher; }
         }
 
         protected virtual void Awake(){
-            m_PhaseEventSubscriber = GetComponent<SubscriberBehaviour<PhaseEvent>>();
+            m_PhaseEventSubscriber = GetComponent<PhaseEventSubscriber>();
 
-            m_Publisher = GetComponent<PublisherBehaviour<MobDirectorEvent<T>>>();
+            m_Publisher = GetComponent<MobDirectorEventPublisher<T>>();
 
         }
 
