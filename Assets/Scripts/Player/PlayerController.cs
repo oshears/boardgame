@@ -75,16 +75,16 @@ namespace OSGames.BoardGame.Player {
             m_PlayerMenu = GetComponentInChildren<PlayerMenuModel>();
 
             m_InteractableEventSubscriber = new Subscriber<InteractableEvent>();
-            m_InteractableEventSubscriber.PublisherAction += OnInteractableEvent;
 
             m_PhaseEventSubscriber = GetComponent<SubscriberBehaviour<PhaseEvent>>();
-            m_PhaseEventSubscriber.PublisherAction += OnPhaseEvent;
 
             m_PlayerEventPublisher = GetComponent<PublisherBehaviour<PlayerEvent>>();
         }
 
         void Start(){
             SubscribeTo(m_InputPublisher);
+            m_InteractableEventSubscriber.PublisherAction += OnInteractableEvent;
+            m_PhaseEventSubscriber.PublisherAction += OnPhaseEvent;
         }
 
         void OnDestroy(){
@@ -150,7 +150,8 @@ namespace OSGames.BoardGame.Player {
         }
 
         protected virtual void OnPhaseEvent(PhaseEvent phaseEvent){
-            
+            Command cmd = new ProcessPlayerPhaseEventCommand(this,phaseEvent);
+            cmd.Execute();
         }
     }
 }

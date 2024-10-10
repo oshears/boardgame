@@ -16,10 +16,12 @@ namespace OSGames.BoardGame {
             if (m_PhaseDirector.state == PhaseState.EventPhase) {
                 PhaseEvent phaseEvent = new PhaseEvent(m_PhaseDirector, PhaseEventType.StartEventPhase);
                 m_PhaseDirector.publisher.Publish(phaseEvent);
+                m_PhaseDirector.state = PhaseState.PlayerPhase;
             }
             else {
                 PhaseEvent phaseEvent = new PhaseEvent(m_PhaseDirector, PhaseEventType.StartPlayerPhase);
                 m_PhaseDirector.publisher.Publish(phaseEvent);
+                m_PhaseDirector.state = PhaseState.EventPhase;
             }
         }
     }

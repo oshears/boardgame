@@ -26,15 +26,12 @@ namespace OSGames.BoardGame.Generic {
         void Awake(){
            
             m_Subscriber = new Subscriber<T>();
+            
+            if (m_InitialPublishersToObserve == null) m_InitialPublishersToObserve = new List<PublisherBehaviour<T>>();
+        }
 
-            if (m_InitialPublishersToObserve != null){
-                // m_Subscriber.SubscribeTo(m_InitialPublishersToObserve);
-                m_InitialPublishersToObserve.ForEach(publisher => m_Subscriber.SubscribeTo(publisher));
-            }
-            else{
-                 m_InitialPublishersToObserve = new List<PublisherBehaviour<T>>();
-            }
-
+        void Start(){
+            m_InitialPublishersToObserve.ForEach(publisher => m_Subscriber.SubscribeTo(publisher));
             m_Subscriber.PublisherAction += OnThingHappened;
         }
 

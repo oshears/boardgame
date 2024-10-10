@@ -27,10 +27,13 @@ namespace OSGames.BoardGame {
 
         protected virtual void Awake(){
             m_PhaseEventSubscriber = GetComponent<SubscriberBehaviour<PhaseEvent>>();
-            m_PhaseEventSubscriber.PublisherAction += OnPhaseEvent;
 
             m_Publisher = GetComponent<PublisherBehaviour<MobDirectorEvent<T>>>();
 
+        }
+
+        void Start(){
+            m_PhaseEventSubscriber.PublisherAction += OnPhaseEvent;
         }
 
         protected virtual void OnPhaseEvent(PhaseEvent phaseEvent){
