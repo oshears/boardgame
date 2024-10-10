@@ -27,6 +27,7 @@ namespace OSGames.BoardGame.Generic {
 
 
         public virtual void InitializeDeck(){
+            ListFunctions.ShuffleList(m_ActionPool);
             m_ActionStack = new Stack<T>(m_ActionPool);
             m_DiscardedActions = new List<T>();
         }

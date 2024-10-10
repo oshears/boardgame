@@ -12,7 +12,6 @@ namespace OSGames.BoardGame{
     /// <summary>
     /// Class that controls the flow of the game.
     /// </summary>
-    [Icon("Packages/com.osgames.boardgame/Assets/Icons/osgames_logo.png")]
     [RequireComponent(typeof(PhaseEventPublisher))]
     [RequireComponent(typeof(PhaseDirectorModel))]
     [RequireComponent(typeof(PlayerDirectorEventSubscriber))]
@@ -72,7 +71,7 @@ namespace OSGames.BoardGame{
         
 
         protected virtual void OnPlayerDirectorEvent(PlayerDirectorEvent playerDirectorEvent){
-            Debug.Log("Received message from player controller");
+            ExecuteNextPhase();
         }
 
     }
