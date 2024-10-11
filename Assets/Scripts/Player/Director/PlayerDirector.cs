@@ -36,9 +36,10 @@ namespace OSGames.BoardGame {
 
         public int currentPlayerTurn;
 
-        [SerializeField] List<PlayerController> m_Players;
+        List<PlayerController> m_Players;
         public List<PlayerController> players {
             get { return m_Players; }
+            set { m_Players = value; }
         }
 
         protected virtual void Awake(){
