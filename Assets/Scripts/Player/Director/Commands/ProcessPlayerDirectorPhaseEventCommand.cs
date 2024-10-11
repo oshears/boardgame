@@ -19,9 +19,13 @@ namespace OSGames.BoardGame {
 
             if (m_PhaseEvent.eventType == PhaseEventType.StartPlayerPhase){
                 // m_PlayerController.state = PlayerController.State.ActiveControls;
-                
+
+                PlayerController playerController = m_PlayerDirector.players[0];
+
+                playerController.StartTurn();
+
                 //@TODO: Activate first player controls
-                m_PlayerDirector.players[0].state = PlayerController.State.ActiveControls;
+                playerController.state = PlayerController.State.ActiveControls;
                 // PlayerDirectorEvent directorEvent = new PlayerDirectorEvent(playerDirector);
                 // m_PlayerDirector.publisher.Publish(directorEvent);
             }

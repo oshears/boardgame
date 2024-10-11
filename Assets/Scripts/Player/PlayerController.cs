@@ -152,6 +152,10 @@ namespace OSGames.BoardGame.Player {
             Debug.Log($"Player was hit with: {damage}");
         }
 
+        public virtual void StartTurn(){
+            
+        }
+
         // protected virtual void OnPhaseEvent(PhaseEvent phaseEvent){
         //     Command cmd = new ProcessPlayerPhaseEventCommand(this,phaseEvent);
         //     cmd.Execute();

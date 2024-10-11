@@ -29,9 +29,9 @@ namespace OSGames.BoardGame.Player {
             m_PlayerController.publisher.Publish(new PlayerEvent(m_PlayerController,PlayerEventType.ExecuteAction));
         }
 
-        protected override void DoneExecution()
+        protected override void FinishExecution()
         {
-            base.DoneExecution();
+            base.FinishExecution();
             NotifySubscribers();
         }
 

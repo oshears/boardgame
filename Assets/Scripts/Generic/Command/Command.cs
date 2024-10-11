@@ -19,7 +19,7 @@ namespace OSGames.BoardGame.Generic {
             Debug.Log($"Undone Command! {this}");
         }
 
-        protected virtual void DoneExecution(){
+        protected virtual void FinishExecution(){
             if (e_ExecutionDone != null){
                 e_ExecutionDone();
             }
