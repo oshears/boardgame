@@ -7,5 +7,6 @@ namespace OSGames.BoardGame.Input {
     ToggleMenu,
     Back,
     Execute,
+    PassTurn,
     }
 }

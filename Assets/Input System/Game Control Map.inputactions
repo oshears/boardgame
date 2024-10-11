@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pass Turn",
+                    "type": "Button",
+                    "id": "270de539-5a07-4d87-8ee2-a95dc1213989",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -201,6 +210,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Execute",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f7ad867-c787-4187-8bba-20a9e6aab063",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Hold(duration=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pass Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f824d0f-ab02-4309-8fbb-da96f3f06541",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Hold(duration=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pass Turn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

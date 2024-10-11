@@ -15,6 +15,7 @@ namespace OSGames.BoardGame.Player {
         override public void Execute(){
             Debug.Log("Enabling player controls!");
             m_PlayerController.state = PlayerController.State.ActiveControls;
+            m_PlayerController.publisher.Publish(new PlayerEvent(m_PlayerController,PlayerEventType.ExecuteAction));
         }
 
     }

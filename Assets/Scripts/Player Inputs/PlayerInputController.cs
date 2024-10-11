@@ -101,5 +101,12 @@ namespace OSGames.BoardGame.Input {
                 Publish(InputType.Execute);
             }
         }
+
+        public void OnPassTurn(InputAction.CallbackContext context)
+        {
+            if (context.performed){
+                Publish(InputType.PassTurn);
+            }
+        }
     }
 }

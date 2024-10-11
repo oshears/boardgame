@@ -13,15 +13,15 @@ namespace OSGames.BoardGame {
         }
 
         override public void Execute(){
-            if (m_PhaseDirector.state == PhaseState.EventPhase) {
+            if (m_PhaseDirector.state == PhaseState.PlayerPhase ) {
+                m_PhaseDirector.state = PhaseState.EventPhase;
                 PhaseEvent phaseEvent = new PhaseEvent(m_PhaseDirector, PhaseEventType.StartEventPhase);
                 m_PhaseDirector.publisher.Publish(phaseEvent);
-                m_PhaseDirector.state = PhaseState.PlayerPhase;
             }
             else {
+                m_PhaseDirector.state = PhaseState.PlayerPhase;
                 PhaseEvent phaseEvent = new PhaseEvent(m_PhaseDirector, PhaseEventType.StartPlayerPhase);
                 m_PhaseDirector.publisher.Publish(phaseEvent);
-                m_PhaseDirector.state = PhaseState.EventPhase;
             }
         }
     }

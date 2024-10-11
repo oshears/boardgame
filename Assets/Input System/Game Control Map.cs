@@ -80,6 +80,15 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pass Turn"",
+                    ""type"": ""Button"",
+                    ""id"": ""270de539-5a07-4d87-8ee2-a95dc1213989"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -225,6 +234,28 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
                     ""action"": ""Execute"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f7ad867-c787-4187-8bba-20a9e6aab063"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Hold(duration=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pass Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f824d0f-ab02-4309-8fbb-da96f3f06541"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": ""Hold(duration=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pass Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -245,6 +276,7 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
         m_ActivePlayerControls_CycleRight = m_ActivePlayerControls.FindAction("Cycle Right", throwIfNotFound: true);
         m_ActivePlayerControls_Back = m_ActivePlayerControls.FindAction("Back", throwIfNotFound: true);
         m_ActivePlayerControls_Execute = m_ActivePlayerControls.FindAction("Execute", throwIfNotFound: true);
+        m_ActivePlayerControls_PassTurn = m_ActivePlayerControls.FindAction("Pass Turn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -312,6 +344,7 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_ActivePlayerControls_CycleRight;
     private readonly InputAction m_ActivePlayerControls_Back;
     private readonly InputAction m_ActivePlayerControls_Execute;
+    private readonly InputAction m_ActivePlayerControls_PassTurn;
     public struct ActivePlayerControlsActions
     {
         private @GameControlMap m_Wrapper;
@@ -322,6 +355,7 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
         public InputAction @CycleRight => m_Wrapper.m_ActivePlayerControls_CycleRight;
         public InputAction @Back => m_Wrapper.m_ActivePlayerControls_Back;
         public InputAction @Execute => m_Wrapper.m_ActivePlayerControls_Execute;
+        public InputAction @PassTurn => m_Wrapper.m_ActivePlayerControls_PassTurn;
         public InputActionMap Get() { return m_Wrapper.m_ActivePlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -349,6 +383,9 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
             @Execute.started += instance.OnExecute;
             @Execute.performed += instance.OnExecute;
             @Execute.canceled += instance.OnExecute;
+            @PassTurn.started += instance.OnPassTurn;
+            @PassTurn.performed += instance.OnPassTurn;
+            @PassTurn.canceled += instance.OnPassTurn;
         }
 
         private void UnregisterCallbacks(IActivePlayerControlsActions instance)
@@ -371,6 +408,9 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
             @Execute.started -= instance.OnExecute;
             @Execute.performed -= instance.OnExecute;
             @Execute.canceled -= instance.OnExecute;
+            @PassTurn.started -= instance.OnPassTurn;
+            @PassTurn.performed -= instance.OnPassTurn;
+            @PassTurn.canceled -= instance.OnPassTurn;
         }
 
         public void RemoveCallbacks(IActivePlayerControlsActions instance)
@@ -405,5 +445,6 @@ public partial class @GameControlMap: IInputActionCollection2, IDisposable
         void OnCycleRight(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
         void OnExecute(InputAction.CallbackContext context);
+        void OnPassTurn(InputAction.CallbackContext context);
     }
 }
