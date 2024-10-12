@@ -37,7 +37,7 @@ namespace OSGames.BoardGame {
         public int currentPlayerTurn;
 
         List<PlayerController> m_Players;
-        public List<PlayerController> players {
+        public virtual List<PlayerController> players {
             get { return m_Players; }
             set { m_Players = value; }
         }

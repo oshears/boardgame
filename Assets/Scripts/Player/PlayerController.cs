@@ -57,8 +57,8 @@ namespace OSGames.BoardGame.Player {
             set { m_State = value; }
         } 
 
-        [SerializeField] protected RoomModel m_CurrentRoom;
-        public RoomModel CurrentRoom {
+        protected RoomController m_CurrentRoom;
+        public RoomController CurrentRoom {
             get { return m_CurrentRoom; }
             set { m_CurrentRoom = value; }
         }

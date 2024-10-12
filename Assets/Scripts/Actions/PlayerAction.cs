@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using OSGames.BoardGame.Generic;
+
 namespace OSGames.BoardGame.Actions {
 
     // [CreateAssetMenu(fileName = "Room Action", menuName = "Board Game/Room Action", order = 0)]
@@ -17,8 +19,11 @@ namespace OSGames.BoardGame.Actions {
         [SerializeField] public Sprite Sprite;
         [SerializeField] public Color Color;
         // [SerializeField] public int Level;
-
         [SerializeField] public ActionRestriction Restriction;
+
+        public virtual ActionType baseActionType {
+            get{ return ActionType.Basic; }
+        }
 
         public ActionType BaseActionType {
             get {return GetActionType();}

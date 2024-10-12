@@ -13,12 +13,12 @@ namespace OSGames.BoardGame {
 
     public class MovementInteractableModel : InteractableModel, IMovementIndicator {
 
-        [SerializeField] RoomModel m_DestinationRoom;
+        [SerializeField] RoomController m_DestinationRoom;
         public Transform GetDestination(){
-            return m_DestinationRoom.GetPlayerStandTransform();
+            return m_DestinationRoom.RoomModel.GetPlayerStandTransform();
         }
 
-        public RoomModel GetDestinationRoom(){
+        public RoomController GetDestinationRoom(){
             return m_DestinationRoom;
         }
 

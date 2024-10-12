@@ -7,9 +7,13 @@ namespace OSGames.BoardGame.Generic {
     public class Command : ICommand {
 
         // [Tooltip("Execution delay before running the command.")]
-        public float Delay;
+        // public float Delay;
 
         public event Action e_ExecutionDone;
+
+        public Command(){
+            
+        }
 
         public virtual void Execute() {
             Debug.Log($"Executed Command! {this}");

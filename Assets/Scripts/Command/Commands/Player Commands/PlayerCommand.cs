@@ -11,6 +11,10 @@ namespace OSGames.BoardGame.Player {
         protected PlayerController m_PlayerController;
         public PlayerController PlayerController {get {return m_PlayerController;}}
 
+        public PlayerCommand(){
+            
+        }
+
 
         public PlayerCommand(PlayerController playerController){
             SetPlayerController(playerController);

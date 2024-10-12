@@ -14,7 +14,7 @@ namespace OSGames.BoardGame.Interactables {
 
     public class InteractableModel : Model, ICycleableInteractable, IActionHolder {
 
-        [SerializeField] protected InteractableConfig m_InteractableConfig;
+        protected InteractableConfig m_InteractableConfig;
 
         ICycleableInteractable m_NextInteractable;
         public ICycleableInteractable NextInteractable { 

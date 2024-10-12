@@ -10,7 +10,8 @@
     "licensesUrl": "https://github.com/oshears/boardgame",
     "dependencies": {
         "com.unity.textmeshpro": "3.0.9",
-        "com.unity.inputsystem": "1.7.0"
+        "com.unity.inputsystem": "1.7.0",
+        "com.mackysoft.serializereference-extensions": "1.4.0"
     },
     "keywords": [
         "Board Game"

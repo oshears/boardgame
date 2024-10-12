@@ -7,7 +7,7 @@ namespace OSGames.BoardGame {
     public interface IMovementIndicator : IInteractable {
         public Transform GetDestination();
 
-        public RoomModel GetDestinationRoom();
+        public RoomController GetDestinationRoom();
 
     }
 
