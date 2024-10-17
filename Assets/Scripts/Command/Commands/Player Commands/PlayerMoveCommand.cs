@@ -21,13 +21,13 @@ namespace OSGames.BoardGame.Player {
 
         override public void Execute(){
             
-            // IMovementIndicator indicator = m_PlayerController.PlayerModel.TargetInteractable.GetComponent<IMovementIndicator>();
+            // IMovementIndicator indicator = m_PlayerController.TargetInteractable.GetComponent<IMovementIndicator>();
             m_PlayerController.PlayerModel.Agent.SetDestination(m_MovementIndicator.GetDestination().position);
             m_PlayerController.PlayerModel.Animator.SetTrigger("Move");
-            m_PlayerController.CurrentRoom.RoomModel.RemovePlayer(m_PlayerController.PlayerModel);
+            m_PlayerController.CurrentRoom.RemovePlayer(m_PlayerController);
             m_PlayerController.CurrentRoom = m_MovementIndicator.GetDestinationRoom();
-            m_PlayerController.CurrentRoom.RoomModel.RegisterPlayer(m_PlayerController.PlayerModel);
-            m_PlayerController.PlayerModel.TargetInteractable = null;
+            m_PlayerController.CurrentRoom.RegisterPlayer(m_PlayerController);
+            m_PlayerController.targetInteractableIndex = -1;
 
             // m_PlayerController.PublisherToObserve = m_Publisher;
             m_PlayerController.state = PlayerController.State.InactiveControls;

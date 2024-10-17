@@ -30,10 +30,11 @@ namespace OSGames.BoardGame.Player {
 
         public UnityEvent e_RotatePlayer;
 
-        public ICycleableInteractable TargetInteractable {
-            get { return m_CurrentTarget;} 
-            set {m_CurrentTarget = value;}    
-        }
+        // public ICycleableInteractable TargetInteractable {
+        //     get { return m_CurrentTarget;} 
+        //     set {m_CurrentTarget = value;}    
+        // }
+        
 
         protected virtual void Awake(){
             m_Agent = GetComponent<NavMeshAgent>();

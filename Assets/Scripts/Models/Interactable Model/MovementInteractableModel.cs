@@ -13,9 +13,14 @@ namespace OSGames.BoardGame {
 
     public class MovementInteractableModel : InteractableModel, IMovementIndicator {
 
-        [SerializeField] RoomController m_DestinationRoom;
+        [SerializeField] protected RoomController m_DestinationRoom;
+
+        public RoomController destinationRoom {
+            get { return m_DestinationRoom;}
+            set { m_DestinationRoom = value;}
+        }
         public Transform GetDestination(){
-            return m_DestinationRoom.RoomModel.GetPlayerStandTransform();
+            return m_DestinationRoom.GetPlayerStandTransform();
         }
 
         public RoomController GetDestinationRoom(){

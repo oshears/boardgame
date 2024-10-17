@@ -63,6 +63,16 @@ namespace OSGames.BoardGame.Player {
             set { m_CurrentRoom = value; }
         }
 
+
+        [NonSerialized]
+        public int targetInteractableIndex = -1;
+
+        public InteractableModel TargetInteractable {
+            get{
+                return m_CurrentRoom.interactables[targetInteractableIndex];
+            }
+        }
+
         protected virtual void Awake(){
             m_Scheduler = new Scheduler();
             m_CommandFactory = GetComponent<PlayerCommandFactory>();

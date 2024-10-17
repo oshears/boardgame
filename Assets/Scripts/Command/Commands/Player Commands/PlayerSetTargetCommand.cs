@@ -6,6 +6,7 @@ using OSGames.BoardGame.Interactables;
 // using D
 
 using OSGames.BoardGame;
+using OSGames.BoardGame.Generic;
 
 namespace OSGames.BoardGame.Player {
     
@@ -22,21 +23,25 @@ namespace OSGames.BoardGame.Player {
             // rotate player to look at the interactable
             // m_PlayerController.transform.LookAt(m_Target);
             // m_m_PlayerController.transform.position
-            ICycleableInteractable interactable = m_PlayerController.PlayerModel.TargetInteractable;
+            // ICycleableInteractable interactable = m_PlayerController.TargetInteractable;
+            m_PlayerController.targetInteractableIndex = (m_PlayerController.targetInteractableIndex + 1) % m_PlayerController.CurrentRoom.interactables.Count;
+            IInteractable interactable = m_PlayerController.CurrentRoom.interactables[m_PlayerController.targetInteractableIndex];
+            
             if (interactable != null){
                 // for now this is ok, but this should probably be moved later (local to the interactable)
                 interactable.ClearHighlight();
-                interactable = m_TowardsRight ? interactable.GetNext() : interactable.GetPrev();
+                // interactable = m_TowardsRight ? interactable.GetNext() : interactable.GetPrev();
+
                 
                 // m_PlayerController.PlayerModel.RoomModel.TargetedInteractable = interactable;
                 interactable.SetHighlight();
             }
             else{
-                interactable = m_PlayerController.CurrentRoom.RoomModel.InitialInteractable;
+                interactable = m_PlayerController.CurrentRoom.InitialInteractable;
                 interactable.SetHighlight();
             }
 
-            m_PlayerController.PlayerModel.TargetInteractable = interactable;
+            // m_PlayerController.TargetInteractable = interactable;
 
             Transform  target = interactable.GetLookPosition().transform;
             
@@ -58,7 +63,7 @@ namespace OSGames.BoardGame.Player {
 
             // TODO: what if the alien is blocking the way?? what if the players can't see past it?? or other players??
             // maybe it'd be a good idea to have the alternative top view for this case
-            // m_PlayerController.PlayerModel.TargetInteractable = target.GetComponent<InteractableModel>();
+            // m_PlayerController.TargetInteractable = target.GetComponent<InteractableModel>();
 
 
             m_PlayerController.PlayerModel.e_RotatePlayer.Invoke();
