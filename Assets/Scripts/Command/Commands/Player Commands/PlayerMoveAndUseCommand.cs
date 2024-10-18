@@ -15,7 +15,7 @@ namespace OSGames.BoardGame.Player {
 
         override public void Execute(){
 
-            ICycleableInteractable interactable = PlayerController.TargetInteractable;
+            InteractableModel interactable = PlayerController.TargetInteractable.interactableModel;
 
             m_PlayerController.PlayerModel.Agent.SetDestination(interactable.GetStandPosition().position);
 
@@ -26,7 +26,7 @@ namespace OSGames.BoardGame.Player {
 
         void OnNavMeshArrival(){
             // Execute Typing Animation
-            PlayerController.TargetInteractable.Use();
+            PlayerController.TargetInteractable.interactableModel.Use();
             m_PlayerController.PlayerModel.Animator.SetBool("Typing",true);
             m_PlayerController.PlayerModel.ResetAnimatorAfter(2.5f);
         }

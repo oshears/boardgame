@@ -1,22 +1,26 @@
 using UnityEngine;
-
 using OSGames.BoardGame.Generic;
-
 using MackySoft.SerializeReferenceExtensions;
+using System;
+using System.Collections.Generic;
 
 namespace OSGames.BoardGame {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
+
+    public enum ItemWeight {
+        Light,
+        Heavy,
+    }
     
-    [CreateAssetMenu(fileName = "Item", menuName = "Board Game/Item", order = 0)]
-    public class Item : ScriptableObject {
+    // [CreateAssetMenu(fileName = "Item", menuName = "Board Game/Item", order = 0)]
+    public abstract class Item : ScriptableObject {
 
         // [SerializeReference, SubclassSelector]
 	    // ICommand[] m_Commands;
         //  = Array.Empty<ICommand>();
-
-
+        public string itemName;
+        public string itemDescription;
+        public GameObject itemPrefab;
+        public ItemWeight itemWeight;
         
     }
 }

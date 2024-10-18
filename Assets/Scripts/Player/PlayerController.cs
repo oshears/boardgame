@@ -10,6 +10,7 @@ using OSGames.BoardGame.Generic;
 using OSGames.BoardGame.Input;
 using OSGames.BoardGame.Interactables;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 namespace OSGames.BoardGame.Player {
 
@@ -71,10 +72,31 @@ namespace OSGames.BoardGame.Player {
             get {return targetInteractableIndex != -1;}
         }
 
-        public InteractableModel TargetInteractable {
+        public InteractableController TargetInteractable {
             get{
                 return m_CurrentRoom.interactables[targetInteractableIndex];
             }
+        }
+
+        public List<Item> m_HeldItems = new List<Item>();
+        public List<Item> heldItems {
+            get {return m_HeldItems;}
+            set {m_HeldItems = value;}
+        }
+
+        public bool handsFull {
+            get {
+                foreach (Item item in m_HeldItems){
+                    if (item.itemWeight == ItemWeight.Heavy) return true;
+                }
+                return false;
+            }
+        }
+
+        int m_CardsDrawnThisRound;
+        public int cardsDrawnThisRound {
+            get {return m_CardsDrawnThisRound;}
+            set {m_CardsDrawnThisRound = value;}
         }
 
         protected virtual void Awake(){

@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using OSGames.BoardGame.Generic;
+using OSGames.BoardGame.Player;
 
 namespace OSGames.BoardGame.Actions {
 
@@ -13,13 +14,21 @@ namespace OSGames.BoardGame.Actions {
         
         [SerializeField] public string Title;
         // [Multiline]
-        [TextAreaAttribute]
+        [TextArea]
         [SerializeField] public string Description;
         [SerializeField] public int Cost;
         [SerializeField] public Sprite Sprite;
         [SerializeField] public Color Color;
         // [SerializeField] public int Level;
         [SerializeField] public ActionRestriction Restriction;
+
+        PlayerCommand m_PlayerCommand;
+        
+        public PlayerCommand playerCommand {
+            get {return m_PlayerCommand;}
+            set {m_PlayerCommand = value;}
+        }
+
 
         public virtual ActionType baseActionType {
             get{ return ActionType.Basic; }

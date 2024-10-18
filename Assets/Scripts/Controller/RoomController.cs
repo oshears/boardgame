@@ -34,8 +34,8 @@ namespace OSGames.BoardGame {
         }
 
         [Tooltip("Interactables within range of this room.")]
-        [SerializeField] List<InteractableModel> m_Interactables;
-        public List<InteractableModel> interactables {
+        [SerializeField] List<InteractableController> m_Interactables;
+        public List<InteractableController> interactables {
             get {return m_Interactables;}
             set {m_Interactables = value;}
         }

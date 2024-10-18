@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using OSGames.BoardGame;
 using OSGames.BoardGame.Generic;
 using System;
+using OSGames.BoardGame.Actions;
 
 namespace OSGames.BoardGame.Interactables {
 
@@ -19,18 +20,21 @@ namespace OSGames.BoardGame.Interactables {
         Publisher<InteractableEvent> m_Publisher;
 
         InteractableModel m_InteractableModel;
+        public InteractableModel interactableModel {
+            get { return m_InteractableModel;}
+        }
 
-        protected void Awake(){
+        virtual protected void Awake(){
             m_Publisher = new Publisher<InteractableEvent>();
             m_InteractableModel = GetComponent<InteractableModel>();
             m_InteractableModel.e_FinishUse.AddListener(OnFinishUse);
         }
 
-        protected void OnEnable(){
+        virtual protected void OnEnable(){
             m_InteractableModel.e_FinishUse.AddListener(OnFinishUse);
         }
 
-        protected void OnDisable(){
+        virtual protected void OnDisable(){
             m_InteractableModel.e_FinishUse.RemoveListener(OnFinishUse);
         }
 

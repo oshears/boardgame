@@ -13,7 +13,7 @@ namespace OSGames.BoardGame {
         public override PlayerCommand Make(PlayerCommandProduct product){
             if (product.Type == InputType.Confirm){
                 if (product.PlayerController.TargetInteractable != null) {
-                    return new PlayerInteractCommand(product.PlayerController, product.PlayerController.TargetInteractable);
+                    return new PlayerInteractCommand(product.PlayerController, product.PlayerController.TargetInteractable.interactableModel);
                 }
                 else {
                     return new PlayerCommand(product.PlayerController);

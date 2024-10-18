@@ -28,7 +28,7 @@ namespace OSGames.BoardGame.Player {
             int prevInteractable = m_PlayerController.targetInteractableIndex;
 
             if (prevInteractable >= 0){
-                m_PlayerController.CurrentRoom.interactables[prevInteractable].ClearHighlight();
+                m_PlayerController.CurrentRoom.interactables[prevInteractable].interactableModel.ClearHighlight();
             }
 
             if (m_TowardsRight){
@@ -38,7 +38,7 @@ namespace OSGames.BoardGame.Player {
                 m_PlayerController.targetInteractableIndex = prevInteractable - 1 < 0 ? m_PlayerController.CurrentRoom.interactables.Count - 1 : (m_PlayerController.targetInteractableIndex - 1) % m_PlayerController.CurrentRoom.interactables.Count;
             }
 
-            IInteractable interactable = m_PlayerController.CurrentRoom.interactables[m_PlayerController.targetInteractableIndex];
+            InteractableModel interactable = m_PlayerController.CurrentRoom.interactables[m_PlayerController.targetInteractableIndex].interactableModel;
 
             interactable.SetHighlight();
 

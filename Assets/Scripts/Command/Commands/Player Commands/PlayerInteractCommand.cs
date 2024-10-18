@@ -14,9 +14,9 @@ namespace OSGames.BoardGame.Player {
 
         // Transform m_Destination;
 
-        ICycleableInteractable m_Interactable;
+        InteractableModel m_Interactable;
 
-        public PlayerInteractCommand(PlayerController playerController, ICycleableInteractable interactable) : base(playerController){
+        public PlayerInteractCommand(PlayerController playerController, InteractableModel interactable) : base(playerController){
             m_Interactable = interactable;
         }
 

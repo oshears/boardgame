@@ -12,20 +12,9 @@ using OSGames.BoardGame.Actions;
 
 namespace OSGames.BoardGame.Interactables {
 
-    public class InteractableModel : Model, ICycleableInteractable, IActionHolder {
+    public class InteractableModel : Model, IActionHolder {
 
         protected InteractableConfig m_InteractableConfig;
-
-        ICycleableInteractable m_NextInteractable;
-        public ICycleableInteractable NextInteractable { 
-            get {return m_NextInteractable;}
-            set {m_NextInteractable = value;}
-        } 
-        ICycleableInteractable m_PrevInteractable;
-        public ICycleableInteractable PrevInteractable { 
-            get {return m_PrevInteractable;}
-            set {m_PrevInteractable = value;}
-        } 
 
         [SerializeField] UnityEvent e_SetHighlight;
         [SerializeField] UnityEvent e_ClearHighlight;
@@ -71,16 +60,6 @@ namespace OSGames.BoardGame.Interactables {
             return transform;
         }
 
-        public ICycleableInteractable GetNext()
-        {
-            return m_NextInteractable;
-        }
-
-        public ICycleableInteractable GetPrev()
-        {
-            return m_PrevInteractable;
-        }
-
         public Transform GetLookPosition()
         {
             return PlayerLookPoint;
@@ -89,16 +68,6 @@ namespace OSGames.BoardGame.Interactables {
         public Transform GetStandPosition()
         {
             return PlayerStandingPoint;
-        }
-
-        public void SetNext(ICycleableInteractable next)
-        {
-            m_NextInteractable = next;
-        }
-
-        public void SetPrev(ICycleableInteractable prev)
-        {
-            m_PrevInteractable = prev;
         }
 
         public PlayerAction GetPlayerAction(){
