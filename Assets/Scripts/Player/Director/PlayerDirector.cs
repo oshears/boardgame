@@ -33,7 +33,6 @@ namespace OSGames.BoardGame {
             get { return m_Publisher; }
         }
 
-
         public int currentPlayerTurn;
 
         List<PlayerController> m_Players;

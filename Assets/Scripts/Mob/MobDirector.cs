@@ -31,7 +31,7 @@ namespace OSGames.BoardGame {
 
         }
 
-        void Start(){
+        virtual protected void Start(){
             m_PhaseEventSubscriber.PublisherAction += OnPhaseEvent;
         }
 
