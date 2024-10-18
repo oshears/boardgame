@@ -13,7 +13,7 @@ namespace OSGames.BoardGame {
 
     public class MovementInteractableModel : InteractableModel, IMovementIndicator {
 
-        [SerializeField] protected RoomController m_DestinationRoom;
+        [SerializeField] RoomController m_DestinationRoom;
 
         public RoomController destinationRoom {
             get { return m_DestinationRoom;}

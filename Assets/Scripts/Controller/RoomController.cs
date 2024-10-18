@@ -33,35 +33,18 @@ namespace OSGames.BoardGame {
             set {m_PlayersInRoom = value;}
         }
 
-        ICycleableInteractable m_TargetedInteractable;
-
         [Tooltip("Interactables within range of this room.")]
         [SerializeField] List<InteractableModel> m_Interactables;
         public List<InteractableModel> interactables {
             get {return m_Interactables;}
             set {m_Interactables = value;}
         }
-        public ICycleableInteractable TargetedInteractable {
-            get { return m_TargetedInteractable;}
-            set { m_TargetedInteractable = value;}
-        }
-
-        [SerializeField] InteractableModel m_InitialInteractable;
-        public ICycleableInteractable InitialInteractable {
-            get { return m_InitialInteractable;}
-            // set { m_InitialInteractable = value;}
-        }
-
 
 
         protected virtual void Awake(){
             
             m_RoomModel = GetComponent<RoomModel>();
 
-            // for(int i = 0; i < m_Interactables.Count; i++){
-            //     m_Interactables[i].SetNext(m_Interactables[(i + 1) % m_Interactables.Count]);
-            //     m_Interactables[i].SetPrev(m_Interactables[i > 0 ? i - 1 : m_Interactables.Count - 1]);
-            // }
             if (m_PlayersInRoom == null){
                 m_PlayersInRoom = new List<PlayerController>();
             } 

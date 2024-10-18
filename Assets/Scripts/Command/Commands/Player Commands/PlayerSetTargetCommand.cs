@@ -24,22 +24,38 @@ namespace OSGames.BoardGame.Player {
             // m_PlayerController.transform.LookAt(m_Target);
             // m_m_PlayerController.transform.position
             // ICycleableInteractable interactable = m_PlayerController.TargetInteractable;
-            m_PlayerController.targetInteractableIndex = (m_PlayerController.targetInteractableIndex + 1) % m_PlayerController.CurrentRoom.interactables.Count;
-            IInteractable interactable = m_PlayerController.CurrentRoom.interactables[m_PlayerController.targetInteractableIndex];
             
-            if (interactable != null){
-                // for now this is ok, but this should probably be moved later (local to the interactable)
-                interactable.ClearHighlight();
-                // interactable = m_TowardsRight ? interactable.GetNext() : interactable.GetPrev();
+            int prevInteractable = m_PlayerController.targetInteractableIndex;
 
-                
-                // m_PlayerController.PlayerModel.RoomModel.TargetedInteractable = interactable;
-                interactable.SetHighlight();
+            if (prevInteractable >= 0){
+                m_PlayerController.CurrentRoom.interactables[prevInteractable].ClearHighlight();
+            }
+
+            if (m_TowardsRight){
+                m_PlayerController.targetInteractableIndex = (prevInteractable + 1) % m_PlayerController.CurrentRoom.interactables.Count;
             }
             else{
-                interactable = m_PlayerController.CurrentRoom.InitialInteractable;
-                interactable.SetHighlight();
+                m_PlayerController.targetInteractableIndex = prevInteractable - 1 < 0 ? m_PlayerController.CurrentRoom.interactables.Count - 1 : (m_PlayerController.targetInteractableIndex - 1) % m_PlayerController.CurrentRoom.interactables.Count;
             }
+
+            IInteractable interactable = m_PlayerController.CurrentRoom.interactables[m_PlayerController.targetInteractableIndex];
+
+            interactable.SetHighlight();
+
+            // IInteractable interactable = m_PlayerController.CurrentRoom.interactables[m_PlayerController.targetInteractableIndex];
+            
+            // if (interactable != null){
+            //     // for now this is ok, but this should probably be moved later (local to the interactable)
+            //     interactable.ClearHighlight();
+            //     // interactable = m_TowardsRight ? interactable.GetNext() : interactable.GetPrev();
+
+                
+            //     // m_PlayerController.PlayerModel.RoomModel.TargetedInteractable = interactable;
+            //     interactable.SetHighlight();
+            // }
+            // else{
+            //     interactable.SetHighlight();
+            // }
 
             // m_PlayerController.TargetInteractable = interactable;
 

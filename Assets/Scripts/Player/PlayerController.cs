@@ -67,6 +67,10 @@ namespace OSGames.BoardGame.Player {
         [NonSerialized]
         public int targetInteractableIndex = -1;
 
+        public bool hasTarget {
+            get {return targetInteractableIndex != -1;}
+        }
+
         public InteractableModel TargetInteractable {
             get{
                 return m_CurrentRoom.interactables[targetInteractableIndex];
