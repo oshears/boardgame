@@ -87,7 +87,7 @@ namespace OSGames.BoardGame {
 
         #if UNITY_EDITOR
 
-        private void OnDrawGizmosSelected() {
+        override protected void OnDrawGizmosSelected() {
             
             Gizmos.color = Color.green;
             Gizmos.DrawWireCube(transform.position,m_RoomBounds);

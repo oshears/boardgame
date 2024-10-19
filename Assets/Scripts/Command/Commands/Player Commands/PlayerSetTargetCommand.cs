@@ -42,6 +42,8 @@ namespace OSGames.BoardGame.Player {
 
             interactable.SetHighlight();
 
+            m_PlayerController.PlayerMenu.hintText = interactable.interactableConfig.hint;
+
             // IInteractable interactable = m_PlayerController.CurrentRoom.interactables[m_PlayerController.targetInteractableIndex];
             
             // if (interactable != null){

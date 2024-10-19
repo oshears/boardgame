@@ -24,7 +24,7 @@ namespace OSGames.BoardGame.Actions {
 
         PlayerCommand m_PlayerCommand;
         
-        public PlayerCommand playerCommand {
+        public virtual PlayerCommand playerCommand {
             get {return m_PlayerCommand;}
             set {m_PlayerCommand = value;}
         }

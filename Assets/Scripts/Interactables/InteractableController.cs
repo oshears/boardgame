@@ -31,7 +31,7 @@ namespace OSGames.BoardGame.Interactables {
         }
 
         virtual protected void OnEnable(){
-            m_InteractableModel.e_FinishUse.AddListener(OnFinishUse);
+            // m_InteractableModel.e_FinishUse.AddListener(OnFinishUse);
         }
 
         virtual protected void OnDisable(){

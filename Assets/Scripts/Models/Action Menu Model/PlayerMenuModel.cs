@@ -7,6 +7,7 @@ using UnityEngine.UI;
 // using Cinemachine;
 
 using OSGames.BoardGame.Generic;
+using TMPro;
 
 namespace OSGames.BoardGame.Player {
 
@@ -20,6 +21,12 @@ namespace OSGames.BoardGame.Player {
         public bool MenuActive {
             get {return m_MenuActive;}
             set {SetMenu(value);}
+        }
+
+        [SerializeField] TextMeshProUGUI m_PlayerHint;
+        public string hintText {
+            get {return m_PlayerHint.text;}
+            set {m_PlayerHint.text = value;}
         }
 
         public virtual bool ToggleMenu(){

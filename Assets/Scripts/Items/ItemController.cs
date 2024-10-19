@@ -16,19 +16,20 @@ namespace OSGames.BoardGame {
         }
 
         Item m_ItemData;
-        public Item itemData {
+        public virtual Item itemData {
             get {return m_ItemData;}
             set {m_ItemData = value;}
         }
 
         override protected void Awake(){
+            base.Awake();
             m_ItemModel = GetComponent<ItemModel>();
         }
 
 
 
         public void Pickup(){
-
+            Destroy(gameObject);
         }
 
         public void Drop(){

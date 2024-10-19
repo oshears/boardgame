@@ -14,13 +14,17 @@ namespace OSGames.BoardGame.Interactables {
 
     public class InteractableModel : Model, IActionHolder {
 
+        [SerializeField]
         protected InteractableConfig m_InteractableConfig;
+        public InteractableConfig interactableConfig {
+            get {return m_InteractableConfig;}
+        }
 
         [SerializeField] UnityEvent e_SetHighlight;
         [SerializeField] UnityEvent e_ClearHighlight;
 
-        [SerializeField] public UnityEvent e_Use;
-        [SerializeField] public UnityEvent e_FinishUse;
+        [SerializeField] public UnityEvent e_Use = new UnityEvent();
+        [SerializeField] public UnityEvent e_FinishUse = new UnityEvent();
 
         [Tooltip("Optional: location the player will stand when interacting")]
         [SerializeField] Transform m_PlayerStandingPoint;
