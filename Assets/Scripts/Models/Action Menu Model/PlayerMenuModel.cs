@@ -29,6 +29,16 @@ namespace OSGames.BoardGame.Player {
             set {m_PlayerHint.text = value;}
         }
 
+        override protected void Awake(){
+            base.Awake();
+            SetMenu(false);
+        }
+
+        override protected void Start(){
+            base.Start();
+
+        }
+
         public virtual bool ToggleMenu(){
             SetMenu(!m_MenuActive);
             return m_MenuActive;
@@ -36,6 +46,9 @@ namespace OSGames.BoardGame.Player {
 
         public virtual void SetMenu(bool active){
             m_MenuActive = active;
+            m_CanvasGroup.alpha = active ? 1 : 0;
+            m_CanvasGroup.interactable = active;
+            m_CanvasGroup.blocksRaycasts = active;
         }
 
         public virtual bool GetAtBaseMenu(){

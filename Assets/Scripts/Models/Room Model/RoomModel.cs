@@ -1,13 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Events;
-using UnityEngine.UI;
-
-using OSGames.BoardGame.Interactables;
 using OSGames.BoardGame.Generic;
-using OSGames.BoardGame.Player;
 
 namespace OSGames.BoardGame {
 
@@ -17,7 +8,8 @@ namespace OSGames.BoardGame {
 
         
 
-        virtual protected void Awake(){
+        override protected void Awake(){
+            base.Awake();
             
         }
 

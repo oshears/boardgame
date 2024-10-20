@@ -1,13 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Events;
-using UnityEngine.UI;
 using OSGames.BoardGame.Generic;
 using OSGames.BoardGame.Player;
 using OSGames.BoardGame.Interactables;
-using UnityEditor.EditorTools;
 
 namespace OSGames.BoardGame {
 

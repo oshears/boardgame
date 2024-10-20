@@ -36,7 +36,8 @@ namespace OSGames.BoardGame.Player {
         // }
         
 
-        protected virtual void Awake(){
+        override protected void Awake(){
+            base.Awake();
             m_Agent = GetComponent<NavMeshAgent>();
             m_Animator = GetComponent<Animator>();
         }

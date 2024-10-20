@@ -9,6 +9,14 @@ namespace OSGames.BoardGame.Generic {
     public abstract class Model : MonoBehaviour
     {
 
+        protected virtual void Awake(){
+            
+        }
+
+        protected virtual void Start(){
+        
+        }
+
         #if UNITY_EDITOR
         protected virtual void OnDrawGizmosSelected() {
 
