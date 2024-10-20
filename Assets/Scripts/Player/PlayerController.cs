@@ -78,20 +78,7 @@ namespace OSGames.BoardGame.Player {
             }
         }
 
-        public List<Item> m_HeldItems = new List<Item>();
-        public List<Item> heldItems {
-            get {return m_HeldItems;}
-            set {m_HeldItems = value;}
-        }
-
-        public bool handsFull {
-            get {
-                foreach (Item item in m_HeldItems){
-                    if (item.itemWeight == ItemWeight.Heavy) return true;
-                }
-                return false;
-            }
-        }
+        
 
         int m_CardsDrawnThisRound;
         public int cardsDrawnThisRound {
@@ -190,6 +177,10 @@ namespace OSGames.BoardGame.Player {
 
         public virtual void StartTurn(){
             
+        }
+
+        public virtual void RefreshActions(){
+        
         }
 
         // protected virtual void OnPhaseEvent(PhaseEvent phaseEvent){

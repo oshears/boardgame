@@ -21,6 +21,10 @@ namespace OSGames.BoardGame {
         public string itemDescription;
         public GameObject itemPrefab;
         public ItemWeight itemWeight;
+        [Tooltip("Indicates whether the item is destroyed after a single use.")]
+        public bool isOneUse = true;
+
+        
         
     }
 }
