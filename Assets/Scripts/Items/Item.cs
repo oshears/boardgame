@@ -15,8 +15,15 @@ namespace OSGames.BoardGame {
         //  = Array.Empty<ICommand>();
         public string itemName;
         public string itemDescription;
+
+        /// <summary>
+        /// The prefab to display when the item is dropped on the ground of viewed in the item viewer
+        /// </summary>
+        [SerializeField, Tooltip("The prefab to display when the item is dropped on the ground of viewed in the item viewer")]
         public GameObject itemPrefab;
+        
         public ItemWeight itemWeight;
+        
         [Tooltip("Indicates whether the item is destroyed after a single use.")]
         public bool isOneUse = true;
 

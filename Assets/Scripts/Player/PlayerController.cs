@@ -50,8 +50,9 @@ namespace OSGames.BoardGame.Player {
         public enum State {
             ActiveControls,
             InactiveControls,
-            Menu,
-            InteractablePrompt
+            ViewingMenu,
+            ViewingInteractablePrompt,
+            ViewingSearchResults
 
         }
         State m_State = State.InactiveControls;
@@ -123,7 +124,7 @@ namespace OSGames.BoardGame.Player {
 
 
         protected virtual void OnInput(InputType type){
-            bool validMenuCommand = (type == InputType.ToggleMenu || type == InputType.Back) && m_State == State.Menu;
+            bool validMenuCommand = (type == InputType.ToggleMenu || type == InputType.Back) && m_State == State.ViewingMenu;
             bool validStandardCommand = type != InputType.Confirm && m_State == State.ActiveControls;
             bool validConfirmCommand = type == InputType.Confirm && m_State == State.ActiveControls && m_PlayerModel.GetHasTarget();
             if (validMenuCommand || validStandardCommand || validConfirmCommand)

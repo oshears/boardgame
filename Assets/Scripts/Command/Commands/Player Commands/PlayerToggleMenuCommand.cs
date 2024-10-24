@@ -23,7 +23,7 @@ namespace OSGames.BoardGame.Player {
         override public void Execute(){
             m_PlayerController.PlayerMenu.SetMenu(m_OpenMenu);
             m_PlayerController.PlayerModel.SetMenuCamera(m_OpenMenu);
-            m_PlayerController.state = m_OpenMenu ? PlayerController.State.Menu : PlayerController.State.ActiveControls;
+            m_PlayerController.state = m_OpenMenu ? PlayerController.State.ViewingMenu : PlayerController.State.ActiveControls;
             if (m_OpenMenu) m_PlayerController.RefreshActions();
         }
     }
