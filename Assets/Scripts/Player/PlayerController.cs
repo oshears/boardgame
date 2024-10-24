@@ -11,6 +11,7 @@ using OSGames.BoardGame.Input;
 using OSGames.BoardGame.Interactables;
 using UnityEngine.InputSystem;
 using System.Linq;
+using UnityEngine.Assertions;
 
 namespace OSGames.BoardGame.Player {
 
@@ -50,6 +51,7 @@ namespace OSGames.BoardGame.Player {
             ActiveControls,
             InactiveControls,
             Menu,
+            InteractablePrompt
 
         }
         State m_State = State.InactiveControls;
@@ -89,6 +91,8 @@ namespace OSGames.BoardGame.Player {
         protected virtual void Awake(){
             m_Scheduler = new Scheduler();
             m_CommandFactory = GetComponent<PlayerCommandFactory>();
+            Assert.IsNotNull(m_CommandFactory);
+            
             m_MenuActionFactory = GetComponent<PlayerActionFactory>();
 
             m_PlayerModel = GetComponent<PlayerModel>();
