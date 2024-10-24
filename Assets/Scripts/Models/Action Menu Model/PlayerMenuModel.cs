@@ -31,12 +31,11 @@ namespace OSGames.BoardGame.Player {
 
         override protected void Awake(){
             base.Awake();
-            SetMenu(false);
         }
 
         override protected void Start(){
             base.Start();
-
+            SetMenu(false);
         }
 
         public virtual bool ToggleMenu(){
